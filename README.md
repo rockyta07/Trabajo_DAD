@@ -15,7 +15,6 @@ Las entidades principales serán:
 - Mensajes
 - Adoptantes
 - Protectoras
-- (Opcionalmente) Post
 
 Descripción de las funcionalidades del servicio interno:
 
@@ -27,4 +26,3 @@ Los visitantes no necesitan perfiles para hacer uso de la web ni nombres de usua
 
 Las protectoras son una entidad diferente a las otras dos mencionadas anteriormente. Deberán tener un perfil público completo, este se dara de alta mediante un proceso que asegure que la protectora es efectivamente una registrada y no es un grupo de crianza ilegal, por ejemplo. Tendrá un usuario elegido por la propia protectora y será capaz de crear entradas con tarjetas de información de cada uno de los animales en adopción teniendo que rellenar obligatoriamente los campos básicos.
 
-Los post se podrán publicar por cualquier usuario en un foro específico para ello y por cualquier usuario.
