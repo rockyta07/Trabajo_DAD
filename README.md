@@ -12,7 +12,7 @@ Página Web para la adopción de animales las funcionalidades de esta estarán s
 
 Las entidades principales serán:
 - Animales (divididos por tipo)
-- Visitantes
+- Mensajes
 - Adoptantes
 - Protectoras
 - (Opcionalmente) Editores
