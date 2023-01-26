@@ -1,5 +1,5 @@
 # Fluff&Paws
-Marcia García de la Mata y Rocío Arranz Esteban
+Marcia García de la Mata, Rocío Arranz Esteban y Daniel Corredor Padrino
 
 Página Web para la adopción de animales las funcionalidades de esta estarán separadas según si son publicas o privadas:
 - Privadas:
