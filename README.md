@@ -1,4 +1,4 @@
-# Nombre
+# Fluff&Paws
 Marcia García de la Mata y Rocío Arranz Esteban
 
 Página Web para la adopción de animales las funcionalidades de esta estarán separadas según si son publicas o privadas:
