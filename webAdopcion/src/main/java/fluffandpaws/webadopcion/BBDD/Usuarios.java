@@ -18,17 +18,6 @@ public class Usuarios {
     private String dni; //DNI
     private int edad; //Edad
 
-    public Usuarios(){//constructor vacío
-
-    }
-
-    public Usuarios(String name, String username,String email){//constructor con nombre,identificacion y email
-
-        this.name = name;
-        this.username = username;
-        this.email = email;
-
-    }
 
     ////////////// Getters & Setters //////////////
     public Integer getId(){
