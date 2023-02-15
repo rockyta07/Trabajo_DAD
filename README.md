@@ -35,8 +35,11 @@ Durante el desarrollo de la base de datos nos hemos puesto los siguientes objeti
 DISEÑO:
 * Diseñar un diagrama UML con las clases y funciones a implementar.
 * Diseñar un esquema de la base de datos básica.
-* Planificación de las plantillas de la web.
+* Planificación de las plantillas de la web:
+Hemos descargado una plantilla y la hemos subido a nuestro proyecto, la hemos distribuido de la siguiente manera:
+-Resources es un archivo que contendrá static y templates, static lo hemos dividido en css (con los archivos que sirven para definir y crear presentación de un documento), en images(donde se encontrarán las imagenes que irán a la página web) y js (donde tenemos los archivos de javaScript). En templates tenemos las plantillas html (about,contact,gallery e index).
 * Recolecta de imágenes sin copyright para mostrarlas en la web.
+Para la recolecta de imágenes se ha usando la página pixabay, cogiendo solo las imágenes sin regalías.
 
 INVESTIGACIÓN:
 * Investigar el funcionamiento de MySQL y la implementación con entidades en Java.
@@ -44,6 +47,11 @@ INVESTIGACIÓN:
 * Estudiar la implementación general de la BBDD + HTML.
 
 IMPLEMENTACIONES:
+*Implementación de controladores necesarios.
+Se necesita un controlador de login que cuando el usuario en la página web genere una petición de entrar, el controlador obtenga esta petición, verifique los datos con la base de datos y permita entrar.
 * Implementación de la BBDD diseñada.
+En un principio se empezó realizando con el propio Mysql workbench:
+
+
 * Implementación de Mustache y las plantillas de la web.
 * Pruebas y debugging de la implementación inicial para evaluar los errores y corregirlos en las siguientes versiones.
