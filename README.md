@@ -1,6 +1,8 @@
 # Fluff&Paws
 Marcia García de la Mata, Rocío Arranz Esteban y Daniel Corredor Padrino
 
+# Fase 1: Declaración de Objetivos
+
 Página Web para la adopción de animales las funcionalidades de esta estarán separadas según si son publicas o privadas:
 - Privadas:
   - Perfil del usuario adoptante (visitantes que se han registrado)
@@ -26,3 +28,22 @@ Los visitantes no necesitan perfiles para hacer uso de la web ni nombres de usua
 
 Las protectoras son una entidad diferente a las otras dos mencionadas anteriormente. Deberán tener un perfil público completo, este se dara de alta mediante un proceso que asegure que la protectora es efectivamente una registrada y no es un grupo de crianza ilegal, por ejemplo. Tendrá un usuario elegido por la propia protectora y será capaz de crear entradas con tarjetas de información de cada uno de los animales en adopción teniendo que rellenar obligatoriamente los campos básicos.
 
+# Fase 2: Implementación Funcional
+
+Durante el desarrollo de la base de datos nos hemos puesto los siguientes objetivos a cumplir:
+
+DISEÑO:
+* Diseñar un diagrama UML con las clases y funciones a implementar.
+* Diseñar un esquema de la base de datos básica.
+* Planificación de las plantillas de la web.
+* Recolecta de imágenes sin copyright para mostrarlas en la web.
+
+INVESTIGACIÓN:
+* Investigar el funcionamiento de MySQL y la implementación con entidades en Java.
+* Investigar el funcionamiento de Mustache como creador de plantillas html.
+* Estudiar la implementación general de la BBDD + HTML.
+
+IMPLEMENTACIONES:
+* Implementación de la BBDD diseñada.
+* Implementación de Mustache y las plantillas de la web.
+* Pruebas y debugging de la implementación inicial para evaluar los errores y corregirlos en las siguientes versiones.
