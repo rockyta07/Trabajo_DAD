@@ -1,0 +1,61 @@
+package fluffandpaws.webadopcion.Controllers;
+
+import fluffandpaws.webadopcion.BBDD.Animales;
+import fluffandpaws.webadopcion.Service.animalesService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
+
+
+//El controller va conectado con el service, asi que aprovechamos los métodos de service y los llamamos
+@RestController
+@RequestMapping("/animales")
+public class animalController {
+
+    @Autowired
+    private animalesService animal;
+
+//creamos un petodo que nos creara una identificacion unica de sesion para un usuario, esto se crea gracias A uuid que es un estandar que viene en java
+
+    @GetMapping("/")//buscamos todos los usuarios
+    public List<Animales> getAnimales() {
+
+        return (List<Animales>) animal.findAll();
+    }
+
+    @GetMapping("/{id}")//Esto nos retorna el usuario
+    public Animales getAnimales(@PathVariable Integer id) {
+
+        return animal.findById(id).orElseThrow();
+    }
+
+    @PostMapping("/")//creamos el usuario
+    public Animales createAnimales(@RequestBody Animales an) {
+
+        animal.save(an);
+        return an;
+    }
+
+    @PutMapping("/{id}")//para modificar usuario
+
+    public Animales replaceAnimales(@PathVariable Integer id, @RequestBody Animales newAnimal) {
+
+        newAnimal.setId(id);
+        animal.replace(newAnimal);
+        return newAnimal;
+
+    }
+    @DeleteMapping("/{id})")//borramos el usuario
+
+    public Animales deleteAnimales(@PathVariable Integer id){
+
+       Animales a = animal.findById(id).orElseThrow();
+        animal.deleteById(id);
+        return a;
+
+
+    }
+
+
+
+}
