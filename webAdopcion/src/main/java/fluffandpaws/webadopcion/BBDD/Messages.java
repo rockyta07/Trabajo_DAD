@@ -14,8 +14,9 @@ public class Messages {
 
         private String content;
 
+        private Integer id;
         @OneToOne
-        private Users adp;
+        private Usuarios adp;
 
         @OneToOne
         private Shelter prt;
@@ -31,18 +32,20 @@ public class Messages {
             return this.content;
         }
 
-        public Users getAdopter(){
+        public Usuarios getAdopter(){
             return this.adp;
         }
 
-        public void setAdopter(Users newAdp){
+        public void setAdopter(Usuarios newAdp){
             this.adp = newAdp;
         }
 
+        public Integer getId(){ return this.id;}
         public Shelter getPrt(){
             return this.prt;
         }
 
+        public void setId(Integer id){ this.id = id;}
         public void setPrt(Shelter newPrt){
             this.prt = newPrt;
         }

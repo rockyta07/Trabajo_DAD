@@ -5,10 +5,14 @@ package fluffandpaws.webadopcion.Repositories;
 
 -----------------------------------------------------------*/
 
+import fluffandpaws.webadopcion.BBDD.Animales;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 //import org.springframework.data.repository.CrudRepository;
-
-public interface AnimalRepository extends CrudRepository<AnimalRepository, Integer> {
+@Repository
+public interface AnimalRepository extends CrudRepository<Animales, Integer> {
     //Igual que el repositorio de usuarios
 }
+
+

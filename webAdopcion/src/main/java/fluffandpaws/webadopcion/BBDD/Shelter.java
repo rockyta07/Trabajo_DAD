@@ -23,6 +23,7 @@ public class Shelter {
     private String social2;
     private String social3;
 
+    private Integer id;
     private String webPrt;
 
     //private List<Animals> total;
@@ -51,6 +52,7 @@ public class Shelter {
         return this.location;
     }
 
+    public Integer getId(){ return this.id;}
     public int getTlf(){
         return this.tlf;
     }
@@ -75,12 +77,14 @@ public class Shelter {
         return this.webPrt;
     }
 
+
+
     /*
     public ArrayList<Animal> getTotal(){
         return (ArrayList<Animal>)this.total;
     }
     */
-
+    public void setId(Integer id){ this.id = id;}
     public void setName(String newName){
         this.name_prt = newName;
     }
@@ -117,7 +121,7 @@ public class Shelter {
         this.webPrt = newWeb;
     }
 
-    public void adopt(Animals anm){
+    public void adopt(Animales anm){
         //this.total.add(anm);
     }
 }
