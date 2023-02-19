@@ -15,28 +15,27 @@ public class animalController {
     @Autowired
     private animalesService animal;
 
-//creamos un petodo que nos creara una identificacion unica de sesion para un usuario, esto se crea gracias A uuid que es un estandar que viene en java
 
-    @GetMapping("/")//buscamos todos los usuarios
+    @GetMapping("/")//buscamos todos los animales
     public List<Animales> getAnimales() {
 
         return (List<Animales>) animal.findAll();
     }
 
-    @GetMapping("/{id}")//Esto nos retorna el usuario
+    @GetMapping("/{id}")//Esto nos retorna el animal
     public Animales getAnimales(@PathVariable Integer id) {
 
         return animal.findById(id).orElseThrow();
     }
 
-    @PostMapping("/")//creamos el usuario
+    @PostMapping("/")//creamos el animal
     public Animales createAnimales(@RequestBody Animales an) {
 
         animal.save(an);
         return an;
     }
 
-    @PutMapping("/{id}")//para modificar usuario
+    @PutMapping("/{id}")//para modificar animal
 
     public Animales replaceAnimales(@PathVariable Integer id, @RequestBody Animales newAnimal) {
 
@@ -45,7 +44,7 @@ public class animalController {
         return newAnimal;
 
     }
-    @DeleteMapping("/{id})")//borramos el usuario
+    @DeleteMapping("/{id})")//borramos el animal
 
     public Animales deleteAnimales(@PathVariable Integer id){
 
