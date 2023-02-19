@@ -1,7 +1,8 @@
+/*
 package fluffandpaws.webadopcion.BBDD;
 
-import jakarta.persistence.*;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
 
@@ -13,6 +14,8 @@ public class Animals {
 
     private String name_anm;
     private short age;
+
+    private Integer id;
     private String species;
     private String breed;
     private String gender;
@@ -20,13 +23,14 @@ public class Animals {
     private short weight;
     private short height;   //cm
 
+
+
     @OneToOne
     private Users adopter;
-
     protected Animals(){}
 
     public Animals(String newName, short newAge, String newSp, String newBreed,
-                  String newGndr, LocalDate newBDate, short newWeight, short newHeight){
+                   String newGndr, LocalDate newBDate, short newWeight, short newHeight, Integer Id){
         this.name_anm = newName;
         this.age = newAge;
         this.species = newSp;
@@ -36,6 +40,7 @@ public class Animals {
         this.weight = newWeight;
         this.height = newHeight;
         this.adopter = null;
+        this.id = Id;
     }
 
     //Getters
@@ -76,11 +81,14 @@ public class Animals {
         return this.adopter;
     }
 
+    public Integer getId() { return this.id;}
+
     //SETTERS
 
     public void setName(String newName){
         this.name_anm = newName;
     }
+
 
     public void setAge(short newAge){
         this.age = newAge;
@@ -122,7 +130,10 @@ public class Animals {
         this.height = (short)newHeight;
     }
 
+    public void setId(Integer id){this.id = id;}
+
     public void setAdopter(Users adp){
         this.adopter = adp;
     }
 }
+*/

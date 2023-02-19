@@ -1,11 +1,12 @@
+/*
 package fluffandpaws.webadopcion.BBDD;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.List;
 import java.util.ArrayList;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
 @Entity
 public class Shelter {
@@ -75,11 +76,9 @@ public class Shelter {
         return this.webPrt;
     }
 
-    /*
-    public ArrayList<Animal> getTotal(){
+    //public ArrayList<Animal> getTotal(){
         return (ArrayList<Animal>)this.total;
     }
-    */
 
     public void setName(String newName){
         this.name_prt = newName;
@@ -121,3 +120,5 @@ public class Shelter {
         //this.total.add(anm);
     }
 }
+
+*/

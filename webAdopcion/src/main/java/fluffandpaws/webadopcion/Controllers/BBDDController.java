@@ -1,6 +1,7 @@
+/*
 package fluffandpaws.webadopcion.Controllers;
 
-import fluffandpaws.webadopcion.BBDD.Usuarios;
+import fluffandpaws.webadopcion.BBDD.Users;
 import fluffandpaws.webadopcion.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +24,7 @@ public class BBDDController {
                                            @RequestParam int edad,
                                            @RequestParam String dni){
         //Creamos un usuario auxiliar e iniciamos sus atributos
-        Usuarios u = new Usuarios();
+        Users u = new Users();
         u.setUsername(username);
         u.setName(name);
         u.setEmail(email);
@@ -37,9 +38,10 @@ public class BBDDController {
     }
 
     @GetMapping(path="/usuarios")
-    public @ResponseBody Iterable<Usuarios> getAllUsers(){
+    public @ResponseBody Iterable<Users> getAllUsers(){
         //Devuelve un JSON
         return userRepository.findAll();
     }
 
 }
+*/

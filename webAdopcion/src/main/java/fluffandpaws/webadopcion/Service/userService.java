@@ -1,5 +1,6 @@
+/*
 package fluffandpaws.webadopcion.Service;
-import fluffandpaws.webadopcion.BBDD.Usuarios;
+import fluffandpaws.webadopcion.BBDD.Users;
 import fluffandpaws.webadopcion.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,35 +18,28 @@ public class userService {
         @PostConstruct
         public void init(){
 
-            save(new Usuarios("Juan","juna","Juan@gmail.com"));//ponemos los datos tal cual el constructor
+            save(new Users("Juan","juna","Juan@gmail.com", "pass"));//ponemos los datos tal cual el constructor
 
         }
-        public Optional<Usuarios> findById(Integer id) {
+        public Optional<Users> findById(Integer id) {
             return users.findById(id);
-
         }
 
-        public boolean exist(long id){
-
+        public boolean exist(Integer id){
             return users.existsById(id);
-
         }
 
-        public List<Usuarios> findAll(){
-
-            return users.findAll();
+        public List<Users> findAll(){
+            return (List<Users>) users.findAll();
         }
-        public void save(Usuarios user){
-
+        public void save(Users user){
             users.save(user);
-
         }
 
-        public void deleteById(long id){
-
+        public void deleteById(Integer id){
             this.users.deleteById(id);
-
         }
 
 
 }
+*/
