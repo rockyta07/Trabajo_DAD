@@ -15,4 +15,4 @@ public interface AnimalRepository extends CrudRepository<Animales, Integer> {
     //Igual que el repositorio de usuarios
 }
 
-}
+
