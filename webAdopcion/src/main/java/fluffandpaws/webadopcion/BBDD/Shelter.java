@@ -26,6 +26,12 @@ public class Shelter {
     private Integer id;
     private String webPrt;
 
+    @OneToMany
+    private List<Messages> men;
+
+    @OneToMany
+    private List<Animales> total;
+
     //private List<Animals> total;
 
     protected Shelter(){}

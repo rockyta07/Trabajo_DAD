@@ -15,10 +15,12 @@ public class Messages {
         private String content;
 
         private Integer id;
-        @OneToOne
-        private Usuarios adp;
 
+        /*
         @OneToOne
+        private Usuarios adp;*/
+
+        @ManyToOne
         private Shelter prt;
 
         protected Messages(){}
