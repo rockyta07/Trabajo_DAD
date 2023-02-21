@@ -1,10 +1,6 @@
 package fluffandpaws.webadopcion.BBDD;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class Messages {
@@ -34,13 +30,13 @@ public class Messages {
             return this.content;
         }
 
-        public Usuarios getAdopter(){
-            return this.adp;
-        }
+        //public Usuarios getAdopter(){
+           // return this.prt;
+        //}
 
-        public void setAdopter(Usuarios newAdp){
-            this.adp = newAdp;
-        }
+        //public void setAdopter(Usuarios newAdp){
+            //this.prt = newAdp;
+        //}
 
         public Integer getId(){ return this.id;}
         public Shelter getPrt(){

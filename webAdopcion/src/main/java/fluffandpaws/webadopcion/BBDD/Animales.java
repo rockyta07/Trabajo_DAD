@@ -18,7 +18,7 @@ public class Animales {
     private String species;
     private String breed;
     private String gender;
-    private LocalDate birthdate;
+    private String birthdate;
     private short weight;
     private short height;   //cm
 
@@ -29,7 +29,7 @@ public class Animales {
     protected Animales(){}
 
     public Animales(String newName, short newAge, String newSp, String newBreed,
-                   String newGndr, LocalDate newBDate, short newWeight, short newHeight,Integer Id){
+                   String newGndr, String newBDate, short newWeight, short newHeight,Integer Id){
         this.name_anm = newName;
         this.age = newAge;
         this.species = newSp;
@@ -64,7 +64,7 @@ public class Animales {
         return this.gender;
     }
 
-    public LocalDate getBirthdate(){
+    public String getBirthdate(){
         return this.birthdate;
     }
 
@@ -109,7 +109,7 @@ public class Animales {
         this.gender = newGender;
     }
 
-    public void setBirthdate(LocalDate newBDate){
+    public void setBirthdate(String newBDate){
         this.birthdate = newBDate;
     }
 
