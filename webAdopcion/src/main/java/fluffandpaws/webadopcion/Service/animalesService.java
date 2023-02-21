@@ -8,7 +8,7 @@ import jakarta.annotation.PostConstruct;
 import java.util.Collection;
 import java.util.Optional;
 
-import static org.apache.catalina.valves.AbstractAccessLogValve.localDate;
+//import static org.apache.catalina.valves.AbstractAccessLogValve.localDate;
 
 
 //el @service sirve para conectar con la aplicación web a una base de datos, acceder y manipular los datos en esta base
@@ -21,7 +21,7 @@ public class animalesService {
     @PostConstruct
     public void init(){
 
-        save(new Animales("popi",10,"perro","Sin raza","macho","6/12/2022", 23,14,123456));//ponemos los datos tal cual el constructor
+        save(new Animales("popi", (short) 10,"perro","Sin raza","macho","6/12/2022", (short) 23, (short) 14,123456));//ponemos los datos tal cual el constructor
 
     }
     public Optional<Animales> findById(Integer id) {

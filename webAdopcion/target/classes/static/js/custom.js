@@ -283,7 +283,7 @@ $(function () {
 		speed: 500,
 		slidesToShow: 3,
 		slidesToScroll: 3,
-		infinite: false,
+		//infinite: false,
 		responsive: [{
 			breakpoint: 1024,
 			settings: {
@@ -367,6 +367,5 @@ $(function () {
 	$('#blogCarousel').carousel({
 		interval: 5000
 	});
-
 
 });
