@@ -24,9 +24,9 @@ public class UserController {
     }
 
     @GetMapping("/{id}")//Esto nos retorna el usuario
-    public Usuarios getUsuarios(@PathVariable Integer id) {
+    public Usuarios getUsuarios(@PathVariable long id) {
 
-        return user.findById(id).orElseThrow();
+        return user.findById((int) id).orElseThrow();
     }
 
     @PostMapping("/")//creamos el usuario
@@ -38,7 +38,7 @@ public class UserController {
 
     @PutMapping("/{id}")//para modificar usuario
 
-    public Usuarios replacePost(@PathVariable Integer id, @RequestBody Usuarios newUser) {
+    public Usuarios replacePost(@PathVariable long id, @RequestBody Usuarios newUser) {
 
         newUser.setId(id);
         user.replace(newUser);
@@ -47,10 +47,10 @@ public class UserController {
     }
     @DeleteMapping("/{id})")//borramos el usuario
 
-    public Usuarios deleteUsuarios(@PathVariable Integer id){
+    public Usuarios deleteUsuarios(@PathVariable long id){
 
-        Usuarios u = user.findById(id).orElseThrow();
-        user.deleteById(id);
+        Usuarios u = user.findById(Math.toIntExact(id)).orElseThrow();
+        user.deleteById(Math.toIntExact(id));
         return u;
 
 
