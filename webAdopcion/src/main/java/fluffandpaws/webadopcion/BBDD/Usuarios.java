@@ -1,7 +1,11 @@
 package fluffandpaws.webadopcion.BBDD;
 
-import jakarta.persistence.*;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +13,7 @@ import java.util.List;
 public class Usuarios {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id_adp;
+    private Long id_adp;
 
     private String name_adp;
     private String sname_adp1;  //Apellido 1
@@ -18,11 +22,11 @@ public class Usuarios {
     private String email; //Correo
     //La contraseña deberá ser guardada en otra base de datos por seguridad
     private String pass; //Contraseña
-    private Integer id; //DNI
+    //private Integer id; //DNI
     private int edad; //Edad
 
 
-    @OneToMany
+    @OneToMany(mappedBy = ("adopter"))
     private List<Animales> family;
 
     protected Usuarios(){}
@@ -80,12 +84,12 @@ public class Usuarios {
         this.pass = pass;
     }
 
-    public Integer getId() {
-        return id;
+    public Long getId() {
+        return id_adp;
     }
 
-    public void setId(Integer dni) {
-        this.id = id;
+    public void setId(long id_adp) {
+        this.id_adp = id_adp;
     }
 
     public int getEdad() {
