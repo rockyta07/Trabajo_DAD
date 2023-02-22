@@ -2,10 +2,10 @@ package fluffandpaws.webadopcion.Service;
 
 import fluffandpaws.webadopcion.BBDD.Shelter;
 import fluffandpaws.webadopcion.Repositories.ShelterRepository;
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.annotation.PostConstruct;
 import java.util.Optional;
 
 @Service
@@ -37,7 +37,7 @@ public class shelterService {
 
     public void replace (Shelter updatedShelter){//para modificar el usuario
 
-        shelter.findById(updatedShelter.getId()).orElseThrow();
+        shelter.findById(Math.toIntExact(updatedShelter.getId())).orElseThrow();
         shelter.save(updatedShelter);
     }
 
