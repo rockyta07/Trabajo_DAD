@@ -4,6 +4,7 @@ import fluffandpaws.webadopcion.BBDD.Usuarios;
 import fluffandpaws.webadopcion.Repositories.AnimalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import jakarta.annotation.PostConstruct;
 import java.util.Collection;
 import java.util.Optional;
@@ -46,7 +47,7 @@ public class animalesService {
     }
     public void replace (Animales updatedAnimal){//para modificar el usuario
 
-       animales.findById(updatedAnimal.getId()).orElseThrow();
+       animales.findById((int)updatedAnimal.getId()).orElseThrow();
         animales.save(updatedAnimal);
     }
 

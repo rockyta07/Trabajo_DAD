@@ -1,9 +1,13 @@
 package fluffandpaws.webadopcion.BBDD;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import java.util.List;
 import java.util.ArrayList;
 
-import jakarta.persistence.*;
 
 @Entity
 public class Shelter {
@@ -24,10 +28,10 @@ public class Shelter {
     private Integer id;
     private String webPrt;
 
-    @OneToMany()
-    private List<Messages> men;
+    @OneToMany(mappedBy="prt")
+    private List<Messages> mesList;
 
-    @OneToMany
+    @OneToMany(mappedBy="shel")
     private List<Animales> total;
 
     //private List<Animals> total;

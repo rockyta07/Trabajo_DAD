@@ -2,10 +2,10 @@ package fluffandpaws.webadopcion.Service;
 
 import fluffandpaws.webadopcion.BBDD.Shelter;
 import fluffandpaws.webadopcion.Repositories.ShelterRepository;
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.annotation.PostConstruct;
 import java.util.Optional;
 
 @Service
