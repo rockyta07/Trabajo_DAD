@@ -23,7 +23,7 @@ public class animalController {
     }
 
     @GetMapping("/{id}")//Esto nos retorna el animal
-    public Animales getAnimales(@PathVariable Integer id) {
+    public Animales getAnimales(@PathVariable Long id) {
 
         return animal.findById(id).orElseThrow();
     }
@@ -37,7 +37,7 @@ public class animalController {
 
     @PutMapping("/{id}")//para modificar animal
 
-    public Animales replaceAnimales(@PathVariable Integer id, @RequestBody Animales newAnimal) {
+    public Animales replaceAnimales(@PathVariable Long id, @RequestBody Animales newAnimal) {
 
         newAnimal.setId(id);
         animal.replace(newAnimal);
@@ -46,7 +46,7 @@ public class animalController {
     }
     @DeleteMapping("/{id})")//borramos el animal
 
-    public Animales deleteAnimales(@PathVariable Integer id){
+    public Animales deleteAnimales(@PathVariable Long id){
 
        Animales a = animal.findById(id).orElseThrow();
         animal.deleteById(id);

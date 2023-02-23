@@ -2,10 +2,10 @@ package fluffandpaws.webadopcion.Service;
 
 import fluffandpaws.webadopcion.BBDD.Shelter;
 import fluffandpaws.webadopcion.Repositories.ShelterRepository;
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.annotation.PostConstruct;
 import java.util.Optional;
 
 @Service
@@ -20,7 +20,7 @@ public class shelterService {
         save(new Shelter("Protectora1","12312312","Madrid",67584637,"Protectora1@gmail.com"));//ponemos los datos tal cual el constructor
 
     }
-    public Optional<Shelter> findById(Integer id) {
+    public Optional<Shelter> findById(Long id) {
         return shelter.findById(id);
 
     }
@@ -41,7 +41,7 @@ public class shelterService {
         shelter.save(updatedShelter);
     }
 
-    public void deleteById(Integer id){//borramos usuario
+    public void deleteById(Long id){//borramos usuario
 
         this.shelter.deleteById(id);
 

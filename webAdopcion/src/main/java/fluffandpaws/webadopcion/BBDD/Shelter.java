@@ -1,15 +1,19 @@
 package fluffandpaws.webadopcion.BBDD;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import java.util.List;
 import java.util.ArrayList;
 
-import jakarta.persistence.*;
 
 @Entity
 public class Shelter {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id_prt;
+    private Long id_prt;
 
     private String name_prt;
     private String license;
@@ -21,13 +25,13 @@ public class Shelter {
     private String social2;
     private String social3;
 
-    private Integer id;
+  //  private Integer id;
     private String webPrt;
 
-    @OneToMany()
-    private List<Messages> men;
+    @OneToMany(mappedBy="prt")
+    private List<Messages> mesList;
 
-    @OneToMany
+    @OneToMany(mappedBy="shel")
     private List<Animales> total;
 
     //private List<Animals> total;
@@ -56,7 +60,7 @@ public class Shelter {
         return this.location;
     }
 
-    public Integer getId(){ return this.id;}
+    public Long getId(){ return this.id_prt;}
     public int getTlf(){
         return this.tlf;
     }
@@ -88,7 +92,7 @@ public class Shelter {
         return (ArrayList<Animal>)this.total;
     }
     */
-    public void setId(Integer id){ this.id = id;}
+    public void setId(Long id){ this.id_prt = id_prt;}
     public void setName(String newName){
         this.name_prt = newName;
     }

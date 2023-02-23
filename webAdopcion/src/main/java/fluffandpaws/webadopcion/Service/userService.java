@@ -3,8 +3,8 @@ import fluffandpaws.webadopcion.BBDD.Usuarios;
 import fluffandpaws.webadopcion.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import jakarta.annotation.PostConstruct;
 
+import jakarta.annotation.PostConstruct;
 import java.util.Optional;
 
 //el @service sirve para conectar con la aplicación web a una base de datos, acceder y manipular los datos en esta base
@@ -20,7 +20,7 @@ public class userService {
             save(new Usuarios("Juan","García","Rodriguez"));//ponemos los datos tal cual el constructor
 
         }
-        public Optional<Usuarios> findById(Integer id) {
+        public Optional<Usuarios> findById(Long id) {
             return user.findById(id);
 
         }
@@ -46,7 +46,7 @@ public class userService {
             user.save(updatedUser);
         }
 
-        public void deleteById(Integer id){//borramos usuario
+        public void deleteById(Long id){//borramos usuario
 
             this.user.deleteById(id);
 

@@ -1,10 +1,7 @@
 package fluffandpaws.webadopcion.Controllers;
 
 import fluffandpaws.webadopcion.BBDD.Messages;
-import fluffandpaws.webadopcion.BBDD.Shelter;
-import fluffandpaws.webadopcion.Service.animalesService;
 import fluffandpaws.webadopcion.Service.mensaggesService;
-import fluffandpaws.webadopcion.Service.shelterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -14,25 +11,25 @@ import java.util.List;
 public class MessagesController {
 
     @Autowired
-    private mensaggesService men;
+    private mensaggesService meServ;
 
 
     @GetMapping("/")//buscamos todos los mensajes
     public List<Messages> getMessages() {
 
-        return (List<Messages>) men.findAll();
+        return (List<Messages>) meServ.findAll();
     }
 
     @GetMapping("/{id}")//Esto nos retorna el mensaje
-    public Messages getMessagges(@PathVariable Integer id) {
+    public Messages getMessagges(@PathVariable Long id) {
 
-        return men.findById(id).orElseThrow();
+        return meServ.findById(id).orElseThrow();
     }
 
     @PostMapping("/")//creamos el mensaje
     public Messages createMessages(@RequestBody Messages me) {
 
-       men.save(me);
+        meServ.save(me);
         return me;
     }
 
@@ -41,16 +38,16 @@ public class MessagesController {
     public Messages replaceMessages(@PathVariable Integer id, @RequestBody Messages newMessage) {
 
         newMessage.setId(id);
-        men.replace(newMessage);
+        meServ.replace(newMessage);
         return newMessage;
 
     }
     @DeleteMapping("/{id})")//borramos el mensaje
 
-    public Messages deleteMessages(@PathVariable Integer id){
+    public Messages deleteMessages(@PathVariable Long id){
 
-       Messages m = men.findById(id).orElseThrow();
-       men.deleteById(Math.toIntExact(id));
+       Messages m = meServ.findById(id).orElseThrow();
+        meServ.deleteById(id);
         return m;
 
 

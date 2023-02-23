@@ -1,13 +1,11 @@
 package fluffandpaws.webadopcion.Service;
 
 import fluffandpaws.webadopcion.BBDD.Messages;
-import fluffandpaws.webadopcion.BBDD.Usuarios;
 import fluffandpaws.webadopcion.Repositories.MessagesRepository;
-import fluffandpaws.webadopcion.Repositories.UserRepository;
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.annotation.PostConstruct;
 import java.util.Optional;
 
 @Service
@@ -22,7 +20,7 @@ public class mensaggesService {
             save(new Messages("hola buenas"));//ponemos los datos tal cual el constructor
 
         }
-        public Optional<Messages> findById(Integer id) {
+        public Optional<Messages> findById(Long id) {
             return mens.findById(id);
 
         }
@@ -48,7 +46,7 @@ public class mensaggesService {
             mens.save(updatedMessages);
         }
 
-        public void deleteById(Integer id){//borramos usuario
+        public void deleteById(Long id){//borramos usuario
 
             this.mens.deleteById(id);
 
