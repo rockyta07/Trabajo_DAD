@@ -20,7 +20,7 @@ public class mensaggesService {
             save(new Messages("hola buenas"));//ponemos los datos tal cual el constructor
 
         }
-        public Optional<Messages> findById(Integer id) {
+        public Optional<Messages> findById(Long id) {
             return mens.findById(id);
 
         }
@@ -42,11 +42,11 @@ public class mensaggesService {
 
         public void replace (Messages updatedMessages){//para modificar el usuario
 
-            mens.findById((int)updatedMessages.getId()).orElseThrow();
+            mens.findById(updatedMessages.getId()).orElseThrow();
             mens.save(updatedMessages);
         }
 
-        public void deleteById(Integer id){//borramos usuario
+        public void deleteById(Long id){//borramos usuario
 
             this.mens.deleteById(id);
 

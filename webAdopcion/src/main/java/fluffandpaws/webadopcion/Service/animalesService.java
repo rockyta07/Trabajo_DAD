@@ -22,10 +22,10 @@ public class animalesService {
     @PostConstruct
     public void init(){
 
-        save(new Animales("popi", (short) 10,"perro","Sin raza","macho","6/12/2022", (short) 23, (short) 14,123456));//ponemos los datos tal cual el constructor
+        save(new Animales("popi", (short) 10,"perro","Sin raza","macho","6/12/2022", (short) 23, (short) 14));//ponemos los datos tal cual el constructor
 
     }
-    public Optional<Animales> findById(Integer id) {
+    public Optional<Animales> findById(Long id) {
         return animales.findById(id);
 
     }
@@ -47,11 +47,11 @@ public class animalesService {
     }
     public void replace (Animales updatedAnimal){//para modificar el usuario
 
-       animales.findById((int)updatedAnimal.getId()).orElseThrow();
+       animales.findById(updatedAnimal.getId()).orElseThrow();
         animales.save(updatedAnimal);
     }
 
-    public void deleteById(Integer id){
+    public void deleteById(Long id){
 
         this.animales.deleteById(id);
 

@@ -21,7 +21,7 @@ public class MessagesController {
     }
 
     @GetMapping("/{id}")//Esto nos retorna el mensaje
-    public Messages getMessagges(@PathVariable Integer id) {
+    public Messages getMessagges(@PathVariable Long id) {
 
         return meServ.findById(id).orElseThrow();
     }
@@ -44,10 +44,10 @@ public class MessagesController {
     }
     @DeleteMapping("/{id})")//borramos el mensaje
 
-    public Messages deleteMessages(@PathVariable Integer id){
+    public Messages deleteMessages(@PathVariable Long id){
 
        Messages m = meServ.findById(id).orElseThrow();
-        meServ.deleteById(Math.toIntExact(id));
+        meServ.deleteById(id);
         return m;
 
 

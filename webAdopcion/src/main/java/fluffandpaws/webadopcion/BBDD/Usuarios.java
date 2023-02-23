@@ -88,7 +88,7 @@ public class Usuarios {
         return id_adp;
     }
 
-    public void setId(Integer dni) {
+    public void setId(Long dni) {
         this.id_adp = id_adp;
     }
 

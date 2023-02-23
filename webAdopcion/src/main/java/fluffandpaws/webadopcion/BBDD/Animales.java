@@ -15,7 +15,7 @@ import java.time.LocalDate;
 public class Animales {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id_anm;
+    private Long id_anm;
 
     private String name_anm;
     private short age;
@@ -38,7 +38,7 @@ public class Animales {
     protected Animales(){}
 
     public Animales(String newName, short newAge, String newSp, String newBreed,
-                   String newGndr, String newBDate, short newWeight, short newHeight,Integer Id){
+                   String newGndr, String newBDate, short newWeight, short newHeight){
         this.name_anm = newName;
         this.age = newAge;
         this.species = newSp;
@@ -48,7 +48,6 @@ public class Animales {
         this.weight = newWeight;
         this.height = newHeight;
         this.adopter = null;
-        this.id_anm = Id;
     }
 
     //Getters
@@ -89,7 +88,7 @@ public class Animales {
         return this.adopter;
     }
 
-    public long getId() { return this.id_anm;}
+    public Long getId() { return this.id_anm;}
 
     //SETTERS
 
@@ -138,7 +137,7 @@ public class Animales {
         this.height = (short)newHeight;
     }
 
-    public void setId(Integer id){this.id_anm = id;}
+    public void setId(Long id){this.id_anm = id;}
 
     public void setAdopter(Usuarios adp){
         this.adopter = adp;

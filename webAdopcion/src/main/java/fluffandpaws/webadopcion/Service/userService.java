@@ -20,7 +20,7 @@ public class userService {
             save(new Usuarios("Juan","García","Rodriguez"));//ponemos los datos tal cual el constructor
 
         }
-        public Optional<Usuarios> findById(Integer id) {
+        public Optional<Usuarios> findById(Long id) {
             return user.findById(id);
 
         }
@@ -42,11 +42,11 @@ public class userService {
 
         public void replace (Usuarios updatedUser){//para modificar el usuario
 
-            user.findById((int)updatedUser.getId()).orElseThrow();
+            user.findById(updatedUser.getId()).orElseThrow();
             user.save(updatedUser);
         }
 
-        public void deleteById(Integer id){//borramos usuario
+        public void deleteById(Long id){//borramos usuario
 
             this.user.deleteById(id);
 

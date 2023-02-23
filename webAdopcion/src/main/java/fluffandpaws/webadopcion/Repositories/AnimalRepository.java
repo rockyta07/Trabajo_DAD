@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 //import org.springframework.data.repository.CrudRepository;
 @Repository
-public interface AnimalRepository extends CrudRepository<Animales, Integer> {
+public interface AnimalRepository extends CrudRepository<Animales, Long> {
     //Igual que el repositorio de usuarios
 }
 
