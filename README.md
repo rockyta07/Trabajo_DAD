@@ -32,7 +32,9 @@ Las protectoras son una entidad diferente a las otras dos mencionadas anteriorme
 
 Durante el desarrollo de la base de datos nos hemos puesto los siguientes objetivos a cumplir:
 
-DISEÑO:
+--------------------------------------------------------------------------------------------------------
+                                                DISEÑO:  
+--------------------------------------------------------------------------------------------------------
 
 * Diseñar un diagrama UML con las clases y funciones a implementar (nunca se llego a diseñar como tal, lo cuál nos generó muchos problemas a la hora de entender el código de otra persona o con la cantidad de versiones diferentes que han surgido durante la fase 2).
 
@@ -54,12 +56,18 @@ DISEÑO:
 
 * Recolecta de imágenes sin copyright para mostrarlas en la web.
 
-INVESTIGACIÓN:
+--------------------------------------------------------------------------------------------------------
+                                           INVESTIGACIÓN:  
+--------------------------------------------------------------------------------------------------------
+
 * Investigar el funcionamiento de MySQL y la implementación con entidades en Java.
 * Investigar el funcionamiento de Mustache como creador de plantillas html.
 * Estudiar la implementación general de la BBDD + HTML.
 
-IMPLEMENTACIONES:
+--------------------------------------------------------------------------------------------------------
+                                          IMPLEMENTACIONES:  
+--------------------------------------------------------------------------------------------------------
+
 * Implementación de la BBDD diseñada.
 * Implementación de Mustache y las plantillas de la web.
 * Pruebas y debugging de la implementación inicial para evaluar los errores y corregirlos en las siguientes versiones.
