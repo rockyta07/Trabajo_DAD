@@ -7,7 +7,7 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #ffffff;
-  }
+}
 .login-container {
     width: 400px;
     margin: 0 auto;
@@ -38,7 +38,6 @@ body {
 .form-group input[type="submit"] {
     background-color: #db9d91;
     color: rgb(5, 0, 4);
-    left: center;
     padding: 8px 30px;
     border: none;
     border-radius: 12px;

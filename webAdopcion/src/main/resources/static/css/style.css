@@ -155,9 +155,10 @@ a {
 .active{ 
 	background-color: #ffffff;
 	padding-top: 5px; 
-	padding-bottom: 5px;
+	padding-bottom: 5px; 
 	color: #000;
-    margin-top: 10px;
+  margin-top: 10px;
+
  }
 
 .menu_text{
@@ -526,7 +527,7 @@ button.main_bt {
 
 button.btn.btn-primary, button.btn.btn-primary:hover, button.btn.btn-primary:focus {
     background: #000000;
-    padding: 10px 40px;
+    padding: 10 40px;
 }
 
 .our_texts{
