@@ -5,15 +5,19 @@ package fluffandpaws.webadopcion.Repositories;
 
 -----------------------------------------------------------*/
 
-import fluffandpaws.webadopcion.BBDD.Animales;
-import org.springframework.data.jpa.repository.JpaRepository;
+import fluffandpaws.webadopcion.BBDD.Animal;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Optional;
+
 //import org.springframework.data.repository.CrudRepository;
 @Repository
-public interface AnimalRepository extends CrudRepository<Animales, Long> {
-    //Igual que el repositorio de usuarios
+public interface AnimalRepository extends CrudRepository<Animal, Long> {
+    List<Animal> findAll();
+    Optional<Animal> findById(Long id);
+    //List<Animal> findAllById(List<Long> ids);
 }
 
 

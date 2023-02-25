@@ -1,0 +1,14 @@
+{{>header}}
+<html>
+<body>
+    <h2>Animales </h2>
+    <ul class="items">
+        {{#listaTodos}}
+        <li><a href="/Animales/{{id}}"> {{name_anm}}</a></li>
+        {{/listaTodos}}
+    </ul>
+    <pr></pr>
+    <a href="/Animales/crearAnimal" ><button>Crear animal</button></a>
+</body>
+</html>
+{{>footer}}
