@@ -54,7 +54,8 @@ Durante el desarrollo de la base de datos nos hemos puesto los siguientes objeti
 
 * Planificación de las plantillas de la web (debido a que nos encontramos justos de tiempo, decidimos optar por plantillas que adaptamos a nuestras necesidades, teniendo en mente una posible mejora visual y funcional de cara a las siguientes fases usando otras herranientas como Axure)
 
-* Recolecta de imágenes sin copyright para mostrarlas en la web.
+* Recolecta de imágenes sin copyright para mostrarlas en la web:
+  Para ello se ha hecho uso de pixabay, cogiendo fotografías de animales sin regalías.
 
 --------------------------------------------------------------------------------------------------------
                                            INVESTIGACIÓN:  
@@ -68,9 +69,16 @@ Durante el desarrollo de la base de datos nos hemos puesto los siguientes objeti
                                           IMPLEMENTACIONES:  
 --------------------------------------------------------------------------------------------------------
 
-* Implementación de la BBDD diseñada.
-* Implementación de Mustache y las plantillas de la web.
-* Pruebas y debugging de la implementación inicial para evaluar los errores y corregirlos en las siguientes versiones.
+* Implementación de la BBDD diseñada:
+   Para realizar la conexión con la base de datos hemos usado Workbench, a la hora de crear la conexión es importante tener en cuenta que la contraseña debe de ser mayor de 8 dígitos para que la conexión no de ningún problema, el nombre que hemos usado para la conexión es fluffsandpaws y la contraseña password, la conexión se realizará incluyendo en el application.properties, la contraseña y el nombre, asi la conexión se realizará directamente:
+spring.datasource.url=jdbc:mysql://localhost:3306/fluffandpaws.
+spring.datasource.username=fluffandpaws.
+spring.datasource.password=password.
+Para la creación de tablas automaticamente, hemos incluido en los servicios de cada entidad un método init() que se encargará de crear las tablas cada vez que se ejecute la aplicación.
+* Implementación de Mustache y las plantillas de la web:
+  Para Mustache hemos tenido en cuenta una serie de cosas, en primer lugar hay que centrarse en la creación de servicios (los cuales poseen métodos de buscar en las tablas, modificar, añadir y borrar), los servicios tendrán un @Autowire con el repositorio de la entidad correspondiente, a su vez se crean los controllers de cada entidad, en estos controllers se crearán los objetos de los servicios para poder llamar a las funciones(Crear,modificar,etc), aquí ya entra la parte de Mustache, a la hora de realizar un método en controller que se encargue de mostrar por ejemplo, todos los usuarios, se indicará la plantilla a la cual se va a dirigir después de llamar al método que nos interesa. Esa plantilla se realizará con Mustache, que lo que permite es que metiendo el nombre de los atributos asignados con model.addAttribute recoja en este caso todos los usuarios y posteriormente mostrarlos.
+* Pruebas y debugging de la implementación inicial para evaluar los errores y corregirlos en las siguientes versiones:
+  Una vez que teniamos cosas programadas listas para comprobar se paso a probarlo. En estas comprobaciones nos surgieron unas series de errores que comentaremos a continuación. 
 
 
 --------------------------------------------------------------------------------------------------------
@@ -83,3 +91,6 @@ Tras presentarse un sin fin de problemas, optamos por cambiar de IDE, usando aho
 - https://urjc-my.sharepoint.com/:v:/g/personal/r_arranz_2020_alumnos_urjc_es/ESc4gWhVX3VIus1w0HLsv8wBsZRGA36lfbRqUUoZQ3jibQ?e=DEdCfc
 
 Posteriormente nos encontramos con problemas de versiones, siendo el más destacable el uso continuo de RestController en vez de Controller.
+Problemas de compresión de funcionamiento de BBDD, al principio creamos en el Workbech manualmente las tablas, lo cual es erroneo, al igual que también nos generó errores que teniamos una contraseña de 4 dígitos. Esto se solucionó creando otro user en el mysql con otra contraseña y conectandola bien en el código para que las tablas se crearan solas sin tener que meterlas manualmente.
+No nos ejecutaba el proyecto debido a que las dependencias estaban mal especificadas y no habiamos incluido los mapped by.
+
