@@ -66,7 +66,9 @@ IMPLEMENTACIONES:
 
 
 /----------------------------------------------------
+
     PROBLEMAS CON LOS QUE NOS HEMOS ENCONTRADO:
+    
 ----------------------------------------------------/
 
 Tras presentarse un sin fin de problemas, optamos por cambiar de IDE, usando ahora IntelliJ. Para resolver los problemas básicos hemos desarollado un par de videos a modo de tutorial que ayudan a comprender como trabajar en Github y en el IDE a la vez, así como trabajar con las bases de datos en IntelliJ:
