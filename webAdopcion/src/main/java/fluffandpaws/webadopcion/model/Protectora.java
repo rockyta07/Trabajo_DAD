@@ -1,10 +1,12 @@
 package fluffandpaws.webadopcion.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "protectoras") //El nombre para las tablas
 public class Protectora {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,14 +22,11 @@ public class Protectora {
     //private String social2;
     //private String social3;
 
-    //private Integer id;
-    //private String webPrt;
-
     @OneToMany(mappedBy="prtInstance")
     private List<Mensaje> mensajesProtectora;
 
-    @OneToMany(mappedBy="prtOrigen")
-    private List<Animal> animalesProtectora;
+    @OneToMany(mappedBy="prtOrigen", cascade=CascadeType.REMOVE)
+    private List<Animal> animalesProtectora = new ArrayList<>();
 
     //private List<Animals> total;
 
@@ -40,6 +39,12 @@ public class Protectora {
         this.tlf = newTlf;
         this.eMail = newEMail;
         //this.total = new ArrayList<Animals>();
+    }
+
+    //Funciones
+    public void addAnimal(Animal animal){
+        animal.setPrtOrigen(this);
+        animalesProtectora.add(animal);
     }
 
     //GETTERS

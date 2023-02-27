@@ -12,6 +12,7 @@ import java.time.Period;
 
 
 @Entity
+@Table(name = "animales") //El nombre para las tablas
 public class Animal {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,13 +30,18 @@ public class Animal {
     private String description; //Basada en la información de los atributos siguientes
 
     //Atributos del animal
+    @Column(nullable = false)
     private String name_anm;
     private String age; //no es int porque va a almacenar si son meses o años
+    @Column(nullable = false)
     private String species; //Perro, Gato, Conejo...
-    private String breed; //Mastín, Labrador, Beagle...
+    private String breed = "Mestizo"; //Mastín, Labrador, Beagle... Por default es mestizo
+    @Column(nullable = false)
     private String gender;
     private Date birthdate;
+    @Column(nullable = false)
     private int weight; //kg
+
     private String size; // Pequeño, Mediano, Grande, Gigante
 
 
@@ -44,16 +50,16 @@ public class Animal {
     @ManyToOne
     private Usuario adopter;
 
-    @ManyToOne
-    private Protectora prtOrigen;
+    @ManyToOne //No puede usar collumn a secas -> joincollumn
+    @JoinColumn(name = "id_protectora", nullable = false)
+    private Protectora prtOrigen; //Solo puede ser creado por una protectora
 
 
-    //Constructores
+    //Constructores -> quitamos el public para simplicidad en la creacion de objetos auxiliares
+
     protected Animal(){}
-
-    //Para dar de alta un animal, se tiene que hacer como protectora e inmediatamente se le asigna la protectora al animal
     public Animal(String newName, String newSp, String newBreed,
-                  String newGndr, String newBDate, int newWeight, String newSize){ //Las fechas se deben de dar tal que así: "yyyy-mm-dd"
+                  String newGndr, String newBDate, int newWeight, String newSize, Protectora protectora){ //Las fechas se deben de dar tal que así: "yyyy-mm-dd"
         this.name_anm = newName;
         this.species = newSp;
         this.breed = newBreed;
@@ -62,16 +68,32 @@ public class Animal {
         this.age = calculateAge(); //int newAge;
         this.weight = newWeight;
         this.size = newSize;
-        /*
-        this.adopter = null; //Mas adelante lo cambiamos
-        this.prtOrigen = null; //Mas adelante lo cambiamos
-        */
+        this.adopter = null;
+        this.prtOrigen = protectora;
 
         this.description = setDescription();
     }
 
 
     //Funciones
+
+    //Para dar de alta un animal, se tiene que hacer como protectora e inmediatamente se le asigna la protectora al animal
+    public void createAnimal(String newName, String newSp, String newBreed,
+                  String newGndr, String newBDate, int newWeight, String newSize, Protectora protectora){ //Las fechas se deben de dar tal que así: "yyyy-mm-dd"
+        this.name_anm = newName;
+        this.species = newSp;
+        this.breed = newBreed;
+        this.gender = newGndr;
+        this.birthdate = Date.valueOf(newBDate); //Pasamos el string a una fecha date para mysql
+        this.age = calculateAge(); //int newAge;
+        this.weight = newWeight;
+        this.size = newSize;
+        this.adopter = null;
+        this.prtOrigen = protectora;
+
+        this.description = setDescription();
+    }
+
     public String setDescription(){ //Descripción detallada de los atributos
         if(!species.equals("perro")){
             //si no es un perro, el tamaño nos da igual
@@ -91,10 +113,7 @@ public class Animal {
         return (edad.getYears() + " años y " + edad.getMonths() + " meses");
     }
 
-
-
     //Getters
-
     public String getName_anm(){
         return this.name_anm;
     }
@@ -154,8 +173,9 @@ public class Animal {
         this.gender = newGender;
     }
 
-    public void setBirthdate(Date newBDate){
-        this.birthdate = newBDate;
+    public void setBirthdate(String newBDate){
+        this.birthdate = Date.valueOf(newBDate);
+        this.age = calculateAge();
     }
 
     public void setWeight(int newWeight){
@@ -168,25 +188,22 @@ public class Animal {
 
     public void setId(Long id){this.id = id;}
 
-    public Blob getImagenAnimal() {
+    public Blob getImageAnimal() {
         return imagenAnimal;
     }
 
-    public void setImagenanimal(Blob image) {
+    public void setImageAnimal(Blob image) {
         this.imagenAnimal = image;
     }
 
-    public boolean getImagen(){
+    public boolean getImage(){
         return this.imagen;
     }
 
-    public void setImagen(boolean image){
+    public void setImage(boolean image){
         this.imagen = image;
     }
 
-    public Blob getImageFile() {
-        return imagenAnimal;
-    }
 
     //Protectora y usuario adoptante
     public Protectora getPrtOrigen() {

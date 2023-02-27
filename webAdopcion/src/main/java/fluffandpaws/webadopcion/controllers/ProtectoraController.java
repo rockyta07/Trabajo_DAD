@@ -31,9 +31,9 @@ public class ProtectoraController {
 
     @GetMapping("/{id}")//Esto nos retorna el shelter
     public String getProtectora(Model model, @PathVariable Long id) {
-        Protectora prot = servProtectoras.findById(id).orElseThrow();
+        Protectora protectora = servProtectoras.findById(id).orElseThrow();
 
-        model.addAttribute("protect", prot);
+        model.addAttribute("protect", protectora);
         return "protectora";
 
     }
@@ -49,31 +49,20 @@ public class ProtectoraController {
         return "redirect:/Protectoras/"+pro.getId();
     }
 
-
-
-
-
-/*
     @PutMapping("/{id}/algo")//para modificar shelter
 
-    public Shelter replaceShelter(@PathVariable Integer id, @RequestBody Shelter newShelter) {
-
+    public Protectora replaceShelter(@PathVariable long id, @RequestBody Protectora newShelter) {
         newShelter.setId(id);
-        shel.replace(newShelter);
+        //servAnimales.replace(newShelter);
         return newShelter;
-
     }
 
     @DeleteMapping("/{id}/algo")//borramos el shelter
 
-    public Shelter deleteShelter(@PathVariable Long id) {
-
-        Shelter s = shel.findById(id).orElseThrow();
-        shel.deleteById(id);
-        return s;
-
-
+    public Protectora deleteShelter(@PathVariable Long id) {
+        Protectora protectora = servProtectoras.findById(id).orElseThrow();
+        //servAnimales.deleteById(id);
+        return protectora;
     }
 
-*/
 }

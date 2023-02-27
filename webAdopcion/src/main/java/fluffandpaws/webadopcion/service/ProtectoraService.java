@@ -13,7 +13,7 @@ import java.util.Optional;
 public class ProtectoraService {
 
     @Autowired
-    private ProtectoraRepository shelter;
+    private ProtectoraRepository protectoraRepository;
     //No tener en cuenta ahora mismo los errores de los metodos findBy etc, Se necesita conectar A la base para que vaya bien!"
     @PostConstruct
     public void init(){
@@ -24,29 +24,29 @@ public class ProtectoraService {
 
     }
     public Optional<Protectora> findById(Long id) {
-        return shelter.findById(id);
+        return protectoraRepository.findById(id);
 
     }
 
     public List<Protectora> findAll(){//buscar todos los usuarios
 
-        return shelter.findAll();
+        return protectoraRepository.findAll();
     }
     public void save(Protectora use){//guardar el usuario
 
-        shelter.save(use);
+        protectoraRepository.save(use);
 
     }
 
     public void replace (Protectora updatedProtectora){//para modificar el usuario
 
-        shelter.findById(updatedProtectora.getId()).orElseThrow();
-        shelter.save(updatedProtectora);
+        protectoraRepository.findById(updatedProtectora.getId()).orElseThrow();
+        protectoraRepository.save(updatedProtectora);
     }
 
     public void deleteById(Long id){//borramos usuario
 
-        this.shelter.deleteById(id);
+        this.protectoraRepository.deleteById(id);
 
     }
 }

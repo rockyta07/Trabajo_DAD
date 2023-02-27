@@ -7,8 +7,10 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import jakarta.annotation.PostConstruct;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.sql.Blob;
 import java.util.Optional;
 import java.util.List;
 
@@ -25,39 +27,74 @@ public class AnimalService {
     @PostConstruct
     public void init() throws IOException{
 
-        Animal a1, a2, a3;
-        a1 = new Animal("popi", "perro","Beagle","macho","2022-12-06",  16,  "Mediano");
-        a2 = new Animal("luna", "perro","Mestizo","hembra","2022-07-05",  23,  "Mediano");
-        a3 = new Animal("braco", "perro","Mastin","macho","2017-03-10",  35,  "Grande");
-
-        setAnimalImage(a1,"/imagenesAnimales/perro1.png");
-        setAnimalImage(a2,"/imagenesAnimales/perro2.png");
-        setAnimalImage(a3,"/imagenesAnimales/perro3.png");
-        save(a1);//ponemos los datos tal cual el constructor
-        save(a2);
-        save(a3);
 
     }
+
+    //Funciones
+
+    public void changeAnimalName(long id, String name){
+        Animal animal;
+        animal = animalRepo.findById(id).get();
+        animal.setName_anm(name);
+        animal.setDescription(); //Actualizamos la info de la descripción
+
+    }
+
+    public void changeAnimalBday(long id, String name){
+        Animal animal;
+        animal = animalRepo.findById(id).get();
+        animal.setBirthdate(name);
+        animal.setDescription(); //Actualizamos la info de la descripción
+
+    }
+
+    public void changeAnimalBreed(long id, String name){
+        Animal animal;
+        animal = animalRepo.findById(id).get();
+        animal.setBreed(name);
+        animal.setDescription(); //Actualizamos la info de la descripción
+    }
+
+    public void changeAnimalWeight(long id, String name){
+        Animal animal;
+        animal = animalRepo.findById(id).get();
+        animal.setName_anm(name);
+        animal.setDescription(); //Actualizamos la info de la descripción
+
+    }
+
+    public void changeAnimalSize(long id, String size){
+        Animal animal;
+        animal = animalRepo.findById(id).get();
+        animal.setName_anm(size);
+        animal.setDescription(); //Actualizamos la info de la descripción
+
+    }
+
+    public void changeAnimalImage(long id, MultipartFile image) throws IOException {
+        Animal animal;
+        animal = animalRepo.findById(id).get();
+        animal.setImageAnimal(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
+        animal.setImage(true);
+    }
+
     public Optional<Animal> findById(Long id) {
         return animalRepo.findById(id);
 
     }
 
-    /*
-    public List<Animal> findById(List<Long> ids){
-        return animalRepo.findAllById(ids);
-    }*/
-
     public boolean exist(Long id){
-
         return animalRepo.existsById(id);
-
     }
 
     public List<Animal> findAll(){//buscar todos los usuarios
-
         return animalRepo.findAll();
     }
+
+    public List<Animal> findByProtectora(){//buscar todos los usuarios
+        return animalRepo.findAll();
+    }
+
 
     public void save(Animal animal){
 
@@ -77,9 +114,9 @@ public class AnimalService {
     }
 
     public void setAnimalImage(Animal aux, String classpathResource) throws IOException {
-        aux.setImagen(true);
+        aux.setImage(true);
         Resource image = new ClassPathResource(classpathResource);
-        aux.setImagenanimal(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
+        aux.setImageAnimal(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
     }
 
 

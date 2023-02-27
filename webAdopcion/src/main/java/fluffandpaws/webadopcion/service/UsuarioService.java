@@ -18,8 +18,8 @@ public class UsuarioService {
         @PostConstruct
         public void init(){
 
-            save(new Usuario("Juan","García","Rodriguez"));//ponemos los datos tal cual el constructor
-            save(new Usuario("Dani","C","P"));
+            save(new Usuario("Juan","García", "juang@hotmail.com"));//ponemos los datos tal cual el constructor
+            save(new Usuario("Alejandro","Sanchez", "aleSan@yahoo.com"));
 
         }
         public Optional<Usuario> findById(Long id) {

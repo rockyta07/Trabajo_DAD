@@ -3,6 +3,7 @@ package fluffandpaws.webadopcion.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "mensajes") //El nombre para las tablas
 public class Mensaje {
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)

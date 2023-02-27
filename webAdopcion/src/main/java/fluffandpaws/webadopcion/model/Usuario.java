@@ -5,19 +5,22 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "usuarios") //El nombre para las tablas
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+
     private String name_adp;
-    private String sname1;  //Apellido 1
-    private String sname2;  //Apellido 2
+    @Column(nullable = false)
+    private String surname;  //Apellido 1
     private String username; //Nombre identificativo (generado o establecido)
+    @Column(nullable = false)
     private String email; //Correo
     //La contraseña deberá ser guardada en otra base de datos por seguridad
     private String pass; //Contraseña
-    //private Integer id; //DNI
+    private Integer dni; //DNI
     private int edad; //Edad
 
 
@@ -26,10 +29,10 @@ public class Usuario {
 
     protected Usuario(){}
 
-    public Usuario(String newName, String newSName1, String newSName2){
+    public Usuario(String newName, String newSurname, String newEmail){
         this.name_adp = newName;
-        this.sname1 = newSName1;
-        this.sname2 = newSName2;
+        this.surname = newSurname;
+        this.email = newEmail;
     }
 
 
@@ -42,19 +45,12 @@ public class Usuario {
         this.name_adp = name;
     }
 
-    public String getSName1(){
-        return this.sname1;
+    public String getSurame(){
+        return this.surname;
     }
 
-    public String getSName2(){
-        return this.sname2;
-    }
-
-    public void setSname1(String newSn1){
-        this.sname1 = newSn1;
-    }
-    public void setSname2(String newSn2){
-        this.sname2 = newSn2;
+    public void setSurname(String newSn1){
+        this.surname = newSn1;
     }
 
     /*
@@ -106,5 +102,13 @@ public class Usuario {
     @Override
     public String toString(){
         return "USER: " + this.name_adp;
+    }
+
+    public Integer getDni() {
+        return dni;
+    }
+
+    public void setDni(Integer dni) {
+        this.dni = dni;
     }
 }
