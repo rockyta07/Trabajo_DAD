@@ -1,0 +1,29 @@
+{{>header}}
+
+<html>
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<form action="crearMensaje" method="post">
+    <label for="email">Correo electrónico:</label>
+    <pr></pr>
+    <input type='text' id="email" name='eMailRemitente' required><br><br>
+
+    <label for="mensaje">Mensaje:</label><br>
+    <textarea id="mensaje" name='content' required></textarea><br><br>
+    <p></p>
+
+    {{#listaProtectoras}}
+    <label>
+        <input type="radio" name="pselected" value="{{id}}">
+        {{name}}
+    </label>
+    {{/listaProtectoras}}
+
+    <input type="submit" value="Enviar">
+</form>
+</body>
+</html>
+
+{{>footer}}

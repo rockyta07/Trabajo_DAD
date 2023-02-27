@@ -1,0 +1,16 @@
+{{>header}}
+<html>
+<body>
+    <p>Protectora {{protect}}</p>
+
+    {{#protect.animalesProtectora}}
+
+    <li><a href="/Animales/{{id}}"> {{name_anm}}</a></li>
+    {{/protect.animalesProtectora}}
+
+    <p></p>
+    <a href="/Protectoras/{{protect.id}}/crear_Animal" ><button>Crear animal</button></a>
+    <p><a href="/Protectoras/"> <button>Volver</button></a></p>
+</body>
+</html>
+{{>footer}}
