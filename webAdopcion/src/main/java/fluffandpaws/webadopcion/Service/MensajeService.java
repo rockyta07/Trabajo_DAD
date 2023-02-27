@@ -15,15 +15,7 @@ public class MensajeService {
         @Autowired
         private MensajeRepository mensajeRepo;
         //No tener en cuenta ahora mismo los errores de los metodos findBy etc, Se necesita conectar A la base para que vaya bien!"
-        @PostConstruct
-        public void init(){
 
-            save(new Mensaje("dd@gmail.com","hola buenas"));//ponemos los datos tal cual el constructor
-            save(new Mensaje("booker@gmail.com","Quiero pedir información sobre un animal"));//ponemos los datos tal cual el constructor
-            save(new Mensaje("dani909@gmail.com","Me gustaría visitar la protectora"));//ponemos los datos tal cual el constructor
-            save(new Mensaje("furro444@gmail.com","Contacto para adoptar uno de vuestros animales"));//ponemos los datos tal cual el constructor
-
-        }
 
         public Optional<Mensaje> findById(Long id) {
             return mensajeRepo.findById(id);

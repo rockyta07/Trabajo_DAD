@@ -23,10 +23,10 @@ public class Protectora {
     //private Integer id;
     //private String webPrt;
 
-    @OneToMany(mappedBy="prtInstance")
+    @OneToMany(mappedBy="prtInstance", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Mensaje> mensajesProtectora;
 
-    @OneToMany(mappedBy="prtOrigen")
+    @OneToMany(mappedBy="prtOrigen", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Animal> animalesProtectora;
 
     //private List<Animals> total;
@@ -130,7 +130,30 @@ public class Protectora {
     public void adopt(Animal anm){
         //this.total.add(anm);
     }
+
 */
+
+    public void addAnimal(Animal a){
+        this.animalesProtectora.add(a);
+    }
+
+
+    public void setAnimalesProtectora(List<Animal> la){
+        this.animalesProtectora = la;
+    }
+
+    public List<Animal> getAnimalesProtectora(){
+        return this.animalesProtectora;
+    }
+
+    public List<Mensaje> getMensajesProtectora(){
+        return this.mensajesProtectora;
+    }
+
+    public void setMensajesProtectora(List<Mensaje> lm){
+        this.mensajesProtectora = lm;
+    }
+
     @Override
     public String toString(){
         return "" + this.name_prt + " " + this.location + " " + this.tlf;

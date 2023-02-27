@@ -143,6 +143,15 @@ public class Animal {
         this.imagen = image;
     }
 
+    public Protectora getPrtOrigen(){
+        return this.prtOrigen;
+    }
+
+    public void setPrtOrigen(Protectora p){
+        this.prtOrigen = p;
+    }
+
+
 
     @Override
     public String toString(){

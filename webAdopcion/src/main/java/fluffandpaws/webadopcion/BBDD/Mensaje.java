@@ -59,6 +59,14 @@ public class Mensaje {
                 return "[" + this.eMailRemitente + "]: " + this.content;
         }
 
+        public Protectora getPrtInstance(){
+                return this.prtInstance;
+        }
+
+        public void setPrtInstance(Protectora p){
+                this.prtInstance = p;
+        }
+
 
 
 

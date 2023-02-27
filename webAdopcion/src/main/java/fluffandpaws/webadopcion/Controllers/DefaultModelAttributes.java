@@ -16,6 +16,6 @@ public class DefaultModelAttributes {
 
         //List<Protectora> aux = anServ_DMA.findAll();
         //String name = aux.get(1).getName();
-        return "variable global";
+        return "";
     }
 }

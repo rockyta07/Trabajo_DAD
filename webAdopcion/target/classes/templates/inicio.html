@@ -1,0 +1,14 @@
+<html>
+<body>
+  <h2>Protectoras</h2>
+  <ul class="items">
+    {{#books}}
+    <li><a href="/animales/{{id}}">{{title}}</a></li>
+    {{/books}}
+  </ul>
+
+  {{#logged}}
+  <button onclick="location.href='/newbook'">New book</button>
+  {{/logged}}
+</body>
+</html>

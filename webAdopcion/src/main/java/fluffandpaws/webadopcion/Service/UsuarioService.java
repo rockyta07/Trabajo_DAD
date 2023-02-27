@@ -15,13 +15,7 @@ public class UsuarioService {
         @Autowired
         private UsuarioRepository user;
 //No tener en cuenta ahora mismo los errores de los metodos findBy etc, Se necesita conectar A la base para que vaya bien!"
-        @PostConstruct
-        public void init(){
 
-            save(new Usuario("Juan","García","Rodriguez"));//ponemos los datos tal cual el constructor
-            save(new Usuario("Dani","C","P"));
-
-        }
         public Optional<Usuario> findById(Long id) {
             return user.findById(id);
 

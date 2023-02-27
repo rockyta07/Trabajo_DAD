@@ -1,6 +1,6 @@
 package fluffandpaws.webadopcion.Controllers;
 
-import fluffandpaws.webadopcion.BBDD.Animal;
+import fluffandpaws.webadopcion.BBDD.Mensaje;
 import fluffandpaws.webadopcion.BBDD.Usuario;
 import fluffandpaws.webadopcion.Service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/Usuarios")
@@ -25,7 +26,7 @@ public class UsuarioController {
 
         model.addAttribute("listUsuarios", listUsr);
 
-        return "todos_usuarios";
+        return "/temp_Usuario/todos_usuarios";
     }
 
     @GetMapping("/{id}")//Esto nos retorna el usuario
@@ -35,18 +36,28 @@ public class UsuarioController {
 
         model.addAttribute("user", adoptante);
 
-        return "usuario";
+        return "/temp_Usuario/usuario";
     }
 
     @GetMapping("/registroUsuario")
     public String registraUsuario(){
-        return "registrarUsuario";
+        return "/temp_Usuario/registrarUsuario";
     }
 
     @PostMapping("/registroUsuario")
     public String registraUsuarioProcess(Model model, @ModelAttribute("animal") Usuario aux2){
         servUsuarios.save(aux2);
         return "redirect:/Usuarios/" + aux2.getId();
+    }
+
+    @GetMapping("/borrarUsuario/{id}")
+    public String removeUsuario(Model model,@PathVariable Long id){
+        Optional<Usuario> user = servUsuarios.findById(id);
+        if(user.isPresent()){
+            servUsuarios.delete(id);
+            model.addAttribute("usuario", user.get());
+        }
+        return "/temp_Usuario/usuarioBorrado";
     }
 
     /*

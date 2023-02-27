@@ -22,22 +22,7 @@ public class AnimalService {
     @Autowired
     private AnimalRepository animalRepo;
     //No tener en cuenta ahora mismo los errores de los metodos findBy etc, Se necesita conectar A la base para que vaya bien!"
-    @PostConstruct
-    public void init() throws IOException{
 
-        Animal a1, a2, a3;
-        a1 = new Animal("popi", "2","perro","Sin raza","macho","6/12/2022",  "23",  "14");
-        a2 = new Animal("luna", "3","perro","Sin raza","hembra","5/07/2022",  "23",  "14");
-        a3 = new Animal("braco", "4","perro","Sin raza","macho","10/03/2017",  "23",  "14");
-
-        setAnimalImage(a1,"/imagenesAnimales/perro1.png");
-        setAnimalImage(a2,"/imagenesAnimales/perro2.png");
-        setAnimalImage(a3,"/imagenesAnimales/perro3.png");
-        save(a1);//ponemos los datos tal cual el constructor
-        save(a2);
-        save(a3);
-
-    }
     public Optional<Animal> findById(Long id) {
         return animalRepo.findById(id);
 
@@ -76,11 +61,7 @@ public class AnimalService {
 
     }
 
-    public void setAnimalImage(Animal aux, String classpathResource) throws IOException {
-        aux.setImagen(true);
-        Resource image = new ClassPathResource(classpathResource);
-        aux.setImagenanimal(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
-    }
+
 
 
 }

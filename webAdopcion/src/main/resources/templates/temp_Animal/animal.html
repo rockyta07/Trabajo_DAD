@@ -1,0 +1,16 @@
+{{>header}}
+<html>
+<body>
+    <p>Animal {{animal.name}}</p>
+
+    <img src="data:image/png;base64,{{imagenBase64}}" alt="imagen del animal">
+
+
+    <button onclick="location.href='/Animales/borrarAnimal/{{animal.id}}'">Borrar</button>
+
+
+
+    <p><a href="/Animales/"> Volver</a></p>
+</body>
+</html>
+{{>footer}}
