@@ -89,6 +89,35 @@ public class AnimalController {
         return "/temp_Animal/animalBorrado";
     }
 
+    @GetMapping("/editAnimal/{id}")
+    public String editAnimal(Model model, @PathVariable Long id) {
+
+        Optional<Animal> animal = servAnimales.findById(id);
+        if (animal.isPresent()) {
+            model.addAttribute("animal", animal.get());
+
+        }
+
+        return "/temp_Animal/editAnimalPage";
+
+    }
+
+    @PostMapping("/editAnimal")
+    public String editBookProcess(Model model, Animal animal, boolean removeImage, MultipartFile imageField)
+            throws IOException, SQLException {
+
+        //updateImage(book, removeImage, imageField);
+
+        servAnimales.save(animal);
+
+        model.addAttribute("animalId", animal.getId());
+
+        return "redirect:/Animales/"+animal.getId();
+    }
+
+
+
+
     /*
     @PostMapping("/")//creamos el animal
     public Animal createAnimales(@RequestBody Animal an) {
@@ -125,3 +154,4 @@ public class AnimalController {
     }
 
 }
+
