@@ -1,0 +1,14 @@
+{{>header}}
+<html>
+<body>
+    <h2>Protectoras</h2>
+    <ul class="items">
+        {{#listaProtectoras}}
+        <li><a href="/Protectoras/{{id}}"> {{name_prt}}</a></li>
+        {{/listaProtectoras}}
+    </ul>
+    <pr></pr>
+    <a href="/Protectoras/crearProtectora" ><button>Crear protectora</button></a>
+</body>
+</html>
+{{>footer}}

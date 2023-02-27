@@ -64,16 +64,16 @@ public class ProtectoraController {
         return "/temp_Protectora/registroAnimalProt";
     }
 
-    @PostMapping("/{id}/crear_Animal")
-    public String crearAnimalProcessxProtectora(Model model, Animal aux2, MultipartFile imgAnimalxProtectora, @PathVariable Long id) throws IOException{
+    @PostMapping("/{idShel}/crear_Animal")
+    public String crearAnimalProcessxProtectora(Model model, Animal aux2, MultipartFile imgAnimalxProtectora, @PathVariable Long idShel) throws IOException{
 
-        Protectora paux = servProtectoras.findById(id).get();
+        Protectora paux = servProtectoras.findById(idShel).get();
 
-        /*
+
         if (!imgAnimalxProtectora.isEmpty()) {
             aux2.setImagenanimal(BlobProxy.generateProxy(imgAnimalxProtectora.getInputStream(), imgAnimalxProtectora.getSize()));
             aux2.setImagen(true);
-        }*/
+        }
 
 
         aux2.setPrtOrigen(paux);
