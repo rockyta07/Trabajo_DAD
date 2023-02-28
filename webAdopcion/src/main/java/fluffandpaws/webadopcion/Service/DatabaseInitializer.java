@@ -70,7 +70,7 @@ public class DatabaseInitializer {
 
         Usuario u1, u2, u3;
         u1 = new Usuario("Juan","García","Rodriguez");
-        u2 = new Usuario("Pablo","Gil","Trader");
+        u2 = new Usuario("Pablo","Gil","Pérez");
         u3 = new Usuario("Javier","Fernandez","Arribas");
 
         usuarioRepo.save(u1);
@@ -80,10 +80,10 @@ public class DatabaseInitializer {
 
 
         Mensaje m1, m2, m3, m4;
-        m1 = new Mensaje("dd@gmail.com","hola buenas");
-        m2 = new Mensaje("booker@gmail.com","Quiero pedir información sobre un animal");
+        m1 = new Mensaje("pepe@gmail.com","hola buenas");
+        m2 = new Mensaje("caravaggio@gmail.com","Quiero pedir información sobre un animal");
         m3 = new Mensaje("dani909@gmail.com","Me gustaría visitar la protectora");
-        m4 = new Mensaje("furro444@gmail.com","Contacto para adoptar uno de vuestros animales");
+        m4 = new Mensaje("alo_oficial@gmail.com","Contacto para adoptar uno de vuestros animales");
 
         mensajeRepo.save(m1);
         mensajeRepo.save(m2);
