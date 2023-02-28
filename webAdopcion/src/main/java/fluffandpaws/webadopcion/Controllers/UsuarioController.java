@@ -1,5 +1,6 @@
 package fluffandpaws.webadopcion.Controllers;
 
+import fluffandpaws.webadopcion.BBDD.Animal;
 import fluffandpaws.webadopcion.BBDD.Mensaje;
 import fluffandpaws.webadopcion.BBDD.Usuario;
 import fluffandpaws.webadopcion.Service.UsuarioService;
@@ -7,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -60,33 +64,32 @@ public class UsuarioController {
         return "/temp_Usuario/usuarioBorrado";
     }
 
-    /*
-    @PostMapping("/")//creamos el usuario
-    public Usuario createUser(@RequestBody Usuario us) {
+    @GetMapping("/editUsuario/{id}")
+    public String editUsuario(Model model, @PathVariable Long id) {
 
-        servUsuarios.save(us);
-        return us;
-    }
+        Optional<Usuario> usuario = servUsuarios.findById(id);
+        if (usuario.isPresent()) {
+            model.addAttribute("usuario", usuario.get());
 
-    @PutMapping("/{id}")//para modificar usuario
+        }
 
-    public Usuario replacePost(@PathVariable Long id, @RequestBody Usuario newUser) {
-
-        newUser.setId(id);
-        servUsuarios.replace(newUser);
-        return newUser;
+        return "/temp_Usuario/editUsuarioPage";
 
     }
-    @DeleteMapping("/{id})")//borramos el usuario
 
-    public Usuario deleteUsuarios(@PathVariable Long id){
+    @PostMapping("/editUsuario")
+    public String editUsuario(Model model, Usuario usuario, boolean removeImage, MultipartFile imageField)
+            throws IOException, SQLException {
 
-        Usuario u = servUsuarios.findById(id).orElseThrow();
-        servUsuarios.delete(id);
-        return u;
+        //updateImage(book, removeImage, imageField);
 
+        servUsuarios.save(usuario);
 
+        model.addAttribute("usuarioId", usuario.getId());
+
+        return "redirect:/Usuarios/"+usuario.getId();
     }
-*/
+
+
 }
 

@@ -79,10 +79,9 @@ public class Usuario {
         this.email = email;
     }
 
-    /*
     public String getPass() {
         return pass;
-    }*/
+    }
 
     public void setPass(String pass) {
         this.pass = pass;
@@ -92,7 +91,7 @@ public class Usuario {
         return id;
     }
 
-    public void setId(Long dni) {
+   public void setId(Long id) {
         this.id = id;
     }
 

@@ -1,0 +1,28 @@
+{{>header}}
+
+<form action="/Usuarios/editUsuario" method="post" enctype="multipart/form-data">
+    <h2>Usuario "{{usuario.name}}"</h2>
+    <h2>Usuario "{{usuario.id}}"</h2>
+
+    <input type="hidden" name="id" value="{{usuario.id}}" />
+    <p>Nombre: </p>
+    <input type='text' name='name' value="{{usuario.name}}"/>
+    <p>Primer apellido:</p>
+    <input type='text' name='sname1' value="{{usuario.sName1}}"/>
+    <p>Segundo apellido:</p>
+    <input type='text' name='sname2' value="{{usuario.sName2}}"/>
+    <p>Correo:</p>
+    <input type='text' name='email' placeholder="Email"/>
+    <p>Nombre de usuario(username)</p>
+    <input type='text' name='username'  placeholder="Username"/>
+    <p>Contraseña</p>
+    <input type='text' name='pass' placeholder="pass"/>
+
+    <p>
+
+        <button onclick="location.href='/Usuario/{{usuario.id}}'">Cancel</button>
+        <input type="submit" value="Save" />
+    </p>
+</form>
+
+{{>footer}}}

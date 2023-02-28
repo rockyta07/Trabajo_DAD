@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Base64;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/Protectoras")
@@ -83,30 +85,37 @@ public class ProtectoraController {
     }
 
 
+    @GetMapping("/borrarProtectora/{id}")
+    public String removeAnimal(Model model, @PathVariable Long id){
+        Optional<Protectora> protectora = servProtectoras.findById(id);
+        if(protectora.isPresent()){
+            servAnimales.delete(id);
+            model.addAttribute("protectora", protectora.get());
+        }
+        return "/temp_Protectora/protectoraBorrada";
+    }
 
 
+    @GetMapping("/editProtectora/{id}")
+    public String editProtectora(Model model, @PathVariable Long id){
 
-/*
-    @PutMapping("/{id}/algo")//para modificar shelter
+        Optional<Protectora> protectora = servProtectoras.findById(id);
+        if(protectora.isPresent()){
+            model.addAttribute("shelter", protectora.get());
+        }
 
-    public Shelter replaceShelter(@PathVariable Integer id, @RequestBody Shelter newShelter) {
-
-        newShelter.setId(id);
-        shel.replace(newShelter);
-        return newShelter;
+        return "/temp_Protectora/editProtectoraPage";
 
     }
 
-    @DeleteMapping("/{id}/algo")//borramos el shelter
+    @PostMapping("/editProtectora")
+    public String editProtectoraProcess(Model model, Protectora protectora) throws IOException, SQLException {
 
-    public Shelter deleteShelter(@PathVariable Long id) {
+        servProtectoras.save(protectora);
 
-        Shelter s = shel.findById(id).orElseThrow();
-        shel.deleteById(id);
-        return s;
+        model.addAttribute("protectoraId", protectora.getId());
 
+        return "redirect:/Protectoras/" + protectora.getId();
 
     }
-
-*/
 }

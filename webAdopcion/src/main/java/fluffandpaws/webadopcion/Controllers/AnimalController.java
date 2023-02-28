@@ -103,7 +103,7 @@ public class AnimalController {
     }
 
     @PostMapping("/editAnimal")
-    public String editBookProcess(Model model, Animal animal, boolean removeImage, MultipartFile imageField)
+    public String editAnimal(Model model, Animal animal, boolean removeImage, MultipartFile imageField)
             throws IOException, SQLException {
 
         //updateImage(book, removeImage, imageField);
@@ -115,38 +115,10 @@ public class AnimalController {
         return "redirect:/Animales/"+animal.getId();
     }
 
+//esto de animales te redirige a la parte de arriba del controller
 
 
 
-    /*
-    @PostMapping("/")//creamos el animal
-    public Animal createAnimales(@RequestBody Animal an) {
-
-        servAnimales.save(an);
-        return an;
-    }
-
-    @PutMapping("/{id}")//para modificar animal
-
-    public Animal replaceAnimales(@PathVariable Long id, @RequestBody Animal newAnimal) {
-
-        newAnimal.setId(id);
-        servAnimales.replace(newAnimal);
-        return newAnimal;
-
-    }
-    @DeleteMapping("/{id})")//borramos el animal
-
-    public Animal deleteAnimales(@PathVariable Long id){
-
-       Animal a = servAnimales.findById(id).orElseThrow();
-        servAnimales.delete(id);
-        return a;
-
-
-    }
-
-    */
     public void setAnimalImage(Animal aux, String classpathResource) throws IOException {
         aux.setImagen(true);
         Resource image = new ClassPathResource(classpathResource);
@@ -154,4 +126,3 @@ public class AnimalController {
     }
 
 }
-

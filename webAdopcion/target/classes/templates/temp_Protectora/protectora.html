@@ -5,11 +5,14 @@
 
     {{#protect.animalesProtectora}}
 
-    <li><a href="/Animales/{{id}}"> {{name_anm}}</a></li>
+    <li><a href="/Animales/{{id}}"> {{name}}</a></li>
     {{/protect.animalesProtectora}}
 
     <p></p>
     <a href="/Protectoras/{{protect.id}}/crear_Animal" ><button>Crear animal</button></a>
+    <button onclick="location.href='/Protectoras/editProtectora/{{protect.id}}'">Editar</button>
+
+
     <p><a href="/Protectoras/"> <button>Volver</button></a></p>
 </body>
 </html>

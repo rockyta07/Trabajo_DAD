@@ -49,11 +49,6 @@ public class AnimalService {
         animalRepo.save(animal);
 
     }
-    public void replace (Animal updatedAnimal){//para modificar el usuario
-
-       animalRepo.findById(updatedAnimal.getId()).orElseThrow();
-        animalRepo.save(updatedAnimal);
-    }
 
     public void delete(Long id){
 

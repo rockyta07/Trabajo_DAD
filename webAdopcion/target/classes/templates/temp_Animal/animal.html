@@ -1,12 +1,15 @@
 {{>header}}
 <html>
 <body>
-    <p>Animal {{animal.name}}</p>
+
+    <p>Animal {{animal}}</p>
+
 
     <img src="data:image/png;base64,{{imagenBase64}}" alt="imagen del animal">
 
 
     <button onclick="location.href='/Animales/borrarAnimal/{{animal.id}}'">Borrar</button>
+    <button onclick="location.href='/Animales/editAnimal/{{animal.id}}'">Editar</button>
 
 
 

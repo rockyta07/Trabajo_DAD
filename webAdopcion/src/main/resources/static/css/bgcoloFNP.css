@@ -1,0 +1,11 @@
+.navbar {
+    background-color: #000; /* Cambiar el color del fondo de la barra */
+}
+
+.nav-link {
+    color: #fff !important; /* Cambiar el color del texto de los enlaces */
+}
+
+.navbar-brand {
+    margin-right: auto; /* Mover la imagen del logo a la derecha */
+}

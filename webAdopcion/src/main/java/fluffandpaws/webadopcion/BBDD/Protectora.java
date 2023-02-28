@@ -55,7 +55,7 @@ public class Protectora {
         return this.location;
     }
 
-    public Long getId(){ return this.id;}
+
     public String getTlf(){
         return this.tlf;
     }
@@ -64,31 +64,8 @@ public class Protectora {
         return this.eMail;
     }
 
-    /*
-    public String getSocial1(){
-        return this.social1;
-    }
-
-    public String getSocial2(){
-        return this.social2;
-    }
-
-    public String getSocial3(){
-        return this.social3;
-    }
-
-    public String getWeb(){
-        return this.webPrt;
-    }
-*/
-
-
-    /*
-    public ArrayList<Animal> getTotal(){
-        return (ArrayList<Animal>)this.total;
-    }
-    */
-    public void setId(Long id){ this.id = id;}
+    public Long getId(){ return this.id;}
+    public void setId(Long id){this.id = id;}
 
     public void setName(String newName){
         this.name_prt = newName;
@@ -109,29 +86,6 @@ public class Protectora {
     public void setEMail(String newEMail){
         this.eMail = newEMail;
     }
-
-    /*
-    public void setSocial1(String s1){
-        this.social1 = s1;
-    }
-
-    public void setSocial2(String s2){
-        this.social2 = s2;
-    }
-
-    public void setSocial3(String s3){
-        this.social3 = s3;
-    }
-
-    public void setWeb(String newWeb){
-        this.webPrt = newWeb;
-    }
-
-    public void adopt(Animal anm){
-        //this.total.add(anm);
-    }
-
-*/
 
     public void addAnimal(Animal a){
         this.animalesProtectora.add(a);

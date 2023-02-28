@@ -48,6 +48,9 @@ public class DatabaseInitializer {
 
         //p1.setAnimalesProtectora(la_aux);
 
+        protectoraRepo.save(p1);
+        protectoraRepo.save(p2);
+        protectoraRepo.save(p3);
 
         Animal a1, a2, a3;
         a1 = new Animal("popi", "2","perro","Sin raza","macho","6/12/2022",  "23",  "14");
@@ -57,12 +60,24 @@ public class DatabaseInitializer {
         setAnimalImage(a1,"/imagenesAnimales/perro1.png");
         setAnimalImage(a2,"/imagenesAnimales/perro2.png");
         setAnimalImage(a3,"/imagenesAnimales/perro3.png");
+        a1.setPrtOrigen(p3);
+        a2.setPrtOrigen(p1);
+        a3.setPrtOrigen(p2);
 
+        animalRepo.save(a1);
+        animalRepo.save(a2);
+        animalRepo.save(a3);
 
         Usuario u1, u2, u3;
         u1 = new Usuario("Juan","García","Rodriguez");
         u2 = new Usuario("Pablo","Gil","Trader");
         u3 = new Usuario("Javier","Fernandez","Arribas");
+
+        usuarioRepo.save(u1);
+        usuarioRepo.save(u2);
+        usuarioRepo.save(u3);
+
+
 
         Mensaje m1, m2, m3, m4;
         m1 = new Mensaje("dd@gmail.com","hola buenas");
@@ -70,39 +85,10 @@ public class DatabaseInitializer {
         m3 = new Mensaje("dani909@gmail.com","Me gustaría visitar la protectora");
         m4 = new Mensaje("furro444@gmail.com","Contacto para adoptar uno de vuestros animales");
 
-        animalRepo.save(a1);
-        animalRepo.save(a2);
-        animalRepo.save(a3);
-
-
-        protectoraRepo.save(p1);
-        protectoraRepo.save(p2);
-        protectoraRepo.save(p3);
-
-
-        usuarioRepo.save(u1);
-        usuarioRepo.save(u2);
-        usuarioRepo.save(u3);
-
         mensajeRepo.save(m1);
         mensajeRepo.save(m2);
         mensajeRepo.save(m3);
         mensajeRepo.save(m4);
-/*
-        p1.addAnimal(a1);
-        p1.addAnimal(a2);
-        p1.addAnimal(a3);
-
-        animalRepo.save(a1);
-        animalRepo.save(a2);
-        animalRepo.save(a3);
-
-
-        protectoraRepo.save(p1);
-        protectoraRepo.save(p2);
-        protectoraRepo.save(p3);*/
-
-
 
     }
 
