@@ -79,6 +79,19 @@ Para la creación de tablas automaticamente, hemos incluido en los servicios de 
   Para Mustache hemos tenido en cuenta una serie de cosas, en primer lugar hay que centrarse en la creación de servicios (los cuales poseen métodos de buscar en las tablas, modificar, añadir y borrar), los servicios tendrán un @Autowire con el repositorio de la entidad correspondiente, a su vez se crean los controllers de cada entidad, en estos controllers se crearán los objetos de los servicios para poder llamar a las funciones(Crear,modificar,etc), aquí ya entra la parte de Mustache, a la hora de realizar un método en controller que se encargue de mostrar por ejemplo, todos los usuarios, se indicará la plantilla a la cual se va a dirigir después de llamar al método que nos interesa. Esa plantilla se realizará con Mustache, que lo que permite es que metiendo el nombre de los atributos asignados con model.addAttribute recoja en este caso todos los usuarios y posteriormente mostrarlos.
 * Pruebas y debugging de la implementación inicial para evaluar los errores y corregirlos en las siguientes versiones:
   Una vez que teniamos cosas programadas listas para comprobar se paso a probarlo. En estas comprobaciones nos surgieron unas series de errores que comentaremos a continuación. 
+
+
+
+--------------------------------------------------------------------------------------------------------
+                          INICIAR LA BASE DE DATOS CON MYSQL 
+--------------------------------------------------------------------------------------------------------   
+
+Para que la aplicación sea capaz de crear, modificar y guardar las tablas, debe existir una base de datos llamada "fluffandpaws" donde se conectará a un esquema creado llamado también "fluffandpaws". Los datos de inicio de sesión deberán ser los siguientes:
+
+Usuario: fluffandpaws
+Contraseña: password
+  
+  
 --------------------------------------------------------------------------------------------------------
                           CAPTURAS DE NUESTRA PÁGINA WEB:  
 --------------------------------------------------------------------------------------------------------      
