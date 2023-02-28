@@ -97,19 +97,25 @@ Observamos en el Mysql y se ha creado:
 
 ![image](https://user-images.githubusercontent.com/102741945/221728074-922dbb1f-664e-44ca-b817-4b63477fbc2e.png)
 
+
 Si entramos dentro de una protectora y le damos a editar:
+
 ![image](https://user-images.githubusercontent.com/102741945/221728386-385d0a6c-0e3b-4329-8661-b27b4a0bddc3.png)
 ![image](https://user-images.githubusercontent.com/102741945/221728396-ef3560ba-20ec-494b-bf39-957bffbe830f.png)
 
 Si dentro de la protectora 1 le damos a crear animal, añadimos a un perro:
 ![image](https://user-images.githubusercontent.com/102741945/221729260-51889493-8f43-4409-bff4-f4c25895923a.png)
+
 Luego al entrar en protectora 1 aparece:
+
 ![image](https://user-images.githubusercontent.com/102741945/221729416-940ef1c2-a53e-49f6-9267-e85fbe14dc62.png)
 
 Dentro de protectora podemos borrar el animal asociado:
 ![image](https://user-images.githubusercontent.com/102741945/221729625-89dfd4d0-dd06-4f80-9261-ca96ef9a6667.png)
 
+
 Ahora vamos a animales:
+
 ![image](https://user-images.githubusercontent.com/102741945/221729851-e1d5b8bf-86db-4f14-8911-42b8939c793d.png)
 
 Tenemos la opción también de crear animales asociados a una determinada protectora:
@@ -118,12 +124,20 @@ Tenemos la opción también de crear animales asociados a una determinada protec
 ![image](https://user-images.githubusercontent.com/102741945/221730252-d6fb73d6-e2ff-464d-8f0d-68fd585ba4f5.png)
 ![image](https://user-images.githubusercontent.com/102741945/221730341-1914151a-dafa-4b44-a8d9-0f753fce2e89.png)
 ![image](https://user-images.githubusercontent.com/102741945/221730413-1d424dff-1d35-4672-9da4-444ff49a2da6.png)
+
+
 Entrando en cada animal te da la opción de editar o borrar:
+
+
 ![image](https://user-images.githubusercontent.com/102741945/221730520-4b73d0dc-35e2-4642-aafc-259a4995e0a3.png)
 ![image](https://user-images.githubusercontent.com/102741945/221730558-749fe977-00bf-4579-973e-d51ad6456dd5.png)
 En la página principal de animales ya no aparece:
 ![image](https://user-images.githubusercontent.com/102741945/221730644-76b741f5-d183-4b31-b294-e7ab8fb051bc.png)
+
+
 Y en la base de datos tampoco:
+
+
 ![image](https://user-images.githubusercontent.com/102741945/221730701-034e0362-4b63-4678-a9d4-27757b98d60a.png)
 
 Para editar nos metemos en el perro que queramos editar:
@@ -147,7 +161,9 @@ En la base también viene modificado:
 Ahora borramos a Pepito y ya no aparece:
 
 ![image](https://user-images.githubusercontent.com/102741945/221731413-e369294e-b460-425d-9bc6-2d9b78fa1abd.png)
+
  Y en la base de datos desaparece:
+ 
  ![image](https://user-images.githubusercontent.com/102741945/221731504-9ef73375-4395-4d6b-b589-ea38687272f4.png)
 
 Mensajes también es igual, apareciendo los correos y el texto del corre:
@@ -158,6 +174,8 @@ Mensajes también es igual, apareciendo los correos y el texto del corre:
 
 No hemos incluido edit porque intuimos que cuando un mensaje ya se ha enviado no se puede modificar:
 Pero si podemos borrarlo, primero observemos la base de datos:
+
+
 ![image](https://user-images.githubusercontent.com/102741945/221731881-58dca05e-39dd-4966-a13f-00c29ee8c46a.png)
 
 Y ahora borramos:
