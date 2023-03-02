@@ -1,6 +1,9 @@
 # Fluff&Paws
 Marcia García de la Mata, Rocío Arranz Esteban y Daniel Corredor Padrino
 
+Para organizarnos usaremos "Trello" al cuál se puede acceder desde el siguiente link:
+https://trello.com/invite/b/fjavwWrE/ATTI966c72349a3704d1d675c1228d98b2338C41BE0D/organizacion-fluffpaws
+
 # Fase 1: Declaración de Objetivos
 
 Página Web para la adopción de animales las funcionalidades de esta estarán separadas según si son publicas o privadas:
@@ -214,4 +217,20 @@ Problemas de compresión de funcionamiento de BBDD, al principio creamos en el W
 No nos ejecutaba el proyecto debido a que las dependencias estaban mal especificadas y no habiamos incluido los mapped by.
 Los setId nos generaban problemas con mustache, aparecía como si algún objeto estuviese usando el setId y no era así.
 Mustache no coge bien los nombres de los atributos de cada entidad y a la hora de ponerlos en los html mustache de editar nos daba el error de que no encontraba el atributo, hemos conseguido que la mayoria de atributos los encuentre (probando con minusculas, mayúsculas,etc).
+
+
+# Fase 3: Implementación de Seguridad
+
+Para la implementación de la seguridad nos hemos puesto los siguientes objetivos a cumplir:
+
+- Añadir las funciones de login (con su respectivo html de error) y logout
+- Establecer que pantallas son públicas y cuáles privadas
+- Convertir nuestra aplicación en https
+- Implementar el servicio interno funcional en un proceso separado
+- Elegir e implementar el mecanismo de comunicación
+- Desplegar el proyecto en una máquina virtual mediante el empaquetado jar
+- Opcionalmente aplicar seguridad CSRF
+
+
+
 
