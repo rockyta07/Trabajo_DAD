@@ -1,6 +1,8 @@
 # Fluff&Paws
 Marcia García de la Mata, Rocío Arranz Esteban y Daniel Corredor Padrino
 
+![logoWeb](https://user-images.githubusercontent.com/102540777/222416233-702d5929-cbea-4585-b3a5-8ef92fbf3fa7.png)
+
 Para organizarnos usaremos "Trello" al cuál se puede acceder desde el siguiente link:
 https://trello.com/invite/b/fjavwWrE/ATTI966c72349a3704d1d675c1228d98b2338C41BE0D/organizacion-fluffpaws
 
