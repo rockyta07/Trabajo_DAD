@@ -1,7 +1,6 @@
 package fluffandpaws.webadopcion.security.jwt;
 
 public class AuthResponse {
-
     private Status status;
     private String message;
     private String error;

@@ -13,5 +13,7 @@ import java.util.Optional;
 public interface UsuarioRepository extends CrudRepository<Usuario, Long> {
     List<Usuario> findAll();
     Optional<Usuario> findById(Long l);
+
+    Optional<Usuario> findByName(String name);
     void deleteById(Long id);
 }

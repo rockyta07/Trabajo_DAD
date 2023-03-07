@@ -7,6 +7,8 @@ import java.util.List;
 
 @Entity
 public class Usuario {
+
+    //meter un getRoles aqui
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -20,8 +22,9 @@ public class Usuario {
     private String pass; //Contraseña
     //private Integer id; //DNI
     private int edad; //Edad
-
-
+    private String encodedPassword;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles;
     @OneToMany(mappedBy="adopter")
     private List<Animal> familiaUsuario;
 
@@ -38,7 +41,10 @@ public class Usuario {
     public String getName(){
         return this.name_adp;
     }
-
+    ////Estos getters son para seguridad//////////
+    public List<String> getRoles() {return roles;}
+    public String getEncodedPassword() {return encodedPassword;}
+    //////////////////////////////////////////////77
     public void setName(String name){
         this.name_adp = name;
     }

@@ -3,7 +3,6 @@ package fluffandpaws.webadopcion.Controllers.auth;
 
 import fluffandpaws.webadopcion.security.jwt.AuthResponse;
 import fluffandpaws.webadopcion.security.jwt.LoginRequest;
-import fluffandpaws.webadopcion.security.jwt.UserLoginService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import fluffandpaws.webadopcion.security.jwt.UserLoginService;
 
 
 
