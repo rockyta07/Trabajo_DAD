@@ -1,14 +1,8 @@
 package fluffandpaws.webadopcion.Service;
 import fluffandpaws.webadopcion.BBDD.Animal;
 import fluffandpaws.webadopcion.Repositories.AnimalRepository;
-import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
-import jakarta.annotation.PostConstruct;
-
-import java.io.IOException;
 import java.util.Optional;
 import java.util.List;
 

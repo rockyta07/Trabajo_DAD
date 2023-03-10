@@ -1,6 +1,6 @@
 package fluffandpaws.webadopcion.BBDD;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 public class Mensaje {

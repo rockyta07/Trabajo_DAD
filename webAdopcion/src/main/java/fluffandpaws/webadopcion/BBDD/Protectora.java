@@ -2,7 +2,7 @@ package fluffandpaws.webadopcion.BBDD;
 
 import java.util.List;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 public class Protectora {

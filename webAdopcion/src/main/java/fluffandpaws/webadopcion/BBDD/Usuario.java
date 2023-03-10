@@ -1,8 +1,7 @@
 package fluffandpaws.webadopcion.BBDD;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,13 +12,18 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String name_adp;
+    private String name;
     private String sname1;  //Apellido 1
     private String sname2;  //Apellido 2
+
+    @Column(name = "username")
     private String username; //Nombre identificativo (generado o establecido)
     private String email; //Correo
     //La contraseña deberá ser guardada en otra base de datos por seguridad
     private String pass; //Contraseña
+
+    private String encriptado; //Salt de Hash
+
     //private Integer id; //DNI
     private int edad; //Edad
     private String encodedPassword;
@@ -31,7 +35,7 @@ public class Usuario {
     protected Usuario(){}
 
     public Usuario(String newName, String newSName1, String newSName2){
-        this.name_adp = newName;
+        this.name = newName;
         this.sname1 = newSName1;
         this.sname2 = newSName2;
     }
@@ -39,14 +43,14 @@ public class Usuario {
 
     //GETTERS Y SETTERS
     public String getName(){
-        return this.name_adp;
+        return this.name;
     }
     ////Estos getters son para seguridad//////////
     public List<String> getRoles() {return roles;}
     public String getEncodedPassword() {return encodedPassword;}
     //////////////////////////////////////////////77
     public void setName(String name){
-        this.name_adp = name;
+        this.name = name;
     }
 
     public String getSName1(){
@@ -111,6 +115,12 @@ public class Usuario {
 
     @Override
     public String toString(){
-        return "USER: " + this.name_adp;
+        return "USER: " + this.name;
     }
+
+    public void setEncriptado(String encriptado) {
+        this.encriptado = encriptado;
+    }
+
+    //public void getEncriptado(){}
 }

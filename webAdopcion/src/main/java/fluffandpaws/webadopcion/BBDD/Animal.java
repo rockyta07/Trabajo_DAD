@@ -1,9 +1,7 @@
 package fluffandpaws.webadopcion.BBDD;
 
-
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.sql.Blob;
 

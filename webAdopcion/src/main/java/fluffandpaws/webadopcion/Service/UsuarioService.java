@@ -3,7 +3,6 @@ import fluffandpaws.webadopcion.BBDD.Usuario;
 import fluffandpaws.webadopcion.Repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import jakarta.annotation.PostConstruct;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,10 +20,13 @@ public class UsuarioService {
 
         }
 
-
         public List<Usuario> findAll(){//buscar todos los usuarios
 
             return user.findAll();
+        }
+
+        public Optional<Usuario> findByUsername(String username){
+            return user.findByUsername(username);
         }
 
         public boolean exist(Long id){//ver si existen loos usuarios

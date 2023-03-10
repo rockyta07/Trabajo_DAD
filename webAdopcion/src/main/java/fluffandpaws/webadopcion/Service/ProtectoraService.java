@@ -2,7 +2,6 @@ package fluffandpaws.webadopcion.Service;
 
 import fluffandpaws.webadopcion.BBDD.Protectora;
 import fluffandpaws.webadopcion.Repositories.ProtectoraRepository;
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

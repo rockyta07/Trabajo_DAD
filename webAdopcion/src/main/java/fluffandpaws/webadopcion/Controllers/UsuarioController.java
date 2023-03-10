@@ -1,7 +1,5 @@
 package fluffandpaws.webadopcion.Controllers;
 
-import fluffandpaws.webadopcion.BBDD.Animal;
-import fluffandpaws.webadopcion.BBDD.Mensaje;
 import fluffandpaws.webadopcion.BBDD.Usuario;
 import fluffandpaws.webadopcion.Service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;

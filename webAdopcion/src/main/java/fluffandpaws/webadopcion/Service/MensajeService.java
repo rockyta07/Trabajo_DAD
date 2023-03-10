@@ -2,7 +2,6 @@ package fluffandpaws.webadopcion.Service;
 
 import fluffandpaws.webadopcion.BBDD.Mensaje;
 import fluffandpaws.webadopcion.Repositories.MensajeRepository;
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

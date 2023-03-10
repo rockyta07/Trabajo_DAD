@@ -3,8 +3,8 @@ package fluffandpaws.webadopcion.Controllers;
 import fluffandpaws.webadopcion.BBDD.Animal;
 import fluffandpaws.webadopcion.BBDD.Protectora;
 import fluffandpaws.webadopcion.Service.AnimalService;
-import fluffandpaws.webadopcion.Service.MensajeService;
 import fluffandpaws.webadopcion.Service.ProtectoraService;
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -18,9 +18,6 @@ import java.sql.SQLException;
 import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
-
-
-import org.hibernate.engine.jdbc.BlobProxy;
 
 
 //El controller va conectado con el service, asi que aprovechamos los métodos de service y los llamamos

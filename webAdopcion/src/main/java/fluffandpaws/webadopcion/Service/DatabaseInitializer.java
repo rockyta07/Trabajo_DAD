@@ -13,13 +13,14 @@ import fluffandpaws.webadopcion.Repositories.ProtectoraRepository;
 import fluffandpaws.webadopcion.Repositories.AnimalRepository;
 import fluffandpaws.webadopcion.Repositories.UsuarioRepository;
 import fluffandpaws.webadopcion.Repositories.MensajeRepository;
-import jakarta.annotation.PostConstruct;
 
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.PostConstruct;
 
 
 @Service

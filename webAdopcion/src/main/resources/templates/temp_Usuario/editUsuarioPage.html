@@ -18,8 +18,8 @@
     <p>Contraseña</p>
     <input type='text' name='pass' placeholder="pass"/>
 
+    <input type="hidden" name="_csrf" value="{{token}}" />
     <p>
-
         <button onclick="location.href='/Usuario/{{usuario.id}}'">Cancel</button>
         <input type="submit" value="Save" />
     </p>

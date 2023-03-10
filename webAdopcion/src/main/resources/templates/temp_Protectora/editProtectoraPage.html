@@ -15,8 +15,9 @@
     <input type='text' name='tlf' value="{{shelter.tlf}}"/>
     <p>Email:</p>
     <input type='text' name='eMail' value="{{shelter.name}}"/>
-    <p>
 
+    <input type="hidden" name="_csrf" value="{{token}}" />
+    <p>
         <button onclick="location.href='/Protectora/{{shelter.id}}'; return false;">Cancel</button>
         <input type="submit" value="Save" />
     </p>
