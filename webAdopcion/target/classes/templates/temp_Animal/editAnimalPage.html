@@ -19,8 +19,10 @@
   <input type='text' name='weight' value="{{animal.weight}}"/>
   <p><br>Altura:</p>
   <input type='text' name='height' value="{{animal.height}}"/>
-  <p>
 
+
+  <input type="hidden" name="_csrf" value="{{token}}" />
+  <p>
     <button onclick="location.href='/Animal/{{animal.id}}'; return false;">Cancel</button>
     <input type="submit" value="Save" />
   </p>

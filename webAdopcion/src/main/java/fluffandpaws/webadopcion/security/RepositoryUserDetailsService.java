@@ -1,8 +1,7 @@
 package fluffandpaws.webadopcion.security;
 
-import fluffandpaws.webadopcion.BBDD.Usuario;
-import fluffandpaws.webadopcion.Repositories.UsuarioRepository;
-import org.apache.catalina.User;
+import fluffandpaws.webadopcion.models.Usuario;
+import fluffandpaws.webadopcion.repositories.UsuarioRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +13,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import fluffandpaws.webadopcion.Repositories.UsuarioRepository;
 
 
 @Service
