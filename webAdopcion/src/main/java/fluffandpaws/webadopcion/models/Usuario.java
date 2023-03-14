@@ -27,11 +27,11 @@ public class Usuario {
     //private Integer id; //DNI
     private int edad; //Edad
     private String encodedPassword;
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<String> roles;
+
     @OneToMany(mappedBy="adopter")
     private List<Animal> familiaUsuario;
-
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles;
     protected Usuario(){}
 
     public Usuario(String newName, String newSName1, String newSName2){
@@ -39,7 +39,6 @@ public class Usuario {
         this.sname1 = newSName1;
         this.sname2 = newSName2;
     }
-
 
     //GETTERS Y SETTERS
     public String getName(){
@@ -68,11 +67,9 @@ public class Usuario {
         this.sname2 = newSn2;
     }
 
-    /*
-    public void adopt(Animal anm){
-        this.family.add(anm);
-    }*/
+    public void setEncodedPassword(String encodedPassword){ this.encodedPassword = encodedPassword;}
 
+    public void setRoles(List<String>roles){this.roles = roles;}
     public String getUsername() {
         return username;
     }

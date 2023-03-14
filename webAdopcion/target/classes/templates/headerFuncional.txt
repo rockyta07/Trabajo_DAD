@@ -14,10 +14,11 @@
     }
     body {
       background-color: #F5DEB3; /* Este es el código de color para el marrón claro */
-
     }
+
   </style>
 </head>
+
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-custom justify-content-between" style="background-color: #1b1f20;">
   <div class="container">
@@ -37,12 +38,8 @@
       <li class="nav-item active">
         <a class="nav-link" href="/Mensajes/">Mensajes</a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/login">Login</a>
-      </li>
     </ul>
   </div>
-
 </nav>
 <body/>
 <div class="container">

@@ -14,10 +14,12 @@ import fluffandpaws.webadopcion.repositories.AnimalRepository;
 import fluffandpaws.webadopcion.repositories.UsuarioRepository;
 import fluffandpaws.webadopcion.repositories.MensajeRepository;
 
+
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -34,6 +36,8 @@ public class DatabaseInitializer {
     private UsuarioRepository usuarioRepo;
     @Autowired
     private MensajeRepository mensajeRepo;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @PostConstruct
     public void init() throws IOException, URISyntaxException {
@@ -69,10 +73,25 @@ public class DatabaseInitializer {
         animalRepo.save(a2);
         animalRepo.save(a3);
 
-        Usuario u1, u2, u3;
+        Usuario u1, u2, u3,u4,u5;
         u1 = new Usuario("Juan","García","Rodriguez");
+        u1.setEncodedPassword(passwordEncoder.encode("123"));
+        ArrayList<String>roles1 = new ArrayList<>();
+        roles1.add("USER");
+        u1.setRoles(roles1);
+
         u2 = new Usuario("Pablo","Gil","Pérez");
+        u2.setEncodedPassword(passwordEncoder.encode("123"));
+        ArrayList<String>roles2 = new ArrayList<>();
+        roles1.add("USER");
+        u1.setRoles(roles2);
+
         u3 = new Usuario("Javier","Fernandez","Arribas");
+        u3.setEncodedPassword(passwordEncoder.encode("123"));
+        ArrayList<String>roles3 = new ArrayList<>();
+        roles3.add("USER");
+        roles3.add("ADMIN");
+        u3.setRoles(roles3);
 
         usuarioRepo.save(u1);
         usuarioRepo.save(u2);
