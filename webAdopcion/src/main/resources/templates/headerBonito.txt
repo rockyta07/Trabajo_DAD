@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- Configuracion de idioma -->
+<html lang="es">
+
+<!-- configuración básica -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- para pantallas más pequeñas -->
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <!-- Descripción de titulos -->
+  <title>Fluff&Paws</title>
+  <meta name="keywords" content="Adopcion">
+  <meta name="description" content="Adopta a tu peludo compañero de vida">
+  <meta name="author" content="Fluff&Paws">
+
+  <!-- para el css -->
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <!-- Scrollbar -->
+  <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.min.css">
+  <!-- owl stylesheets -->
+  <link rel="stylesheet" href="/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Bellefair&family=Barlow:wght@400;700&display=swap"
+        rel="stylesheet">
+
+  <!-- Nuestro CSS personalizado -->
+  <link rel="stylesheet" href="/css/index.css">
+  <script src="/js/navigation.js" defer></script>
+</head>
+
+<body>
+<!-- banner superior -->
+  <a class="skip-to-content" href="#main">Skip to content</a>
+
+  <header class="primary-header flex">
+    <div>
+      <img src="/images/logo.png" width="100" height="100" alt="webpage logo" class="logo">
+    </div>
+    <button class="mobile-nav-toggle" aria-controls="primary-navigation"><span class="sr-only" aria-expanded="false">Menu</span></button>
+    <nav>
+      <ul id="primary-navigation" data-visible="false" class="primary-navigation underline-indicators flex">
+        <li class="active"><a class="ff-sans-cond uppercase text-white letter-spacing-2" href="inicio.html"><span aria-hidden="true"></span>Página principal</a>
+        <li><a class="ff-sans-cond uppercase text-white letter-spacing-2" href="care.html"><span aria-hidden="true"></span>Cuidados</a>
+        <li><a class="ff-sans-cond uppercase text-white letter-spacing-2" href="gallery.html"><span aria-hidden="true"></span>Adopta</a>
+        <li><a class="ff-sans-cond uppercase text-white letter-spacing-2" href="shelters.html"><span aria-hidden="true"></span>Protectoras</a>
+        <li><a class="ff-sans-cond uppercase text-white letter-spacing-2" href="contact.html"><span aria-hidden="true"></span>Contacto</a>
+      </ul>
+    </nav>
+  </header>
