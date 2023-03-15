@@ -81,13 +81,13 @@ public class DatabaseInitializer {
         u1.setRoles(roles1);
 
         u2 = new Usuario("Pablo","Gil","Pérez");
-        u2.setEncodedPassword(passwordEncoder.encode("123"));
+        u2.setEncodedPassword(passwordEncoder.encode("pablo123"));
         ArrayList<String>roles2 = new ArrayList<>();
         roles1.add("USER");
         u1.setRoles(roles2);
 
         u3 = new Usuario("Javier","Fernandez","Arribas");
-        u3.setEncodedPassword(passwordEncoder.encode("123"));
+        u3.setEncodedPassword(passwordEncoder.encode("javier123"));
         ArrayList<String>roles3 = new ArrayList<>();
         roles3.add("USER");
         roles3.add("ADMIN");
