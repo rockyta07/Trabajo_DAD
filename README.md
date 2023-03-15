@@ -227,7 +227,16 @@ Para la implementación de la seguridad nos hemos puesto los siguientes objetivo
 
 - Añadir las funciones de login (con su respectivo html de error) y logout
 - Establecer que pantallas son públicas y cuáles privadas
+Hemos incluido una carpeta llamada security para incluir todos los archivos de seguridad, uno de ellos es WebSecurityConfig en el cual indicamos que pantallas y que opciones son publicas y privadas con el permitAll() (publicas) y hasAnyRole( indica que son privadas y luego dentro de que sean privadas dependiendo de que rol se tenga permite realizar unas cosas u otras).
 - Convertir nuestra aplicación en https
+En primer lugar se ha creado un certificado con keytool, para ello en el cmd se ha incluido lo siguiente:
+![image](https://user-images.githubusercontent.com/102741945/225415225-0d6a1ab8-8e8f-459b-a05f-4633b5453560.png)
+Esto lo que hace es crearte la certificación y un fichero keystore.jks que contiene el certificado autofirmado generado con la herramienta del JDK keytool.
+Se incluye en el application.properties la contraseña del certificado, la dirección del keystore y el puerto, que en este caso será el 8443.
+Cuando abrimos la página web verificamos que se ha creado correctamente el certificado:
+
+![image](https://user-images.githubusercontent.com/102741945/225416252-457633ef-8860-4c27-8ae3-582f229f430d.png)
+
 - Implementar el servicio interno funcional en un proceso separado
 - Elegir e implementar el mecanismo de comunicación
 - Desplegar el proyecto en una máquina virtual mediante el empaquetado jar
