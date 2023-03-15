@@ -73,7 +73,7 @@ public class DatabaseInitializer {
         animalRepo.save(a2);
         animalRepo.save(a3);
 
-        Usuario u1, u2, u3,u4,u5;
+        Usuario u1, u2, u3;
         u1 = new Usuario("Juan","García","Rodriguez");
         u1.setEncodedPassword(passwordEncoder.encode("123"));
         ArrayList<String>roles1 = new ArrayList<>();
@@ -93,6 +93,8 @@ public class DatabaseInitializer {
         roles3.add("ADMIN");
         u3.setRoles(roles3);
 
+        usuarioRepo.save(new Usuario("user", passwordEncoder.encode("pass"), "USER"));
+        usuarioRepo.save(new Usuario("admin", passwordEncoder.encode("adminpass"), "USER", "ADMIN"));
         usuarioRepo.save(u1);
         usuarioRepo.save(u2);
         usuarioRepo.save(u3);

@@ -34,12 +34,16 @@ public class Usuario {
     private List<String> roles;
     protected Usuario(){}
 
-    public Usuario(String newName, String newSName1, String newSName2){
+  /*  public Usuario(String newName, String newSName1, String newSName2){
         this.name = newName;
         this.sname1 = newSName1;
         this.sname2 = newSName2;
+    }*/
+    public Usuario(String name, String encodedPassword, String... roles) {
+        this.name = name;
+        this.encodedPassword = encodedPassword;
+        this.roles = List.of(roles);
     }
-
     //GETTERS Y SETTERS
     public String getName(){
         return this.name;
@@ -67,12 +71,12 @@ public class Usuario {
         this.sname2 = newSn2;
     }
 
-    public void setEncodedPassword(String encodedPassword){ this.encodedPassword = encodedPassword;}
-
     public void setRoles(List<String>roles){this.roles = roles;}
     public String getUsername() {
         return username;
     }
+
+    public void setEncodedPassword(String encodedPassword){this.encodedPassword = encodedPassword;}
 
     public void setUsername(String username) {
         this.username = username;

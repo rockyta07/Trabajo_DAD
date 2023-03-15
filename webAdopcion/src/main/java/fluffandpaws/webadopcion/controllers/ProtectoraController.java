@@ -11,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.security.Principal;
 import java.sql.SQLException;
 import java.util.Optional;
 
@@ -34,6 +36,21 @@ public class ProtectoraController {
         return "/temp_Protectora/todas_protectoras";
 
     }
+   /* @ModelAttribute
+    public void addAttributes(Model model, HttpServletRequest request) {
+
+        Principal principal = request.getUserPrincipal();
+
+        if (principal != null) {
+
+            model.addAttribute("logged", true);
+            model.addAttribute("userName", principal.getName());
+            model.addAttribute("admin", request.isUserInRole("ADMIN"));
+
+        } else {
+            model.addAttribute("logged", false);
+        }
+    }*/
 
     @GetMapping("/{id}")//Esto nos retorna el shelter
     public String getProtectora(Model model, @PathVariable Long id) {

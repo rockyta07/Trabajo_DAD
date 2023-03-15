@@ -35,10 +35,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         http.authorizeRequests().antMatchers("/loginerror").permitAll();
         http.authorizeRequests().antMatchers("/logout").permitAll();
 
-        // Private pages
-        http.authorizeRequests().antMatchers("/newbook").hasAnyRole("USER");
-        http.authorizeRequests().antMatchers("/editbook/*").hasAnyRole("USER");
-        http.authorizeRequests().antMatchers("/removebook/*").hasAnyRole("ADMIN");
+        // Private pages Animales
+        http.authorizeRequests().antMatchers("/crearAnimal").hasAnyRole("USER");
+        http.authorizeRequests().antMatchers("/editAnimal/*").hasAnyRole("USER");
+        http.authorizeRequests().antMatchers("/borrarAnimal/*").hasAnyRole("ADMIN");
+        //Private pages Mensajes
+        http.authorizeRequests().antMatchers("/crearMensaje").hasAnyRole("USER");
+        http.authorizeRequests().antMatchers("/editMensaje/*").hasAnyRole("USER");
+        http.authorizeRequests().antMatchers("/borrarMensaje/*").hasAnyRole("ADMIN");
+        //Private pages Protectora
+        http.authorizeRequests().antMatchers("/crearProtectora").hasAnyRole("USER");
+        http.authorizeRequests().antMatchers("/editProtectora/*").hasAnyRole("USER");
+        http.authorizeRequests().antMatchers("/borrarProtectora/*").hasAnyRole("ADMIN");
+
 
         // Login form
         http.formLogin().loginPage("/login");
