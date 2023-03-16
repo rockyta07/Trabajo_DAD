@@ -237,6 +237,10 @@ Cuando abrimos la página web verificamos que se ha creado correctamente el cert
 
 ![image](https://user-images.githubusercontent.com/102741945/225416252-457633ef-8860-4c27-8ae3-582f229f430d.png)
 
+- El diagrama de clases y tamplates resultantes es: 
+
+![main](https://user-images.githubusercontent.com/102540777/225600693-e444cebb-ff30-47f6-b6f8-5b8edbfe3d0b.png)
+
 - Implementar el servicio interno funcional en un proceso separado
 - Elegir e implementar el mecanismo de comunicación
 - Desplegar el proyecto en una máquina virtual mediante el empaquetado jar
