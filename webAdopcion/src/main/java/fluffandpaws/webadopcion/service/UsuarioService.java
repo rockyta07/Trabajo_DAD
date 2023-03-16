@@ -26,7 +26,7 @@ public class UsuarioService {
         }
 
         public Optional<Usuario> findByUsername(String username){
-            return user.findByUsername(username);
+            return user.findByName(username);
         }
 
         public boolean exist(Long id){//ver si existen loos usuarios
