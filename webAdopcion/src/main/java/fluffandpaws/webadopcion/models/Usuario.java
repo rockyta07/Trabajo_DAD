@@ -13,8 +13,6 @@ public class Usuario {
     private Long id;
 
     private String name;
-    private String sname1;  //Apellido 1
-    private String sname2;  //Apellido 2
 
     @Column(name = "username")
     private String username; //Nombre identificativo (generado o establecido)
@@ -22,11 +20,9 @@ public class Usuario {
     //La contraseña deberá ser guardada en otra base de datos por seguridad
     private String pass; //Contraseña
 
-    private String encriptado; //Salt de Hash
-
     //private Integer id; //DNI
     private int edad; //Edad
-    private String encodedPassword;
+    private String encodedPassword;//Salt de Hash
 
     @OneToMany(mappedBy="adopter")
     private List<Animal> familiaUsuario;
@@ -34,13 +30,9 @@ public class Usuario {
     private List<String> roles;
     protected Usuario(){}
 
-  /*  public Usuario(String newName, String newSName1, String newSName2){
-        this.name = newName;
-        this.sname1 = newSName1;
-        this.sname2 = newSName2;
-    }*/
-    public Usuario(String name, String encodedPassword, String... roles) {
+    public Usuario(String name, String username, String encodedPassword, String... roles) {
         this.name = name;
+        this.username = username;
         this.encodedPassword = encodedPassword;
         this.roles = List.of(roles);
     }
@@ -54,21 +46,6 @@ public class Usuario {
     //////////////////////////////////////////////77
     public void setName(String name){
         this.name = name;
-    }
-
-    public String getSName1(){
-        return this.sname1;
-    }
-
-    public String getSName2(){
-        return this.sname2;
-    }
-
-    public void setSname1(String newSn1){
-        this.sname1 = newSn1;
-    }
-    public void setSname2(String newSn2){
-        this.sname2 = newSn2;
     }
 
     public void setRoles(List<String>roles){this.roles = roles;}
@@ -119,9 +96,4 @@ public class Usuario {
         return "USER: " + this.name;
     }
 
-    public void setEncriptado(String encriptado) {
-        this.encriptado = encriptado;
-    }
-
-    //public void getEncriptado(){}
 }

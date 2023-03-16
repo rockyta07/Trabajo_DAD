@@ -42,10 +42,6 @@ public class DatabaseInitializer {
     @PostConstruct
     public void init() throws IOException, URISyntaxException {
 
-
-        List<Animal> la_aux = new ArrayList<Animal>();
-        List<Mensaje> lm_aux = new ArrayList<Mensaje>();
-
         Protectora p1, p2, p3;
         p1 = new Protectora("Protectora 1","12312312","Madrid","67584637","Protectora1@gmail.com");//ponemos los datos tal cual el constructor
         p2 = new Protectora("Protectora 2","45645645","Valencia","680475243","Protectora2@gmail.com");
@@ -76,25 +72,28 @@ public class DatabaseInitializer {
         Usuario u1, u2, u3;
         u1 = new Usuario("Juan","García","Rodriguez");
         u1.setEncodedPassword(passwordEncoder.encode("123"));
+        u1.setUsername("Juanito");
         ArrayList<String>roles1 = new ArrayList<>();
         roles1.add("USER");
         u1.setRoles(roles1);
 
         u2 = new Usuario("Pablo","Gil","Pérez");
         u2.setEncodedPassword(passwordEncoder.encode("pablo123"));
+        u2.setUsername("Pablito22");
         ArrayList<String>roles2 = new ArrayList<>();
         roles1.add("USER");
         u1.setRoles(roles2);
 
         u3 = new Usuario("Javier","Fernandez","Arribas");
         u3.setEncodedPassword(passwordEncoder.encode("javier123"));
+        u3.setUsername("ElFernandez");
         ArrayList<String>roles3 = new ArrayList<>();
         roles3.add("USER");
         roles3.add("ADMIN");
         u3.setRoles(roles3);
 
-        usuarioRepo.save(new Usuario("user", passwordEncoder.encode("pass"), "USER"));
-        usuarioRepo.save(new Usuario("admin", passwordEncoder.encode("adminpass"), "USER", "ADMIN"));
+        usuarioRepo.save(new Usuario("user", "user", passwordEncoder.encode("pass"), "USER"));
+        usuarioRepo.save(new Usuario("admin", "admin", passwordEncoder.encode("adminpass"), "USER", "ADMIN"));
         usuarioRepo.save(u1);
         usuarioRepo.save(u2);
         usuarioRepo.save(u3);
