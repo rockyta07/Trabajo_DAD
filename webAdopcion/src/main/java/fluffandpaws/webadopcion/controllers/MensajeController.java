@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,7 +23,21 @@ public class MensajeController {
 
     @Autowired
     private ProtectoraService servProtectoras;
+    @ModelAttribute //esto sirve para que si yo soy admin pueda ver el boton de borrado y si no lo soy pues no
+    public void addAttributes(Model model, HttpServletRequest request) {
 
+        Principal principal = request.getUserPrincipal();//realizar la autenticacion y autorizacion web
+//en resumen para obtener la identificacion del usuario
+        if (principal != null) {
+
+            model.addAttribute("logged", true);
+            model.addAttribute("name", principal.getName());
+            model.addAttribute("admin", request.isUserInRole("ADMIN"));
+
+        } else {
+            model.addAttribute("logged", false);
+        }
+    }
 
     @GetMapping("/")//buscamos todos los mensajes
     public String getMessages(Model model) {

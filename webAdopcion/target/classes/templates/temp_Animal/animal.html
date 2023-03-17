@@ -1,19 +1,20 @@
 {{>header}}
 <html>
-<body>
 
-    <p>Animal {{animal}}</p>
-
-
-    <img src="data:image/png;base64,{{imagenBase64}}" alt="imagen del animal">
+<p>Animal {{animal}}</p>
 
 
-    <button onclick="location.href='/Animales/borrarAnimal/{{animal.id}}'">Borrar</button>
-    <button onclick="location.href='/Animales/editAnimal/{{animal.id}}'">Editar</button>
+<img src="data:image/png;base64,{{imagenBase64}}" alt="imagen del animal">
 
+{{#logged}}
 
+{{#admin}}
+<button id="Borrar" onclick="location.href='/Animales/borrarAnimal/{{animal.id}}'">Borrar</button>
+{{/admin}}
+<button onclick="location.href='/Animales/editAnimal/{{animal.id}}'">Editar</button>
 
-    <p><a href="/Animales/"> Volver</a></p>
+{{/logged}}
+<p><a href="/Animales/"> Volver</a></p>
 </body>
 </html>
 {{>footer}}

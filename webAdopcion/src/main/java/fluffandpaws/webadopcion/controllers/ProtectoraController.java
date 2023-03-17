@@ -27,6 +27,21 @@ public class ProtectoraController {
     @Autowired
     private AnimalService servAnimales;
 
+    @ModelAttribute //esto sirve para que si yo soy admin pueda ver el boton de borrado y si no lo soy pues no
+    public void addAttributes(Model model, HttpServletRequest request) {
+
+        Principal principal = request.getUserPrincipal();//realizar la autenticacion y autorizacion web
+//en resumen para obtener la identificacion del usuario
+        if (principal != null) {
+
+            model.addAttribute("logged", true);
+            model.addAttribute("name", principal.getName());
+            model.addAttribute("admin", request.isUserInRole("ADMIN"));
+
+        } else {
+            model.addAttribute("logged", false);
+        }
+    }
 
     @GetMapping("/")//buscamos todos los shelter
     public String mostrarProtectoras(Model model) {
@@ -36,21 +51,7 @@ public class ProtectoraController {
         return "/temp_Protectora/todas_protectoras";
 
     }
-   /* @ModelAttribute
-    public void addAttributes(Model model, HttpServletRequest request) {
 
-        Principal principal = request.getUserPrincipal();
-
-        if (principal != null) {
-
-            model.addAttribute("logged", true);
-            model.addAttribute("userName", principal.getName());
-            model.addAttribute("admin", request.isUserInRole("ADMIN"));
-
-        } else {
-            model.addAttribute("logged", false);
-        }
-    }*/
 
     @GetMapping("/{id}")//Esto nos retorna el shelter
     public String getProtectora(Model model, @PathVariable Long id) {

@@ -39,7 +39,7 @@ public class Usuario {
         this.sname1 = newSName1;
         this.sname2 = newSName2;
     }*/
-    public Usuario(String name, String encodedPassword, String... roles) {
+    public Usuario(String name,String Username, String encodedPassword, String... roles) {
         this.name = name;
         this.encodedPassword = encodedPassword;
         this.roles = List.of(roles);

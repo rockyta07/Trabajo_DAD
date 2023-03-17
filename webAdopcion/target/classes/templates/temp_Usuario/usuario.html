@@ -3,9 +3,13 @@
 <body>
 <p>Usuario {{user}}</p><p></p>
 
-<button onclick="location.href='/Usuarios/borrarUsuario/{{user.id}}'">Borrar</button>
-<button onclick="location.href='/Usuarios/editUsuario/{{user.id}}'">Editar</button>
+{{#logged}}
 
+{{#admin}}
+<button onclick="location.href='/Usuarios/borrarUsuario/{{user.id}}'">Borrar</button>
+{{/admin}}
+<button onclick="location.href='/Usuarios/editUsuario/{{user.id}}'">Editar</button>
+{{/logged}}
 <p><a href="/Usuarios/"> Volver</a></p>
 </body>
 </html>

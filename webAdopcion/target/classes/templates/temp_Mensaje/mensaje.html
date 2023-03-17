@@ -5,7 +5,16 @@
 <p>[{{eMailRemitente}}]: {{content}}</p>
 {{/msg}}
 <p></p>
+
+{{#logged}}
+
+{{#admin}}
 <button onclick="location.href='/Mensajes/borrarMensaje/{{msg.id}}'">Borrar</button>
+
+
+{{/admin}}
+{{/logged}}
+
 <p><a href="/Mensajes/"> Volver</a></p>
 </body>
 </html>

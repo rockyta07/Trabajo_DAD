@@ -13,7 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.security.Principal;
 import java.sql.SQLException;
 import java.util.Base64;
 import java.util.List;
@@ -31,6 +33,21 @@ public class AnimalController {
     @Autowired
     private ProtectoraService servProtectoras;
 
+    @ModelAttribute //esto sirve para que si yo soy admin pueda ver el boton de borrado y si no lo soy pues no
+    public void addAttributes(Model model, HttpServletRequest request) {
+
+        Principal principal = request.getUserPrincipal();//realizar la autenticacion y autorizacion web
+//en resumen para obtener la identificacion del usuario
+        if (principal != null) {
+
+            model.addAttribute("logged", true);
+            model.addAttribute("name", principal.getName());
+            model.addAttribute("admin", request.isUserInRole("ADMIN"));
+
+        } else {
+            model.addAttribute("logged", false);
+        }
+    }
 
     @GetMapping("/")//buscamos todos los animales
     public String getAnimales(Model model) {
@@ -57,7 +74,6 @@ public class AnimalController {
 
         model.addAttribute("listaProtectoras", servProtectoras.findAll());
         return "/temp_Animal/registrarAnimal";
-
     }
 
     @PostMapping("/crearAnimal")
