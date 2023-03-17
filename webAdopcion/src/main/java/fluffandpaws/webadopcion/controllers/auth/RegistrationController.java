@@ -36,7 +36,7 @@ public class RegistrationController {
 
         //Guardamos este usuario en la base de datos
         usuario.setPass(passHash); //O creamos otro método para las contraseñas encriptadas getEncoded(), setEncoded()
-        usuario.setEncriptado(encriptado);
+        usuario.setEncodedPassword(encriptado);
         userService.save(usuario);
 
         model.addAttribute("successMessage", "¡Te has registrado correctamente!"); //Mensaje de registrado correcto
