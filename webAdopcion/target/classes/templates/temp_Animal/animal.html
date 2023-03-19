@@ -7,14 +7,15 @@
 <img src="data:image/png;base64,{{imagenBase64}}" alt="imagen del animal">
 
 {{#logged}}
-
 {{#admin}}
 <button id="Borrar" onclick="location.href='/Animales/borrarAnimal/{{animal.id}}'">Borrar</button>
+<button id="Editar" onclick="location.href='/Animales/editAnimal/{{animal.id}}'">Editar</button>
 {{/admin}}
-<button onclick="location.href='/Animales/editAnimal/{{animal.id}}'">Editar</button>
+
+<button id="Adoptar" onclick="location.href='/Animales/adoptarAnimal/{{animal.id}}'">Adoptar</button>
 
 {{/logged}}
 <p><a href="/Animales/"> Volver</a></p>
-</body>
+<input type="hidden" name="_csrf" value="{{token}}"/>
 </html>
 {{>footer}}

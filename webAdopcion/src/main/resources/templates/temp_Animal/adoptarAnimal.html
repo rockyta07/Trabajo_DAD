@@ -1,0 +1,28 @@
+{{>header}}
+<meta charset="UTF-8"/>
+<body>
+<form action="adoptarAnimal" method="post">
+    <h5>Inicia el proceso de adopción mandándole un mensaje a la protectora</h5>
+    <h5>{{animal.name}} se encuentra en la protectora: {{animal.prtOrigen}}</h5>
+
+    <label for="email">Correo electrónico:</label>
+
+    <input type='text' id="email" name='eMailRemitente' required><br><br>
+
+    <label for="mensaje">Mensaje:</label><br>
+    <textarea id="mensaje" name='content' required></textarea><br><br>
+    <p></p>
+
+    <label>Enviar a la protectora: </label>
+    <label>
+        <input type="radio" name="prtId" value="{{animal.prtOrigen.id}}">
+        {{animal.prtOrigen.name}}
+    </label>
+    <!--<input type="text" name="prtId" value="" /> -->
+
+    <input type="hidden" name="_csrf" value="{{token}}" />
+    <input type="submit" value="Enviar">
+</form>
+</body>
+
+{{>footer}}

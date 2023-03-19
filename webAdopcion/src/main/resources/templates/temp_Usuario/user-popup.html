@@ -1,0 +1,22 @@
+<!--Mustache para que se pueda generar el html de manera dinamica en base a la informacion del backend-->
+<!--Este archivo contiene el popup para el usuario-->
+
+<div class="popup">
+    <div class="popup-content">
+        <h2>Welcome, {{username}}!</h2>
+        <ul>
+            {{#notifications}}
+                <li>{{message}}</li>
+            {{/notifications}}
+        </ul>
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+<div id="user-popup" class="popup">
+    <div class="popup-content">
+        <h2>Welcome, <span class="username"></span>{{username}}}</h2>
+        <!-- Other user options or links -->
+    </div>
+</div>
+

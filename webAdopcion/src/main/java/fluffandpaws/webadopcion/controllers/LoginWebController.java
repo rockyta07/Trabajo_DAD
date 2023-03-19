@@ -21,4 +21,11 @@ public class LoginWebController {
 
     }
 
+    @GetMapping ("/logout")//entramos a la url de login
+
+    public String logout() {
+        return "logout";
+    }
+
+
 }

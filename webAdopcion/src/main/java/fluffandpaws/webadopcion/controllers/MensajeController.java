@@ -66,7 +66,7 @@ public class MensajeController {
     }
 
     @PostMapping("/crearMensaje")
-    public String crearMensajeProcess(Model model, @ModelAttribute("mensaje") Mensaje aux2, @RequestParam Protectora pselected){
+    public String crearMensajeProcess(@ModelAttribute("mensaje") Mensaje aux2, @RequestParam Protectora pselected){
         aux2.setPrtInstance(pselected);
         servMensajes.save(aux2);
         return "redirect:/Mensajes/" + aux2.getId();
