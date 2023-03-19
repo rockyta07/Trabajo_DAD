@@ -2,18 +2,14 @@
 <html>
 <body>
 {{#msg}}
-<p>[{{eMailRemitente}}]: {{content}}</p>
+  {{#admin}}
+     <p>[{{eMailRemitente}}]: {{content}}</p>
+     <button onclick="location.href='/Mensajes/borrarMensaje/{{msg.id}}'">Borrar</button>
+  {{/admin}}
+  {{^admin}}
+    <p>Este mensaje solo puede ser visto por un administrador o protectora</p>
+  {{/admin}}
 {{/msg}}
-<p></p>
-
-{{#logged}}
-
-{{#admin}}
-<button onclick="location.href='/Mensajes/borrarMensaje/{{msg.id}}'">Borrar</button>
-
-
-{{/admin}}
-{{/logged}}
 
 <p><a href="/Mensajes/"> Volver</a></p>
 </body>
