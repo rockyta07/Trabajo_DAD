@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:sec="http://www.w3.org/1999/xhtml" xmlns: xmlns: xmlns: xmlns: xmlns: xmlns: xmlns: xmlns:>
 <head>
   <title>FluffAndPaws</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -37,16 +37,56 @@
       <li class="nav-item active">
         <a class="nav-link" href="/Mensajes/">Mensajes</a>
       </li>
+
+      {{^logged}}
       <li class="nav-item active">
-        <a class="nav-link" href="/login">Login</a>
+        <a class="nav-link" href="/login">Iniciar sesión</a>
       </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/login">Registrarse</a>
+      </li>
+      {{/logged}}
+
+      {{#logged}}
+
+      <div class="popover-inner">
+        <div class="menu-root menu-light user-popover">
+          <a class="menu-item menu-item-selectable user-details" href="/account">
+            <li>
+              <div class="user-name ellipsize">{{admin.username}}</div>
+            </li>
+          </a>
+        </div>
+      </div>
+
+      <li class="nav-item active">
+        <a class="nav-link" href="/logout">Cerrar sesión</a>
+      </li>
+
+      <!--
+      <select>
+        {{#options}}
+        <option>{{.}}</option>
+        {{/options}}
+      </select>
+
+      <a href="/account/" onclick="">Mi cuenta</a>
+      -->
+
+      {{/logged}}
+
+
+
+
+
     </ul>
   </div>
 
 </nav>
-</body>
 <div class="container">
   <!-- Aquí puedes agregar el contenido de tu página -->
 </div>
 <div class="container">
 </div>
+<input type="hidden" name="_csrf" value="{{token}}"/>
+

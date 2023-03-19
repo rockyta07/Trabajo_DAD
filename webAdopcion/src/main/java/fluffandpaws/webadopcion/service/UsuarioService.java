@@ -29,6 +29,10 @@ public class UsuarioService {
             return user.findByUsername(username);
         }
 
+        public Usuario getByUsername(String username) {
+            return user.getByUsername(username);
+        }
+
         public boolean exist(Long id){//ver si existen loos usuarios
 
             return user.existsById(id);
@@ -51,6 +55,7 @@ public class UsuarioService {
             this.user.deleteById(id);
 
         }
+
 
 
 }

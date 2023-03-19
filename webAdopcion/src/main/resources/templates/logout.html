@@ -1,0 +1,7 @@
+{{>header}}
+<form action="/logout" method="post">
+  <p>Sesión cerrada correctamente</p>
+  <a href="/">Volver</a>
+  <input type="hidden" name="_csrf" value="{{token}}"/>
+</form>
+{{>footer}}

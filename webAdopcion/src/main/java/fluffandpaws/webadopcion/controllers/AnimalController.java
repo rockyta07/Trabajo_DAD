@@ -1,8 +1,10 @@
 package fluffandpaws.webadopcion.controllers;
 
 import fluffandpaws.webadopcion.models.Animal;
+import fluffandpaws.webadopcion.models.Mensaje;
 import fluffandpaws.webadopcion.models.Protectora;
 import fluffandpaws.webadopcion.service.AnimalService;
+import fluffandpaws.webadopcion.service.MensajeService;
 import fluffandpaws.webadopcion.service.ProtectoraService;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,9 @@ public class AnimalController {
 
     @Autowired
     private AnimalService servAnimales;
+
+    @Autowired
+    private MensajeService servMensajes;
 
     @Autowired
     private ProtectoraService servProtectoras;
@@ -116,7 +121,7 @@ public class AnimalController {
     }
 
     @PostMapping("/editAnimal")
-    public String editAnimal(Model model, Animal animal, boolean removeImage, MultipartFile imageField)
+    public String editAnimalProcess(Model model, Animal animal, boolean removeImage, MultipartFile imageField)
             throws IOException, SQLException {
 
         //updateImage(book, removeImage, imageField);
@@ -128,9 +133,28 @@ public class AnimalController {
         return "redirect:/Animales/"+animal.getId();
     }
 
-//esto de animales te redirige a la parte de arriba del controller
+    @GetMapping("/adoptarAnimal/{id}")
+    public String adoptAnimal(Model model, @PathVariable Long id) {
 
+        Optional<Animal> animal = servAnimales.findById(id);
+        if (animal.isPresent()) {
+            model.addAttribute("animal", animal.get());
 
+        }
+
+        return "/temp_Animal/adoptarAnimal";
+
+    }
+
+    @PostMapping("/adoptarAnimal")
+    public String adoptAnimalProcess(@RequestParam Protectora prtId, @ModelAttribute("mensaje") Mensaje msg){ //
+        msg.setPrtInstance(prtId);
+        servMensajes.save(msg);
+
+        //return "redirect:/Mensajes/" + msg.getId();
+        //return "redirect:/Animales/";
+        return "/temp_Animal/todos_animales";
+    }
 
     public void setAnimalImage(Animal aux, String classpathResource) throws IOException {
         aux.setImagen(true);

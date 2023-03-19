@@ -1,5 +1,5 @@
 {{>header}}
-<html>
+
 <body>
     <h2>Protectoras</h2>
     <ul class="items">
@@ -7,8 +7,23 @@
         <li><a href="/Protectoras/{{id}}"> {{name_prt}}</a></li>
         {{/listaProtectoras}}
     </ul>
-    <pr></pr>
-    <a href="/Protectoras/crearProtectora" ><button>Crear protectora</button></a>
+    {{#logged}}
+    {{#admin}}
+    <button class="admin-btn btn btn-primary" href="/Protectoras/crearProtectora" >Crear protectora</button>
+    {{/admin}}
+    {{/logged}}
 </body>
-</html>
+
+<script>
+    // Assuming that the userRole variable holds the role of the currently logged in user
+    var userRole = currentUser.role;
+    if (userRole !== 'admin') {
+        var adminButtons = document.getElementsByClassName('admin-btn');
+        for (var i = 0; i < adminButtons.length; i++) {
+            adminButtons[i].style.display = 'none';
+        }
+    }
+</script>
+
+
 {{>footer}}

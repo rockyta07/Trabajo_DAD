@@ -25,9 +25,11 @@ public class Usuario {
     private String encodedPassword;//Salt de Hash
 
     @OneToMany(mappedBy="adopter")
-    private List<Animal> familiaUsuario;
+    private List<Animal> animalesAdoptados;
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles;
+    private String lastname;
+
     protected Usuario(){}
 
     public Usuario(String name, String username, String encodedPassword, String... roles) {
@@ -96,4 +98,15 @@ public class Usuario {
         return "USER: " + this.name;
     }
 
+    public String getLastName() {
+        return this.lastname;
+    }
+
+    public void setLastname (String lastname) {
+        this.lastname = lastname;
+    }
+
+    public boolean hasRole(String role) {
+        return roles.contains(role);
+    }
 }

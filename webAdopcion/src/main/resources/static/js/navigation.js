@@ -12,3 +12,17 @@ navToggle.addEventListener("click", () => {
         navToggle.setAttribute("aria-expanded", false);
     }
 })
+
+function showUserPopup() {
+    fetch('/user-info')
+        .then(response => response.json())
+        .then(data => {
+            // Update the contents of the popup window with the user data
+            document.querySelector('#user-popup.username').textContent = data.username;
+            // ...
+            // Show the popup window
+            document.querySelector('#user-popup').classList.add('visible');
+        });
+}
+
+
