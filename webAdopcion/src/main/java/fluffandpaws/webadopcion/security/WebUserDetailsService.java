@@ -1,4 +1,4 @@
-package fluffandpaws.webadopcion.security;
+/*package fluffandpaws.webadopcion.security;
 
 import fluffandpaws.webadopcion.models.Usuario;
 import fluffandpaws.webadopcion.repositories.UsuarioRepository;
@@ -23,4 +23,4 @@ public class WebUserDetailsService implements UserDetailsService {
 
         throw new UsernameNotFoundException("No se ha encontrado un usuarioo con ese nombre");
     }
-}
+}*/

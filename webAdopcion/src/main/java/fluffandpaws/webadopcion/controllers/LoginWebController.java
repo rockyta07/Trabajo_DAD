@@ -26,6 +26,10 @@ public class LoginWebController {
         return "loginerror";
 
     }
+    @GetMapping ("/logout")//entramos a la url de login
 
+    public String logout() {
+        return "logout";
+    }
 
 }

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -40,6 +41,7 @@ public class JwtTokenProvider {
     private static Long REFRESH_TOKEN_EXPIRATION_MSEC = 10800000l;
 
     @Autowired
+    @Qualifier("repositoryUserDetailsService")
     private UserDetailsService userDetailsService;
 
     public Authentication getAuthentication(String token) {
