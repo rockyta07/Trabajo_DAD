@@ -1,5 +1,5 @@
 {{>header}}
-
+<script src="client.js"></script>
 <body>
     <h2>Protectoras</h2>
     <ul class="items">
@@ -12,6 +12,11 @@
     <button class="admin-btn btn btn-primary" href="/Protectoras/crearProtectora" >Crear protectora</button>
     {{/admin}}
     {{/logged}}
+    <br>
+    <br>
+    <br>
+    <br>
+    <button onclick="sendMessage()">Enviar mensaje webSocket</button>
 </body>
 
 <script>
