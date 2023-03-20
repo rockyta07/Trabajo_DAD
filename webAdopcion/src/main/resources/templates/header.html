@@ -31,9 +31,15 @@
       <li class="nav-item active">
         <a class="nav-link" href="/Animales/">Animales</a>
       </li>
+
+      {{#logged}}
+      {{#admin}}
       <li class="nav-item active">
         <a class="nav-link" href="/Usuarios/">Usuarios</a>
       </li>
+      {{/admin}}
+      {{/logged}}
+
       <li class="nav-item active">
         <a class="nav-link" href="/Mensajes/">Mensajes</a>
       </li>
@@ -53,7 +59,7 @@
         <div class="menu-root menu-light user-popover">
           <a class="menu-item menu-item-selectable user-details" href="/account">
             <li>
-              <div class="user-name ellipsize">{{admin.username}}</div>
+              <div class="user-name ellipsize">{{logged.username}}</div>
             </li>
           </a>
         </div>
@@ -63,6 +69,7 @@
         <a class="nav-link" href="/logout">Cerrar sesión</a>
       </li>
 
+      {{/logged}}
       <!--
       <select>
         {{#options}}
@@ -73,7 +80,7 @@
       <a href="/account/" onclick="">Mi cuenta</a>
       -->
 
-      {{/logged}}
+
 
 
 

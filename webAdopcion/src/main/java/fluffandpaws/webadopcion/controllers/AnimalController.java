@@ -153,7 +153,8 @@ public class AnimalController {
 
         //return "redirect:/Mensajes/" + msg.getId();
         //return "redirect:/Animales/";
-        return "/temp_Animal/todos_animales";
+        //return "redirect:/temp_Animal/todos_animales"
+        return "redirect:/Animales/";
     }
 
     public void setAnimalImage(Animal aux, String classpathResource) throws IOException {

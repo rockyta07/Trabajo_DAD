@@ -11,8 +11,14 @@
     {{/protect.animalesProtectora}}
 
     <p></p>
+
+    {{#logged}}
+    {{#admin}}
     <a href="/Protectoras/{{protect.id}}/crear_Animal" ><button>Crear animal</button></a>
     <button onclick="location.href='/Protectoras/editProtectora/{{protect.id}}'">Editar</button>
+    {{/admin}}
+    {{/logged}}
+
     <button onclick="sendMessage()">Enviar mensaje</button>
 
     <p><a href="/Protectoras/"> <button>Volver</button></a></p>
