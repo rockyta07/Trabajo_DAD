@@ -244,6 +244,49 @@ Cuando abrimos la página web verificamos que se ha creado correctamente el cert
 - Implementar el servicio interno funcional en un proceso separado
 - Elegir e implementar el mecanismo de comunicación
 - Desplegar el proyecto en una máquina virtual mediante el empaquetado jar
+Resumen de lo que hay que hacer con openstack
+/////////Preparación de claves///////////////////////
+1.	Acceder a https://clea.etsii.urjc.es/horizon.
+2.	Accedemos con las credenciales que nos ha pasado el profe.
+3.	Limite de 8 máquinas virtuales levantadas.
+4.	Acceder desde el myapps, no desde casa.
+5.	2 ips flotantes como máximo en el proyecto.
+6.	Compute toda la configuración de las máquinas y las claves sh para conectarme(no se puede usar la de usuario y contraseña) hay que crear una clave pública y privada(clave asimétrica) la clave privada es para conectarse a la máquina.
+7.	Creamos un par de claves en keyPairs, le damos a créate Key Pair, el nombre que sea y clave ssh, le doy a crear.
+8.	Me sale un cuadro de dialogo para descargarlo(no perderlo porque sino no podemos acceder). Lo metemos en la carpeta .ssh.
+////////// Instancias y grupos de seguridad////////////////
+
+1.	El objetivo es crear una instancia y asignarla a las claves.
+2.	Vamos a instances, pide los credenciales, vamos a launch instance,ponemos un instance name le damos a next(no hay que rellenar nada más ahí), elegimos una imagen(elegimos Ubuntu 2204 en la flechita para arriba), cambiamos el tamaño (volumen) ponemos un mínimo de 8gigas, le damos a siguiente, elegimos ahora la c04 la cual es suficiente para ejecutar. La red aparece directamente seleccionada, vamos a siguiente, otra vez a siguiente, hasta security groups, dejamos el default, next, seleccionamos la clave creada (la publica la inyecta dentro de la instancia), ya podemos lanzar la instancia.
+3.	Openstack prepara la instancia(con una ip privada), puede fallar si tienes muchos volúmenes(así que cuidado porque si se crean volúmenes de más hay que borrarlos).
+4.	Para acceder a la máquina tengo que usar una de las ips flotantes.
+5.	En nuestra instancia creada, a la derecha en la flechita pinchamos en ella y después en asociar una ip flotante,, en ipaddress le damos al más, le doy una descripción(el mismo nombre de la máquina), le digo que la genere y aparece directamente la ip generada, indico a que instancia la quiero asociar(port to be associated), elijo la que quiero y le doy a associate.
+6.	Abrimos la terminal, nos movemos a la carpeta .ssh donde tenemos nuestra clave privada, escribimos en la terminal una vez estamos en la dirección .ssh, ssh -i y el paquete donde está la clave.pem Ubuntu@(la ip flotante que se acaba de crear), nos dice si nos fiamos, le decimos que si y ya me mete dentro de la máquina, LO PRIMERO QUE HAY QUE HACER ES ACTUALIZARRRR, así que hacemos un sudo apt update.
+7.	Sudo apt install nginx, le decimos que si a continuar y me lo instala. Para verificar que esta instalado, hacemos curl localhost. Me devuelve un html y me dice welcome. Vamos al navegador copiamos la ip flotante y se queda pensando(si esto pasa, significa que no tenemos abierto el puerto 80), así que lo paramos, vamos al openstack vamos a la instancia de nuestra máquina, le damos  ala flechita para abajo y vamos a editar security groups, aparece el default, así que vamos ahora a network que está a la izquierda debajo de computer y pinchamos en security groups vamos a default y a la derecha pinchamos en manager rules, vemos que aparece el peurto 22 pero no el 80. Volvemos para atrás donde security group y le damos a créate security group, lo llamamos puerto80 lo creamos,le damos a add rule, en el despleglable en rule seleccionamos (http), le damos al botón azul y ya estaría.
+8.	 Vamos a compute a instances, vamos a nuestra instancia le damos  a la flechita para abajo y le damos a edit security groups, donde pone puerto 80 le doy al más y se me emte el puerto 80 como otro security group.
+9.	Volvemos a hacer lo del ip flotante en el buscador y ya me manda el welcome.
+////////////////////////Acceso desde myapss////////////////////////
+1.	Las ips flotantes solo nos funcionan en el myapps
+2.	Nos metemos en el escritorio Ubuntu.
+3.	Necesito meter mi clave privado .ssh en la unidad R, creamos una carpeta ssh y dentro subimos la clave privada.
+4.	En el Ubuntu del myapps abrimos la consola, hacemos ssh -i /media/Unidad_R_Documentos_MyApps/.ssh/(el nombre de la clave privada) ubuntu@(ip flotante todo junto con el ubuntu) le doy enter, le decimos que si y ya estaríamos dentro.
+
+/////////Ejecutar aplicaciones web java////////////////
+1.	Generamos el jar correspondiente de la webAdopcion, lo abrimos en una temrinal dándole click derecho, ponemos scp -i ~/.ssh/openstack-etsii/(el nombre de la clave privada.pem) webAdopcion.jar ubuntu@(ip):/home/ubuntu
+ 
+2.	Hacemos  
+3.	Si hago ls -la debe de aparecer el jar.
+4.	Nos dira algo del java, así que hay que instalarlo, hay que instalar al menos el 17
+ 
+Así se instala.
+
+5.	Hacemos java  
+Y ya arrancaría.
+6.	Ponemos la Ip flotante y nos pasa lo mismo que antes no se puede conectar, vamos a security groups de nuevo, creamos un security group especifico para el sprint, lo llamamos web sprint le damos a add rule ponemos custum tc rule y en port ponemos 8080 y le damos a add. Vamos a la instancia le damos a la flecha, a esitar security groups, eliminamos el pueto 80 y añado el sprint.
+
+7.	Cargamos de nuevo en el buscador el puerto, y ya nos abre.
+
+
 - Opcionalmente aplicar seguridad CSRF
 
 
