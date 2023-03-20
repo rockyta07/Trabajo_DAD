@@ -55,19 +55,26 @@
 
       {{#logged}}
 
-      <div class="popover-inner">
-        <div class="menu-root menu-light user-popover">
-          <a class="menu-item menu-item-selectable user-details" href="/account">
-            <li>
-              <div class="user-name ellipsize">{{logged.username}}</div>
-            </li>
-          </a>
-        </div>
+      <div class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav">
+          <li>
+            <a class="menu-item menu-item-selectable user-details" href="/account">
+              <li><div class="user-name ellipsize">{{logged.username}}</div></li>
+            </a>
+          </li>
+          <li><form action="/logout" method="post">
+            <button class="btn btn-default navbar-btn" type="submit" style="background-color: #ffffff">Cerrar sesión</button>
+            <input type="hidden" name="_csrf" value="{{token}}" />
+          </form></li>
+        </ul>
+
       </div>
 
+      <!--
       <li class="nav-item active">
         <a class="nav-link" href="/logout">Cerrar sesión</a>
       </li>
+      -->
 
       {{/logged}}
       <!--

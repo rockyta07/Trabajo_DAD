@@ -16,8 +16,7 @@ import java.security.Principal;
 public class LoginWebController {
 
     @GetMapping("/login")
-    public String login(Principal principal) {
-
+    public String login() {
         return "login";
     }
 
@@ -27,11 +26,12 @@ public class LoginWebController {
         return "loginerror";
 
     }
-    @GetMapping ("/logout")//entramos a la url de login
 
+    /*
+    @GetMapping ("/logout")//entramos a la url de login
     public String logout() {
         return "logout";
-    }
+    }*/
 
 
 }

@@ -3,16 +3,22 @@
 
     <script src="client.js"></script>
 <body>
-    <p>Protectora {{protect}}</p>
+    <p>Protectora {{protectora}}</p>
 
-    {{#protect.animalesProtectora}}
+    {{#protectora.animalesProtectora}}
 
     <li><a href="/Animales/{{id}}"> {{name}}</a></li>
-    {{/protect.animalesProtectora}}
+    {{/protectora.animalesProtectora}}
 
     <p></p>
-    <a href="/Protectoras/{{protect.id}}/crear_Animal" ><button>Crear animal</button></a>
-    <button onclick="location.href='/Protectoras/editProtectora/{{protect.id}}'">Editar</button>
+
+    {{#logged}}
+    {{#admin}}
+    <a href="/Protectoras/{{protectora.id}}/crear_Animal" ><button>Crear animal</button></a>
+    <button onclick="location.href='/Protectoras/editProtectora/{{protectora.id}}'">Editar</button>
+    {{/admin}}
+    {{/logged}}
+
     <button onclick="sendMessage()">Enviar mensaje</button>
 
     <p><a href="/Protectoras/"> <button>Volver</button></a></p>

@@ -8,7 +8,14 @@
         {{/listaTodos}}
     </ul>
     <pr></pr>
+
+    {{#logged}}
+    {{#admin}}
     <a href="/Animales/crearAnimal" ><button>Crear animal</button></a>
+    {{/admin}}
+    {{/logged}}
+
+
 </body>
 </html>
 {{>footer}}

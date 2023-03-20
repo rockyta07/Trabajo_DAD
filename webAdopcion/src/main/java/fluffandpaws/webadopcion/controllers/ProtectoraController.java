@@ -59,7 +59,7 @@ public class ProtectoraController {
         Protectora prot = servProtectoras.findById(id).orElseThrow();
         //List<Animal> listAnimal = prot.getAnimalesProtectora();
 
-        model.addAttribute("protect", prot);
+        model.addAttribute("protectora", prot);
         return "/temp_Protectora/protectora";
 
     }
@@ -70,9 +70,9 @@ public class ProtectoraController {
     }
 
     @PostMapping("/crearProtectora")
-    public String crearProtectoraProcess(Model model, @ModelAttribute("protectora") Protectora pro){
-        servProtectoras.save(pro);
-        return "redirect:/Protectoras/"+pro.getId();
+    public String crearProtectoraProcess(Model model, @ModelAttribute("protectora") Protectora protectora){
+        servProtectoras.save(protectora);
+        return "redirect:/Protectoras/"+protectora.getId();
     }
 
     @GetMapping("/{id}/crear_Animal")
@@ -117,7 +117,7 @@ public class ProtectoraController {
 
         Optional<Protectora> protectora = servProtectoras.findById(id);
         if(protectora.isPresent()){
-            model.addAttribute("shelter", protectora.get());
+            model.addAttribute("protectora", protectora.get());
         }
 
         return "/temp_Protectora/editProtectoraPage";

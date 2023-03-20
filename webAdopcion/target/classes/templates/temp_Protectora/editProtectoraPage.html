@@ -2,23 +2,23 @@
 
 <form action="/Protectoras/editProtectora" method="post" enctype="multipart/form-data">
 
-    <h2>Protectora "{{shelter.name}}"</h2>
-    <h2>Protectora "{{shelter.id}}"</h2>
+    <h2>Protectora "{{protectora.name}}"</h2>
+    <h2>Protectora "{{protectora.id}}"</h2>
 
     <p>Nombre: </p>
-    <input type='text' name='name' value="{{shelter.name}}"/>
+    <input type='text' name='name' value="{{protectora.name}}"/>
     <p>Licencia:</p>
-    <input type='text' name='license' value="{{shelter.license}}"/>
+    <input type='text' name='license' value="{{protectora.license}}"/>
     <p>Localizacion:</p>
-    <input type='text' name='location' value="{{shelter.location}}"/>
+    <input type='text' name='location' value="{{protectora.location}}"/>
     <p>Teléfono:</p>
-    <input type='text' name='tlf' value="{{shelter.tlf}}"/>
+    <input type='text' name='tlf' value="{{protectora.tlf}}"/>
     <p>Email:</p>
-    <input type='text' name='eMail' value="{{shelter.name}}"/>
+    <input type='text' name='eMail' value="{{protectora.name}}"/>
 
     <input type="hidden" name="_csrf" value="{{token}}" />
     <p>
-        <button onclick="location.href='/Protectora/{{shelter.id}}'; return false;">Cancel</button>
+        <button onclick="location.href='/Protectora/{{protectora.id}}'; return false;">Cancel</button>
         <input type="submit" value="Save" />
     </p>
 </form>

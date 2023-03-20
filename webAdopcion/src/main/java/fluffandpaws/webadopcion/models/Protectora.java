@@ -65,6 +65,7 @@ public class Protectora {
     }
 
     public Long getId(){ return this.id;}
+
     public void setId(Long id){this.id = id;}
 
     public void setName(String newName){
