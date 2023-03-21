@@ -36,7 +36,7 @@ public class ProtectoraService {
         shelter.save(updatedProtectora);
     }*/
 
-    public void deleteById(Long id){//borramos usuario
+    public void delete(Long id){//borramos usuario
 
         this.protectoraRepository.deleteById(id);
 

@@ -101,17 +101,6 @@ public class ProtectoraController {
     }
 
 
-    @GetMapping("/borrarProtectora/{id}")
-    public String removeAnimal(Model model, @PathVariable Long id){
-        Optional<Protectora> protectora = servProtectoras.findById(id);
-        if(protectora.isPresent()){
-            servAnimales.delete(id);
-            model.addAttribute("protectora", protectora.get());
-        }
-        return "/temp_Protectora/protectoraBorrada";
-    }
-
-
     @GetMapping("/editProtectora/{id}")
     public String editProtectora(Model model, @PathVariable Long id){
 
@@ -132,6 +121,15 @@ public class ProtectoraController {
         model.addAttribute("protectoraId", protectora.getId());
 
         return "redirect:/Protectoras/" + protectora.getId();
+    }
 
+    @GetMapping("/borrarProtectora/{id}")
+    public String removeProtectora(Model model, @PathVariable Long id){
+        Optional<Protectora> protectora = servProtectoras.findById(id);
+        if(protectora.isPresent()){
+            servProtectoras.delete(id);
+            model.addAttribute("protectora", protectora.get());
+        }
+        return "/temp_Protectora/protectoraBorrada";
     }
 }

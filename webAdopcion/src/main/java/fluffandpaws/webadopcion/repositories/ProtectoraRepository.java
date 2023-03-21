@@ -11,5 +11,5 @@ import java.util.Optional;
 public interface ProtectoraRepository extends JpaRepository<Protectora, Long> {
     List<Protectora> findAll();
     Optional<Protectora> findById(Long l);
-    void deleteById(Long id);
+    //void deleteById(Long id);
 }
