@@ -244,8 +244,12 @@ Cuando abrimos la página web verificamos que se ha creado correctamente el cert
 - Implementar el servicio interno funcional en un proceso separado
 - Elegir e implementar el mecanismo de comunicación
 - Desplegar el proyecto en una máquina virtual mediante el empaquetado jar
-Resumen de lo que hay que hacer con openstack
-/////////Preparación de claves///////////////////////
+
+Resumen de lo que hay que hacer con openstack:
+
+--------------------------------------------------------------------------------------------------------
+                                        Preparación de claves
+--------------------------------------------------------------------------------------------------------
 1.	Acceder a https://clea.etsii.urjc.es/horizon.
 2.	Accedemos con las credenciales que nos ha pasado el profe.
 3.	Limite de 8 máquinas virtuales levantadas.
@@ -255,7 +259,9 @@ Resumen de lo que hay que hacer con openstack
 7.	Creamos un par de claves en keyPairs, le damos a créate Key Pair, el nombre que sea y clave ssh, le doy a crear.
 8.	Me sale un cuadro de dialogo para descargarlo(no perderlo porque sino no podemos acceder). Lo metemos en la carpeta .ssh.
 
-////////// Instancias y grupos de seguridad////////////////
+--------------------------------------------------------------------------------------------------------
+                                   Instancias y grupos de seguridad
+--------------------------------------------------------------------------------------------------------
 
 1.	El objetivo es crear una instancia y asignarla a las claves.
 2.	Vamos a instances, pide los credenciales, vamos a launch instance,ponemos un instance name le damos a next(no hay que rellenar nada más ahí), elegimos una imagen(elegimos Ubuntu 2204 en la flechita para arriba), cambiamos el tamaño (volumen) ponemos un mínimo de 8gigas, le damos a siguiente, elegimos ahora la c04 la cual es suficiente para ejecutar. La red aparece directamente seleccionada, vamos a siguiente, otra vez a siguiente, hasta security groups, dejamos el default, next, seleccionamos la clave creada (la publica la inyecta dentro de la instancia), ya podemos lanzar la instancia.
@@ -267,13 +273,18 @@ Resumen de lo que hay que hacer con openstack
 8.	 Vamos a compute a instances, vamos a nuestra instancia le damos  a la flechita para abajo y le damos a edit security groups, donde pone puerto 80 le doy al más y se me emte el puerto 80 como otro security group.
 9.	Volvemos a hacer lo del ip flotante en el buscador y ya me manda el welcome.
 10.	
-////////////////////////Acceso desde myapss////////////////////////
+--------------------------------------------------------------------------------------------------------
+                                       Acceso desde myapps
+--------------------------------------------------------------------------------------------------------
 1.	Las ips flotantes solo nos funcionan en el myapps
 2.	Nos metemos en el escritorio Ubuntu.
 3.	Necesito meter mi clave privado .ssh en la unidad R, creamos una carpeta ssh y dentro subimos la clave privada.
 4.	En el Ubuntu del myapps abrimos la consola, hacemos ssh -i /media/Unidad_R_Documentos_MyApps/.ssh/(el nombre de la clave privada) ubuntu@(ip flotante todo junto con el ubuntu) le doy enter, le decimos que si y ya estaríamos dentro.
 
-/////////Ejecutar aplicaciones web java////////////////
+
+--------------------------------------------------------------------------------------------------------
+                                  Ejecutar aplicaciones web java
+--------------------------------------------------------------------------------------------------------
 1.	Generamos el jar correspondiente de la webAdopcion, lo abrimos en una temrinal dándole click derecho, ponemos scp -i ~/.ssh/openstack-etsii/(el nombre de la clave privada.pem) webAdopcion.jar ubuntu@(ip):/home/ubuntu.
 ![image](https://user-images.githubusercontent.com/102741945/226338199-ccb2168d-e872-4d3d-9fe6-953d3b6f1135.png)
 
