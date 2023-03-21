@@ -1,8 +1,4 @@
-<!--Login.html creado manualmente-->
-<!DOCTYPE html>
-<html>
-    <!--Aquí le metemos nuestra cabecera predeterminada-->
-  {{header}}
+{{>header}}
     <title>Registrese y forma parte de nuestra familia</title>
     <style>
       body {
@@ -48,7 +44,6 @@
         background-color: #5e97e0;
       }
     </style>
-  </head>
   <body>
     <div class="login-container">
       <h2>Registrese y forma parte de nuestra familia</h2>
@@ -56,25 +51,30 @@
         <label for="username">Nombre y Apellidos:</label>
         <input type="text" id="username" name="username">
       </div>
+
       <div class="form-group">
           <label for="ID">DNI/NIE:</label>
           <input type="text" id="ID" name="ID">
-        </div>
-        <div class="form-group">
-            <div class="form-group">
-              <label for="password">Contraseña:</label>
-              <input type="password" id="password" name="password">
-            </div>
-            <div class="form-group">
-        <input type="submit" value="Registrar">
       </div>
-      <div>
-        <!--La etiqueta br es equivalente a presionar enter, metemos doble para que haya separación-->
-        <br />
-         <!--Si pones dentro a href el html se te abre directamente-->
-        Si ya tienes cuenta: <a href="login.html">Iniciar sesion</a>
-        <br />
+
+      <div class="form-group">
+          <div class="form-group">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password">
+          </div>
+
+          <div class="form-group">
+            <input type="submit" value="Registrar">
+          </div>
+
+          <div>
+            <!--La etiqueta br es equivalente a presionar enter, metemos doble para que haya separación-->
+            <br />
+             <!--Si pones dentro a href el html se te abre directamente-->
+            Si ya tienes cuenta: <a href="/login">Iniciar sesion</a>
+            <br />
+          </div>
+      </div>
     </div>
-    </div>
-  </body>
-</html>
+
+    {{>footer}}
