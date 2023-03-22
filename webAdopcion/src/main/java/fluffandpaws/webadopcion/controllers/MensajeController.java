@@ -89,6 +89,7 @@ public class MensajeController {
         if(mensaje.isPresent()){
             servMensajes.delete(id);
             model.addAttribute("mensaje", mensaje.get());
+            model.addAttribute("description", mensaje.toString());
         }
         return "/temp_Mensaje/mensajeBorrado";
     }

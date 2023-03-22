@@ -34,6 +34,8 @@ public class Usuario {
     private List<String> roles;
     private String lastname;
 
+    private String description;
+
     protected Usuario(){}
 
     public Usuario(String name, String lastname, String dni, String username, String email, String encodedPassword, String... roles) {
@@ -44,6 +46,8 @@ public class Usuario {
         this.email = email;
         this.encodedPassword = encodedPassword;
         this.roles = List.of(roles);
+        this.description = this.toString();
+        this.animalesAdoptados = null;
     }
     //GETTERS Y SETTERS
     public String getName(){
@@ -104,7 +108,14 @@ public class Usuario {
 
     @Override
     public String toString(){
-        return "USUARIO: " + this.name;
+        String info = "Nombre de Usuario: " + this.username + "\n" +
+                "Nombre: " + this.name + "\n" +
+                "Apellidos: " + this.lastname + "\n"+
+                "Edad: " + this.edad + "\n" +
+                "DNI: " + this.dni + "\n" +
+                "Roles: " + this.roles + "\n";
+        if(animalesAdoptados !=null ) return info + "Familia peluda: " + this.animalesAdoptados.toString();
+        else return info +  "Familia peluda: Aún por formar";
     }
 
     public String getLastName() {
@@ -125,5 +136,13 @@ public class Usuario {
 
     public void setDni(String dni) {
         this.dni = dni;
+    }
+
+    public String getDescription() {
+        return this.toString();
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

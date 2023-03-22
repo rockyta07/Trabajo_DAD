@@ -58,6 +58,18 @@ public class UsuarioController {
         return "/temp_Usuario/usuario";
     }
 
+    @GetMapping("/account")//Esto nos retorna el usuario que esta logueado ahora mismo
+    public String getAccountDetails(Model model, Principal principal) {
+
+        Usuario usuario = servUsuarios.findByUsername(principal.getName());
+
+        model.addAttribute("user", usuario);
+        model.addAttribute("description", usuario.toString());
+        model.addAttribute("identificacion", usuario.getId());
+
+        return "/temp_Usuario/account";
+    }
+
     @GetMapping("/registroUsuario")
     public String registraUsuario(){
         return "/temp_Usuario/registrarUsuario";
@@ -75,6 +87,7 @@ public class UsuarioController {
         if(user.isPresent()){
             servUsuarios.delete(id);
             model.addAttribute("usuario", user.get());
+            model.addAttribute("name", user.get().getName());
         }
         return "/temp_Usuario/usuarioBorrado";
     }

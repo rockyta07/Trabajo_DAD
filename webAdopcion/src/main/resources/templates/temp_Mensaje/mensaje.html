@@ -3,7 +3,7 @@
 <body>
 {{#msg}}
   {{#admin}}
-     <p>[{{eMailRemitente}}]: {{content}}</p>
+     <p>{{description}}</p>
      <button onclick="location.href='/Mensajes/borrarMensaje/{{msg.id}}'">Borrar</button>
   {{/admin}}
   {{^admin}}

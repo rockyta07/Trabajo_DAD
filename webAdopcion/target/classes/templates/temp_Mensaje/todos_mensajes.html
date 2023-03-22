@@ -1,14 +1,28 @@
 {{>header}}
-<html>
-<body>
+
+{{#logged}}
+{{#admin}} <!--Si es admin-->
 <h2>Mensajes </h2>
 <ul class="items">
     {{#listMsg}}
-    <li><a href="/Mensajes/{{id}}"> {{eMailRemitente}}</a></li>
+    <li><a href="/Mensajes/{{id}}"> {{sender}} </a></li>
     {{/listMsg}}
 </ul>
 <pr></pr>
 <a href="/Mensajes/crearMensaje" ><button>Crear mensaje</button></a>
-</body>
-</html>
+{{/admin}}
+
+{{^admin}} <!--Si no es admin-->
+<h1>Mensajes recibidos</h1>
+<ul>
+    {{#mails}}
+    <li>
+        <a href="/Mensajes/{{id}}"> {{description}} </a>
+    </li>
+    {{/mails}}
+</ul>
+{{/admin}}
+
+{{/logged}}
+
 {{>footer}}
