@@ -1,21 +1,23 @@
 {{>header}}
-<html>
 
-<p>Animal {{animal}}</p>
+<div class="text-center">
+    <h3>{{animal}}</h3>
+    <h5>{{description}}</h5>
 
 
-<img src="data:image/png;base64,{{imagenBase64}}" alt="imagen del animal">
+    <img src="data:image/png;base64,{{imagenBase64}}" alt="imagen del animal">
 
-{{#logged}}
-{{#admin}}
-<button id="Borrar" onclick="location.href='/Animales/borrarAnimal/{{animal.id}}'">Borrar</button>
-<button id="Editar" onclick="location.href='/Animales/editAnimal/{{animal.id}}'">Editar</button>
-{{/admin}}
-{{^admin}}
-<button id="Adoptar" onclick="location.href='/Animales/adoptarAnimal/{{animal.id}}'">Adoptar</button>
-{{/admin}}
-{{/logged}}
-<p><a href="/Animales/"> Volver</a></p>
-<input type="hidden" name="_csrf" value="{{token}}"/>
-</html>
+    {{#logged}}
+    {{#admin}}
+    <button id="Borrar" onclick="location.href='/Animales/borrarAnimal/{{animal.id}}'">Borrar</button>
+    <button id="Editar" onclick="location.href='/Animales/editAnimal/{{animal.id}}'">Editar</button>
+    {{/admin}}
+    {{^admin}}
+    <button id="Adoptar" onclick="location.href='/Animales/adoptarAnimal/{{animal.id}}'">Adoptar</button>
+    {{/admin}}
+    {{/logged}}
+    <p><a href="/Animales/"> Volver</a></p>
+    <input type="hidden" name="_csrf" value="{{token}}"/>
+</div>
+
 {{>footer}}

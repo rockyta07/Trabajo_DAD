@@ -25,7 +25,7 @@ public class UsuarioService {
             return user.findAll();
         }
 
-        public Optional<Usuario> findByUsername(String username){
+        public Usuario findByUsername(String username){
             return user.findByUsername(username);
         }
 

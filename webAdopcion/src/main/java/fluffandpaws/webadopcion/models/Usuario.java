@@ -14,11 +14,14 @@ public class Usuario {
 
     private String name;
 
-    @Column(name = "username")
+    @Column(name = "username", unique = true)
     private String username; //Nombre identificativo (generado o establecido)
+
+    @Column(unique = true)
     private String email; //Correo
     //La contraseña deberá ser guardada en otra base de datos por seguridad
     private String pass; //Contraseña
+    private String dni;
 
     //private Integer id; //DNI
     private int edad; //Edad
@@ -26,15 +29,19 @@ public class Usuario {
 
     @OneToMany(mappedBy="adopter")
     private List<Animal> animalesAdoptados;
+
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles;
     private String lastname;
 
     protected Usuario(){}
 
-    public Usuario(String name, String username, String encodedPassword, String... roles) {
+    public Usuario(String name, String lastname, String dni, String username, String email, String encodedPassword, String... roles) {
         this.name = name;
         this.username = username;
+        this.dni = dni;
+        this.lastname = lastname;
+        this.email = email;
         this.encodedPassword = encodedPassword;
         this.roles = List.of(roles);
     }
@@ -42,9 +49,11 @@ public class Usuario {
     public String getName(){
         return this.name;
     }
+
     ////Estos getters son para seguridad//////////
     public List<String> getRoles() {return roles;}
     public String getEncodedPassword() {return encodedPassword;}
+
     //////////////////////////////////////////////77
     public void setName(String name){
         this.name = name;
@@ -95,7 +104,7 @@ public class Usuario {
 
     @Override
     public String toString(){
-        return "USER: " + this.name;
+        return "USUARIO: " + this.name;
     }
 
     public String getLastName() {
@@ -108,5 +117,13 @@ public class Usuario {
 
     public boolean hasRole(String role) {
         return roles.contains(role);
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 }

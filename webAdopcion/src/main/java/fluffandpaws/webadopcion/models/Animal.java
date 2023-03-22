@@ -8,6 +8,7 @@ import java.sql.Blob;
 
 @Entity
 public class Animal {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -26,7 +27,8 @@ public class Animal {
     private String gender;
     private String birthdate;
     private String weight;
-    private String height;   //cm
+    private String size;   //cm
+    private String description;
 
 
 
@@ -38,7 +40,7 @@ public class Animal {
     protected Animal(){}
 
     public Animal(String newName, String newAge, String newSp, String newBreed,
-                  String newGndr, String newBDate, String newWeight, String newHeight){
+                  String newGndr, String newBDate, String newWeight, String newSize){
         this.name_anm = newName;
         this.age = newAge;
         this.species = newSp;
@@ -46,8 +48,9 @@ public class Animal {
         this.gender = newGndr;
         this.birthdate = newBDate;
         this.weight = newWeight;
-        this.height = newHeight;
+        this.size = newSize;
         this.adopter = null;
+        this.description = this.toString();
     }
 
     //Getters
@@ -80,8 +83,8 @@ public class Animal {
         return this.weight;
     }
 
-    public String getHeight(){
-        return this.height;
+    public String getSize(){
+        return this.size;
     }
 
 
@@ -119,8 +122,8 @@ public class Animal {
         this.weight = newWeight;
     }
 
-    public void setHeight(String newHeight){
-        this.height = newHeight;
+    public void setSize(String newHeight){
+        this.size = newHeight;
     }
 
     public void setId(Long id){this.id = id;}
@@ -153,6 +156,22 @@ public class Animal {
 
     @Override
     public String toString(){
-        return "" + this.name_anm + ": " + this.species + " Edad: " + this.age + " Raza: " + this.breed;
+        return this.name_anm + " es un " + this.species + " " + this.gender + " de " + this.age + ", tamaño " + this.size + " y raza " + this.breed;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Usuario getAdopter() {
+        return adopter;
+    }
+
+    public void setAdopter(Usuario adopter) {
+        this.adopter = adopter;
     }
 }

@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     List<Usuario> findAll();
     Optional<Usuario> findById(Long l);
-    Optional<Usuario> findByUsername(String username);
+    Usuario findByUsername(String username); //El username no se puede repetir
     void deleteById(Long id);
     Usuario getByUsername(String username);
 }

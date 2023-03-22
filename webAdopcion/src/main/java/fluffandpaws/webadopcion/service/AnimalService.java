@@ -51,6 +51,7 @@ public class AnimalService {
     }
 
 
-
-
+    public Animal getAnimalById(Long id) {
+        return animalRepo.getById(id);
+    }
 }

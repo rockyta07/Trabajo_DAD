@@ -1,21 +1,60 @@
 {{>header}}
-<html>
-<body>
-    <h2>Animales </h2>
-    <ul class="items">
-        {{#listaTodos}}
-        <li><a href="/Animales/{{id}}"> {{name_anm}}</a></li>
-        {{/listaTodos}}
-    </ul>
-    <pr></pr>
+<style>
+    .bg-primary {
+        background-color: #ffa2b0 !important;
+    }
+</style>
+<div class="container text-center">
+    <h2>Animales</h2>
+    <p></p>
 
     {{#logged}}
     {{#admin}}
-    <a href="/Animales/crearAnimal" ><button>Crear animal</button></a>
+    <div class="container row justify-content-center">
+        <div class="col-lg-4 mb-5">
+            <div class="card h-100">
+                <p></p>
+                <h5> Opciones de Administración: </h5>
+                <p></p>
+                <a href="/Animales/crearAnimal" ><button>Crear animal</button></a>
+                <p></p>
+            </div>
+        </div>
+    </div>
     {{/admin}}
     {{/logged}}
 
+    <p></p>
+    {{#listaTodos}}
+    <div class="container row justify-content-center">
+        <div class="col-lg-8 mb-5">
+            <div class="card h-100 shadow border-0">
+                {{#imagenBase64}} <!--si tiene imagen-->
+                <img src="data:image/png;base64,{{imagenBase64}}" alt="Animal Image"/>
+                {{/imagenBase64}}
 
-</body>
-</html>
+                {{^image}} <!--si NO tiene imagen-->
+                <img class="card-img-top" src="/imagenesAnimales/no_image.png" alt="Animal Image"/>
+                {{/image}}
+
+                <div class="card-body p-4">
+                    <div class="badge bg-primary rounded-pill mb-2" style="background-color: #ffa2b0">{{species}}</div>
+                    <a class="text-decoration-none link-dark stretched-link" href="/Animales/{{id}}"><h5 class="card-title mb-3" style="color: black;">{{name_anm}}</h5></a>
+                    <p class="card-text mb-0">{{description}}</p>
+                </div>
+                <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+                    <div class="d-flex align-items-end justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <div class="small">
+                                <div class="text-muted">{{prtOrigen}} &middot; </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/listaTodos}}
+</div>
 {{>footer}}
+

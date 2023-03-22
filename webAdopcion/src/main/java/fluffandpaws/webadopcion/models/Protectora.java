@@ -15,6 +15,7 @@ public class Protectora {
     private String location;
     private String tlf;
     private String eMail;
+    private String description;
 
     //private String social1;
     //private String social2;
@@ -39,6 +40,7 @@ public class Protectora {
         this.location = newLocation;
         this.tlf = newTlf;
         this.eMail = newEMail;
+        this.description = this.toString();
         //this.total = new ArrayList<Animals>();
     }
 
@@ -111,6 +113,14 @@ public class Protectora {
 
     @Override
     public String toString(){
-        return "" + this.name_prt + " " + this.location + " " + this.tlf;
+        return "La protectora \"" + this.name_prt + "\" con número de licencia " + this.license + " se encuentra situada en " + this.location + ", se puede contactar llamando al " + this.tlf + " o escribiendo a " + this.eMail;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

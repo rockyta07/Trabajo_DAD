@@ -60,6 +60,8 @@ public class ProtectoraController {
         //List<Animal> listAnimal = prot.getAnimalesProtectora();
 
         model.addAttribute("protectora", prot);
+        model.addAttribute("nombre", prot.getName());
+        model.addAttribute("description", prot.toString());
         return "/temp_Protectora/protectora";
 
     }

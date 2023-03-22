@@ -8,9 +8,10 @@ public class Mensaje {
         @GeneratedValue(strategy = GenerationType.AUTO)
         private Long id;
 
-        private String eMailRemitente;
+        private String sender;
         private String content;
 
+        private String description;
 
 
         /*
@@ -24,8 +25,17 @@ public class Mensaje {
 
         public Mensaje(String eMail, String newCont){
             this.content = newCont;
-            this.eMailRemitente = eMail;
+            this.sender = eMail;
+            this.description = toString();
         }
+
+        public Mensaje(String eMail, String newCont, Protectora ptr){
+                this.content = newCont;
+                this.sender = eMail;
+                this.prtInstance = ptr;
+                this.description = toString();
+        }
+
 
         public String getContent(){
             return this.content;
@@ -46,17 +56,17 @@ public class Mensaje {
 
         public void setId(Long id){ this.id = id;}
 
-        public String geteMailRemitente(){
-                return this.eMailRemitente;
+        public String getSender(){
+                return this.sender;
         }
 
-        public void seteMailRemitente(String newEMail) {
-                this.eMailRemitente = newEMail;
+        public void setSender(String newEMail) {
+                this.sender = newEMail;
         }
 
         @Override
         public String toString(){
-                return "[" + this.eMailRemitente + "]: " + this.content;
+                return "[Mensaje enviado desde: " + this.sender + " a: " + prtInstance.getName() + "]: " + this.content;
         }
 
         public Protectora getPrtInstance(){
@@ -68,6 +78,11 @@ public class Mensaje {
         }
 
 
+        public String getDescription() {
+                return description;
+        }
 
-
+        public void setDescription(String description) {
+                this.description = description;
+        }
 }

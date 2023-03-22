@@ -1,23 +1,5 @@
 {{>header}}
 <script src="client.js"></script>
-<body>
-    <h2>Protectoras</h2>
-    <ul class="items">
-        {{#listaProtectoras}}
-        <li><a href="/Protectoras/{{id}}"> {{name_prt}}</a></li>
-        {{/listaProtectoras}}
-    </ul>
-    {{#logged}}
-    {{#admin}}
-    <a href="/Protectoras/crearProtectora" ><button>Crear protectora</button></a>
-    {{/admin}}
-    {{/logged}}
-    <br>
-    <br>
-    <br>
-    <br>
-    <button onclick="sendMessage()">Enviar mensaje webSocket</button>
-</body>
 
 <script>
     // Assuming that the userRole variable holds the role of the currently logged in user
@@ -30,5 +12,39 @@
     }
 </script>
 
+<div class="container text-center">
+    <h2>Protectoras</h2>
+    <p></p>
+
+    {{#logged}}
+    {{#admin}}
+    <div class="container row justify-content-center">
+        <div class="col-lg-6 mb-5">
+            <div class="card h-100">
+                <p></p>
+                <h5> Opciones de Administración: </h5>
+                <a href="/Protectoras/crearProtectora" ><button>Crear protectora</button></a>
+                <p></p>
+                <p></p>
+            </div>
+        </div>
+    </div>
+    {{/admin}}
+    {{/logged}}
+
+    <p></p>
+    {{#listaProtectoras}}
+    <div class="container row justify-content-center">
+        <div class="col-lg-8 mb-5">
+            <div class="card h-100 shadow border-0">
+                <div class="card-body p-4">
+                    <a class="text-decoration-none link-dark stretched-link" href="/Protectoras/{{id}}"><h5 class="card-title mb-3" style="color: black;">{{name_prt}}</h5></a>
+                    <p class="card-text mb-0">{{description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/listaProtectoras}}
+</div>
 
 {{>footer}}

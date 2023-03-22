@@ -2,8 +2,10 @@ package fluffandpaws.webadopcion.controllers;
 
 import fluffandpaws.webadopcion.models.Mensaje;
 import fluffandpaws.webadopcion.models.Protectora;
+import fluffandpaws.webadopcion.models.Usuario;
 import fluffandpaws.webadopcion.service.MensajeService;
 import fluffandpaws.webadopcion.service.ProtectoraService;
+import fluffandpaws.webadopcion.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +25,10 @@ public class MensajeController {
 
     @Autowired
     private ProtectoraService servProtectoras;
+
+    @Autowired
+    private UsuarioService userService;
+
     @ModelAttribute //esto sirve para que si yo soy admin pueda ver el boton de borrado y si no lo soy pues no
     public void addAttributes(Model model, HttpServletRequest request) {
 
@@ -40,12 +46,16 @@ public class MensajeController {
     }
 
     @GetMapping("/")//buscamos todos los mensajes
-    public String getMessages(Model model) {
-
-        List<Mensaje> listMensajes = servMensajes.findAll();
-
-        model.addAttribute("listMsg", listMensajes);
-
+    public String getMessages(Model model, Principal principal) {
+        //Filtramos lo que se devuelve según si es user o admin
+        if(principal.getName().equals("admin")){
+            List<Mensaje> listMensajes = servMensajes.findAll();
+            model.addAttribute("listMsg", listMensajes);
+        } else{
+            Usuario usuario = userService.findByUsername(principal.getName());
+            List<Mensaje> listMensajesUser = servMensajes.findBySender(usuario.getEmail()); //Esto va a buscar todos los mensajes del usuario loggeado
+            model.addAttribute("mails", listMensajesUser);
+        }
         return "/temp_Mensaje/todos_mensajes";
     }
 
@@ -55,6 +65,7 @@ public class MensajeController {
         Mensaje aux_mensaje = servMensajes.findById(id).orElseThrow();
 
         model.addAttribute("msg", aux_mensaje);
+        model.addAttribute("description", aux_mensaje.toString());
 
         return "/temp_Mensaje/mensaje";
     }

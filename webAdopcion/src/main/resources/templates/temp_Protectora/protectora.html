@@ -1,27 +1,67 @@
 {{>header}}
-<html>
-
-
-<body>
-    <p>Protectora {{protectora}}</p>
-
-    {{#protectora.animalesProtectora}}
-
-    <li><a href="/Animales/{{id}}"> {{name}}</a></li>
-    {{/protectora.animalesProtectora}}
-
-    <p></p>
+<style>
+    .bg-primary {
+        background-color: #ffa2b0 !important;
+    }
+</style>
+<div class="container text-center">
+    <h3>{{nombre}}</h3>
+    <h5>{{description}}</h5>
 
     {{#logged}}
     {{#admin}}
-    <a href="/Protectoras/{{protectora.id}}/crear_Animal" ><button>Crear animal</button></a>
-    <button onclick="location.href='/Protectoras/editProtectora/{{protectora.id}}'">Editar</button>
-    <button onclick="location.href='/Protectoras/borrarProtectora/{{protectora.id}}'">Borrar</button>
+    <div class="container justify-content-center col-lg-8 mb-5">
+        <div class="card h-100">
+            <p></p>
+            <h5> Opciones de Administración: </h5>
+            <p></p>
+            <div class="row justify-content-lg-center">
+                <div class="row">
+                    <a href="/Protectoras/{{protectora.id}}/crear_Animal" ><button>Crear animal</button></a>
+                    <button onclick="location.href='/Protectoras/editProtectora/{{protectora.id}}'">Editar</button>
+                    <button onclick="location.href='/Protectoras/borrarProtectora/{{protectora.id}}'">Borrar</button>
+                </div>
+            </div>
+            <p></p>
+        </div>
+    </div>
     {{/admin}}
     {{/logged}}
-
-
+    <p></p><p></p>
     <p><a href="/Protectoras/"> <button>Volver</button></a></p>
-</body>
-</html>
+    <p></p>
+
+    {{#protectora.animalesProtectora}}
+    <div class="container row justify-content-center">
+        <div class="col-lg-8 mb-5">
+            <div class="card h-100 shadow border-0">
+                {{#image}} <!--si tiene imagen-->
+                <img src="data:image/png;base64,{{imagenBase64}}" alt="Animal Image"/>
+                {{/image}}
+
+                {{^image}} <!--si NO tiene imagen-->
+                <img class="card-img-top" src="/imagenesAnimales/no_image.png" alt="Animal Image"/>
+                {{/image}}
+
+                <div class="card-body p-4">
+                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">{{species}}</div>
+                    <a class="text-decoration-none link-dark stretched-link" href="/Animales/{{id}}"><h5 class="card-title mb-3" style="color: black;">{{name_anm}}</h5></a>
+                    <p class="card-text mb-0">{{description}}</p>
+                </div>
+                <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+                    <div class="d-flex align-items-end justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <div class="small">
+                                <div class="text-muted">{{prtOrigen}} &middot; </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/protectora.animalesProtectora}}
+
+
+</div>
 {{>footer}}

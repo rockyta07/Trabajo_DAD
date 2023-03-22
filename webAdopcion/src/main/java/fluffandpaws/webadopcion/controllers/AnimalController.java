@@ -10,6 +10,10 @@ import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.security.Principal;
+import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.Base64;
 import java.util.List;
@@ -60,6 +65,7 @@ public class AnimalController {
         List<Animal> listAnimals = servAnimales.findAll();
 
         model.addAttribute("listaTodos", listAnimals);
+        //model.addAttribute("image", listAnimals.getImage());
 
         return "/temp_Animal/todos_animales";
     }
@@ -69,10 +75,32 @@ public class AnimalController {
         Animal aux = servAnimales.findById(id).orElseThrow();
         byte[] imagenBytes = aux.getImagenAnimal().getBytes(1, (int) aux.getImagenAnimal().length()); // convertimos Blob a byte[]
         String imagenBase64 = Base64.getEncoder().encodeToString(imagenBytes); // codificamos a base64
-        model.addAttribute("animal", aux);
+        model.addAttribute("animal", aux.getName());
+        model.addAttribute("description", aux.toString());
         model.addAttribute("imagenBase64", imagenBase64); // agregamos el atributo a la vista
+        model.addAttribute("image", aux.getImagenAnimal());
         return "/temp_Animal/animal";
     }
+
+    @GetMapping("/animal/image/{id}")
+    public ResponseEntity<byte[]> getImage(@PathVariable Long id) {
+        Animal animal = servAnimales.getAnimalById(id);
+        if (animal == null || animal.getImagenAnimal() == null) {
+            return ResponseEntity.notFound().build();
+        }
+        try {
+            Blob blob = animal.getImagenAnimal();
+            int blobLength = (int) blob.length();
+            byte[] imageBytes = blob.getBytes(1, blobLength);
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.IMAGE_JPEG);
+            headers.setContentLength(imageBytes.length);
+            return new ResponseEntity<>(imageBytes, headers, HttpStatus.OK);
+        } catch (SQLException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
 
     @GetMapping("/crearAnimal")
     public String crearAnimal(Model model){

@@ -18,28 +18,28 @@ public class MensajeService {
 
         public Optional<Mensaje> findById(Long id) {
             return mensajeRepo.findById(id);
-
         }
-
 
         public List<Mensaje> findAll(){//buscar todos los usuarios
-
             return mensajeRepo.findAll();
         }
+
         public void save(Mensaje me){//guardar el usuario
-
             mensajeRepo.save(me);
+        }
 
+        public List<Mensaje> findBySender(String remitente){
+            List<Mensaje> mensajes = findAll();
+            return mensajes.stream()
+                    .filter(m -> remitente.equals(m.getSender()))
+                    .toList();
         }
 
         public boolean exist(Long id){//ver si existen loos usuarios
-
             return mensajeRepo.existsById(id);
-
         }
 
         public void replace (Mensaje updatedMensaje){//para modificar el usuario
-
             mensajeRepo.findById(updatedMensaje.getId()).orElseThrow();
             mensajeRepo.save(updatedMensaje);
         }
