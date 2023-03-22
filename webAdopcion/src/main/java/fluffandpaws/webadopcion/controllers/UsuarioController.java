@@ -64,7 +64,7 @@ public class UsuarioController {
     }
 
     @PostMapping("/registroUsuario")
-    public String registraUsuarioProcess(Model model, @ModelAttribute("animal") Usuario aux2){
+    public String registraUsuarioProcess(Model model, @ModelAttribute("usuario") Usuario aux2){
         servUsuarios.save(aux2);
         return "redirect:/Usuarios/" + aux2.getId();
     }

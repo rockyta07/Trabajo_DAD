@@ -1,7 +1,11 @@
 package fluffandpaws.webadopcion.models;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import javax.persistence.*;
 
+import java.security.SecureRandom;
 import java.util.List;
 
 @Entity
@@ -18,7 +22,7 @@ public class Usuario {
     private String username; //Nombre identificativo (generado o establecido)
     private String email; //Correo
     //La contraseña deberá ser guardada en otra base de datos por seguridad
-    private String pass; //Contraseña
+    //private String pass; //Contraseña
 
     //private Integer id; //DNI
     private int edad; //Edad
@@ -33,10 +37,16 @@ public class Usuario {
     protected Usuario(){}
 
     public Usuario(String name, String username, String encodedPassword, String... roles) {
+        PasswordEncoder passEncoder = new BCryptPasswordEncoder(10, new SecureRandom());
+
         this.name = name;
         this.username = username;
-        this.encodedPassword = encodedPassword;
-        this.roles = List.of(roles);
+        this.encodedPassword = passEncoder.encode(encodedPassword);
+        if (roles != null && roles.length > 0) {
+            this.roles = List.of(roles);
+        } else {
+            this.roles = List.of("USER");
+        }
     }
     //GETTERS Y SETTERS
     public String getName(){
@@ -55,7 +65,9 @@ public class Usuario {
         return username;
     }
 
-    public void setEncodedPassword(String encodedPassword){this.encodedPassword = encodedPassword;}
+    public void setEncodedPassword(String encodedPassword){
+        PasswordEncoder passEncoder = new BCryptPasswordEncoder(10, new SecureRandom());
+        this.encodedPassword = passEncoder.encode(encodedPassword);}
 
     public void setUsername(String username) {
         this.username = username;
@@ -69,13 +81,14 @@ public class Usuario {
         this.email = email;
     }
 
+    /*
     public String getPass() {
         return pass;
     }
 
     public void setPass(String pass) {
         this.pass = pass;
-    }
+    }*/
 
     public Long getId() {
         return id;

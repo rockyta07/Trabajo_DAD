@@ -71,10 +71,10 @@ public class DatabaseInitializer {
 
     
 
-        usuarioRepo.save(new Usuario("Juan", "Juan", passwordEncoder.encode("juan123"), "USER"));
-        usuarioRepo.save(new Usuario("Pablo", "Pablo", passwordEncoder.encode("pablo123"), "USER"));
-        usuarioRepo.save(new Usuario("user", "user", passwordEncoder.encode("pass"), "USER"));
-        usuarioRepo.save(new Usuario("admin", "admin", passwordEncoder.encode("adminpass"), "USER", "ADMIN"));
+        usuarioRepo.save(new Usuario("Juan", "Juan", "juan123", "USER"));
+        usuarioRepo.save(new Usuario("Pablo", "Pablo", "pablo123", "USER"));
+        usuarioRepo.save(new Usuario("user", "user", "pass", "USER"));
+        usuarioRepo.save(new Usuario("admin", "admin", "adminpass", "USER", "ADMIN"));
 
 
 
