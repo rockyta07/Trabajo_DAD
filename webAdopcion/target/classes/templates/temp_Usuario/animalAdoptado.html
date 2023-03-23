@@ -1,0 +1,18 @@
+{{>header}}
+
+<div class="text-center">
+    <h3>{{animal}}</h3>
+    <h5>{{description}}</h5>
+
+
+    <img src="data:image/png;base64,{{imagenBase64}}" alt="imagen del animal">
+
+    {{#logged}}
+    <button id="abandonar" onclick="location.href='/Animales/abandonarAnimal/{{animal.id}}'">Abandonar</button>
+    {{/logged}}
+
+    <p><a onclick="location.href='/Usuarios/{{usuario.id}}'">Volver</a></p>
+    <input type="hidden" name="_csrf" value="{{token}}"/>
+</div>
+
+{{>footer}}
