@@ -227,14 +227,16 @@ Para la implementación de la seguridad nos hemos puesto los siguientes objetivo
 
 - Añadir las funciones de login (con su respectivo html de error) y logout para usuarios ya existentes y para los que aún no existen, registrarse.
 
-![readme.png](..%2F..%2F..%2FPictures%2Freadme.png)
+![readme](https://user-images.githubusercontent.com/102540777/227144118-ebfc3553-4148-469b-8b7e-9a899e08afee.png)
+
 
 - Establecer que pantallas son públicas y cuáles privadas: 
 
 Para comenzar la separación de las vistas en nuestra página web diseñamos sobre el papel un sketch 
 de cuales queríamos que fuesen accesibles para los usuarios no registrados y cuales no, separando a su vez las privadas entre las pantallas que serán 
 exclusivamente para los usuarios "USER" y las que serán para los usuarios de tipo "ADMIN" (incluyendo también funcionalidades carácteristicas)
-![Captura de pantalla 2023-03-23 013647.png](..%2F..%2F..%2FPictures%2FScreenshots%2FCaptura%20de%20pantalla%202023-03-23%20013647.png)
+
+![Captura de pantalla 2023-03-23 013647](https://user-images.githubusercontent.com/102540777/227144443-72856284-ba4f-4988-b3e0-632c9f362c53.png)
 
 Hemos incluido una carpeta llamada security para incluir todos los archivos de seguridad, uno de ellos es WebSecurityConfig en el cual indicamos que pantallas y que opciones son publicas y privadas con el permitAll() (publicas) y hasAnyRole( indica que son privadas y luego dentro de que sean privadas dependiendo de que rol se tenga permite realizar unas cosas u otras).
 - Convertir nuestra aplicación en https
@@ -256,7 +258,8 @@ Cuando abrimos la página web verificamos que se ha creado correctamente el cert
 - En nuestra aplicación hacemos uso de tokens generados por un interceptor para protegernos minimamente de los ataques CSRF (Cross Site Request Forgery)
 los cuales implementamos de la siguiente manera:
 
-![readme2.png](..%2F..%2F..%2FPictures%2Freadme2.png)
+![readme2](https://user-images.githubusercontent.com/102540777/227144230-2ec8ef7d-6067-47c6-b44d-bb45a4c0c8b5.png)
+
 
 La clase CSRFHandlerInterceptor es la implementación del interceptor que se ejecuta antes o después de una solicitud. 
 El método postHandle en esta clase verifica si la solicitud incluye un objeto CsrfToken. 
@@ -340,8 +343,6 @@ Y ya arrancaría.
 
 7.	Cargamos de nuevo en el buscador el puerto, y ya nos abre.
 
-
-- Opcionalmente aplicar seguridad CSRF
 
 
 

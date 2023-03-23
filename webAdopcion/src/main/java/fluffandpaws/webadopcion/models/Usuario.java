@@ -76,7 +76,8 @@ public class Usuario {
         return username;
     }
 
-    public void setEncodedPassword(String encodedPassword){this.encodedPassword = encodedPassword;}
+    public void setEncodedPassword(String encodedPassword){   PasswordEncoder passEncoder = new BCryptPasswordEncoder(10, new SecureRandom());
+        this.encodedPassword = passEncoder.encode(encodedPassword);}
 
     public void setUsername(String username) {
         this.username = username;
