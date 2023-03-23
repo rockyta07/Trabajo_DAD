@@ -3,11 +3,12 @@ package fluffandpaws.webadopcionemailservice.controller;
 import fluffandpaws.webadopcionemailservice.model.AdoptionCertificate;
 import fluffandpaws.webadopcionemailservice.service.AdoptionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+
+@RestController
 public class AdoptionController {
     // Para recoger los requests de email
     public record AdoptionRequest(String to, String subject, String body){

@@ -17,10 +17,10 @@ import javax.mail.internet.InternetAddress;
 @Service
 public class AdoptionService {
     //TODO creo que lo de los valores era para ponerlo por pantalla sin definirlo en el código
-    @Value("${email.user}") //TODO: No tengo claro esto
+    @Value("${email.user}") //poner aqui directamente el correo que se va a usar para mandar el mensaje
     private String user;
 
-    @Value("${email.password}")
+    @Value("${email.password}")//esto se incluye en el properties con la contraseña de aplicacion generada porque sino te da error ya que hay mucha seguridad en gmail
     private String password;
 
     private final Session session;
@@ -35,9 +35,9 @@ public class AdoptionService {
         properties.put("mail.smtp.ssl.trust", "smtp.gmail.com"); //Para usar la lista de confianza ssl de gmail
         session = Session.getDefaultInstance(properties);
     }
-
+//En este método despues del to es importante poner el new para establecer el campo to del mensaje en la direccion de correo electronico proporcionada
     public void sendTestMessage(AdoptionCertificate adoptionCertificate){
-        if(transport != null){
+        if(transport == null){//importante aqui quitar el distinto de null ya que saltaban errores porque no estaba inicializado
             try{
                 transport = session.getTransport("smtp"); //Usaremos smtp para enviar emails
                 //System.out.println(user);
@@ -52,13 +52,13 @@ public class AdoptionService {
                 return;
             }
         }
-
+//En setText también es importante que aparezca como lo hemos puesto ya que establece el cuerpo del mensaje en el texto proporcionado en el objeto
         try {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(user));
-            message.addRecipients(Message.RecipientType.TO,"Correo electrónico" ); //Esto lo recibes del otro servidor -> hay que implementar ese método: adoptionCertificate.getEmailAdress()
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(adoptionCertificate.getAddress())); //Esto lo recibes del otro servidor -> hay que implementar ese método: adoptionCertificate.getEmailAdress()
             message.setSubject("Adopción aprobada");
-            message.setText("Texto del mensaje");
+            message.setText(adoptionCertificate.getBody());
             transport.sendMessage(message, message.getAllRecipients()); //Una vez inicializados los valores del mensaje lo enviamos a todos los recipientes
         } catch (MessagingException exception){
             System.out.println("Ha ocurrido un error al enviar el mensaje");
