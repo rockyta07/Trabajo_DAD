@@ -1,0 +1,15 @@
+{{>header}}
+<div class="container">
+    <p></p>
+    <h4>¡Hola, {{user.username}}! Este es tu perfil de usuario </h4>
+    <p></p>
+    <pre>{{user.description}}</pre>
+
+    {{#logged}}
+    <button onclick="location.href='/Usuarios/borrarUsuario/{{identificacion}}'">Borrar cuenta</button>
+    <button onclick="location.href='/Usuarios/editUsuario/{{identificacion}}'">Editar datos</button>
+    {{/logged}}
+
+<p><a href="/Animales/"> Volver</a></p>
+</div>
+{{>footer}}
