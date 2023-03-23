@@ -225,8 +225,17 @@ Mustache no coge bien los nombres de los atributos de cada entidad y a la hora d
 
 Para la implementación de la seguridad nos hemos puesto los siguientes objetivos a cumplir:
 
-- Añadir las funciones de login (con su respectivo html de error) y logout
-- Establecer que pantallas son públicas y cuáles privadas
+- Añadir las funciones de login (con su respectivo html de error) y logout para usuarios ya existentes y para los que aún no existen, registrarse.
+
+![readme.png](..%2F..%2F..%2FPictures%2Freadme.png)
+
+- Establecer que pantallas son públicas y cuáles privadas: 
+
+Para comenzar la separación de las vistas en nuestra página web diseñamos sobre el papel un sketch 
+de cuales queríamos que fuesen accesibles para los usuarios no registrados y cuales no, separando a su vez las privadas entre las pantallas que serán 
+exclusivamente para los usuarios "USER" y las que serán para los usuarios de tipo "ADMIN" (incluyendo también funcionalidades carácteristicas)
+![Captura de pantalla 2023-03-23 013647.png](..%2F..%2F..%2FPictures%2FScreenshots%2FCaptura%20de%20pantalla%202023-03-23%20013647.png)
+
 Hemos incluido una carpeta llamada security para incluir todos los archivos de seguridad, uno de ellos es WebSecurityConfig en el cual indicamos que pantallas y que opciones son publicas y privadas con el permitAll() (publicas) y hasAnyRole( indica que son privadas y luego dentro de que sean privadas dependiendo de que rol se tenga permite realizar unas cosas u otras).
 - Convertir nuestra aplicación en https
 En primer lugar se ha creado un certificado con keytool, para ello en el cmd se ha incluido lo siguiente:
@@ -237,12 +246,35 @@ Cuando abrimos la página web verificamos que se ha creado correctamente el cert
 
 ![image](https://user-images.githubusercontent.com/102741945/225416252-457633ef-8860-4c27-8ae3-582f229f430d.png)
 
-- El diagrama de clases y tamplates resultantes es: 
+- El diagrama de clases y templates resultantes es: 
 
 ![main](https://user-images.githubusercontent.com/102540777/225600693-e444cebb-ff30-47f6-b6f8-5b8edbfe3d0b.png)
 
 - Implementar el servicio interno funcional en un proceso separado
+
+
+- En nuestra aplicación hacemos uso de tokens generados por un interceptor para protegernos minimamente de los ataques CSRF (Cross Site Request Forgery)
+los cuales implementamos de la siguiente manera:
+
+![readme2.png](..%2F..%2F..%2FPictures%2Freadme2.png)
+
+La clase CSRFHandlerInterceptor es la implementación del interceptor que se ejecuta antes o después de una solicitud. 
+El método postHandle en esta clase verifica si la solicitud incluye un objeto CsrfToken. 
+Si es así, el método agrega el token al objeto ModelAndView que se utiliza para renderizar la vista, la cual puede usar el token para protegerse contra ataques CSRF.
+
 - Elegir e implementar el mecanismo de comunicación
+
+Para implementar el servicio interno de nuestra página, inicialmente pensamos en usar webSocket pero enseguida nos vimos limitadas por el tiempo y la escasez de ejemplos para nuestra idea.
+Nuestro servicio interno requeriría de una comunicación cliente-cliente si implementasemos la funcionalidad de chat en vivo (el cúal tampoco es en sí un sistema interno del tipo que se requería),
+el cuál a su vez, nos presenta la limitación de que los mensajes no tienen permanencia. 
+Todos los ejemplos que encontramos de websocket hacían referencia a comunicaciones del tipo servidor-servidor por lo que rápidamente desechamos la idea para posteriormente visualizar otra, 
+un sistema interno que tras la adopción envíe al usuario un correo electrónico con el certificado de adopción, de esta manera conseguiríamos la comunicación servidor-servidor interna que buscábamos.
+
+Para esta implementación usaremos API REST que, mientras no se habla de ella en el apartado de temario correspondiente a la comunicación de aplicaciones distribuidas, es muy útil para nuestra finalidad.
+La implementación del sistema interno la diviremos en dos conexiones, la interacción de parte del usuario con nuestra aplicación principal y la interacción entre las máquinas.
+El cliente interactuará mediante un botón con el cual se tomará su correo electrónico, posteriormente la página web procesará la petición de adopción creando un json que contenga los datos del correo
+electrónico (remitente, asunto y cuerpo) así como los datos del animal a adoptar, el cuál será enviado al servidor API REST quien procesará esa petición y enviará el correo generando el pdf con el certificado.
+
 - Desplegar el proyecto en una máquina virtual mediante el empaquetado jar
 
 Resumen de lo que hay que hacer con openstack:
