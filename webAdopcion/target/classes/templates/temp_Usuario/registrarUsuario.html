@@ -1,17 +1,31 @@
 {{>header}}
 <body>
 <form action="registroUsuario" method="post">   <!-- PARECE SER QUE AQUI SE PONE la URL de los métodos POST y GET homónimos, no el nombre del método -->
-    <p><label>Nombre y Apellidos:</label></p>
+    <p><label>Nombre:</label></p>
     <input type='text' name='name'/>
+    <p><label>Nombre:</label></p>
+    <input type='text' name='lastname'/>
     <p><label>Correo:</label></p>
     <input type='text' name='email'/>
     <p><label>DNI/NIE:</label></p>
-    <input type="text" id="ID" name="ID">
+    <input type="text" name="dni">
+    <p><label>Edad:</label></p>
+    <input type="text" name="edad">
     <p><label>Nombre de usuario (username):</label></p>
     <input type='text' name='username'/>
     <p><label>Contraseña:</label></p>
-    <input type='text' name='pass'/>
+    <input type='text' name='encodedPassword'/>
 
+    {{#logged}}
+    {{#admin}}
+    <p>Roles: </p>
+    <input type='text' name='roles'/>
+    {{/admin}}
+    {{/logged}}
+
+    {{^logged}}
+    <input type="hidden" name="roles" value="USER" />
+    {{/logged}}
 
     <input type="hidden" name="_csrf" value="{{token}}" />
     <p><input type='submit' value='Enviar'/></p>
