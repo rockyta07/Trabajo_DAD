@@ -24,10 +24,10 @@ public class Protectora {
     //private Integer id;
     //private String webPrt;
 
-    @OneToMany(mappedBy="prtInstance", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy="prtInstance", cascade = CascadeType.ALL)
     private List<Mensaje> mensajesProtectora;
 
-    @OneToMany(mappedBy="prtOrigen", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy="prtOrigen", cascade = CascadeType.ALL)
     private List<Animal> animalesProtectora;
 
     //private List<Animals> total;

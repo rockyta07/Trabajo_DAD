@@ -1,8 +1,13 @@
 package fluffandpaws.webadopcion.models;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import javax.persistence.*;
 
+import java.security.SecureRandom;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Usuario {
@@ -20,11 +25,12 @@ public class Usuario {
     @Column(unique = true)
     private String email; //Correo
     //La contraseña deberá ser guardada en otra base de datos por seguridad
-    private String pass; //Contraseña
+    //private String pass; //Contraseña
     private String dni;
 
     //private Integer id; //DNI
     private int edad; //Edad
+
     private String encodedPassword;//Salt de Hash
 
     @OneToMany(mappedBy="adopter")
@@ -38,13 +44,15 @@ public class Usuario {
 
     protected Usuario(){}
 
-    public Usuario(String name, String lastname, String dni, String username, String email, String encodedPassword, String... roles) {
+    public Usuario(String name, String lastname, String dni, String edad, String username, String email, String encodedPassword, String... roles) {
+        PasswordEncoder passEncoder = new BCryptPasswordEncoder(10, new SecureRandom()); //Para que se pueda encriptar
         this.name = name;
         this.username = username;
         this.dni = dni;
+        this.edad = Integer.parseInt(edad);
         this.lastname = lastname;
         this.email = email;
-        this.encodedPassword = encodedPassword;
+        this.encodedPassword = passEncoder.encode(encodedPassword);
         this.roles = List.of(roles);
         this.description = this.toString();
         this.animalesAdoptados = null;
@@ -58,7 +66,7 @@ public class Usuario {
     public List<String> getRoles() {return roles;}
     public String getEncodedPassword() {return encodedPassword;}
 
-    //////////////////////////////////////////////77
+    ////////////////////////////////////////////////
     public void setName(String name){
         this.name = name;
     }
@@ -80,14 +88,6 @@ public class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
     }
 
     public Long getId() {
@@ -114,8 +114,9 @@ public class Usuario {
                 "Edad: " + this.edad + "\n" +
                 "DNI: " + this.dni + "\n" +
                 "Roles: " + this.roles + "\n";
-        if(animalesAdoptados !=null ) return info + "Familia peluda: " + this.animalesAdoptados.toString();
-        else return info +  "Familia peluda: Aún por formar";
+        if(animalesAdoptados != null) {
+            return info + "Familia peluda: " + this.animalesAdoptados;
+        } else return info +  "Familia peluda: Aún por formar";
     }
 
     public String getLastName() {
@@ -144,5 +145,35 @@ public class Usuario {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Animal> getAnimalesAdoptados(){
+        if(animalesAdoptados.isEmpty()) return null;
+        return this.animalesAdoptados;
+    }
+
+    public Animal getAdoptado(Long id){
+        if(!animalesAdoptados.isEmpty()){
+            for(Animal animal : animalesAdoptados){
+                if(Objects.equals(animal.getId(), id)){
+                    return animal;
+                }
+            }
+        }
+        return null;
+    }
+
+    public void setAnimalesAdoptados(List<Animal> animales){
+        this.animalesAdoptados = animales;
+    }
+
+    //Otros métodos
+    public void adoptar(Animal animal){
+        animalesAdoptados.add(animal);
+        this.description = toString();
+    }
+
+    public void abandonar(Animal animal){ //Probablemente se use para editar usuario
+        animalesAdoptados.remove(animal);
     }
 }

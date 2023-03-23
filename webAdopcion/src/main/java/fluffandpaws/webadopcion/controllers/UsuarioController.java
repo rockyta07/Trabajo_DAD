@@ -50,9 +50,15 @@ public class UsuarioController {
 
     @GetMapping("/{id}")//Esto nos retorna el usuario
     public String getUsuario(Model model, @PathVariable Long id) {
-
         Usuario adoptante = servUsuarios.findById(id).orElseThrow();
+        model.addAttribute("user", adoptante);
 
+        return "/temp_Usuario/usuario";
+    }
+
+    @GetMapping("/{id}/animalesAdoptados")//Esto nos retorna el usuario
+    public String getUserAnimalesAdoptados(Model model, @PathVariable Long id) {
+        Usuario adoptante = servUsuarios.findById(id).orElseThrow();
         model.addAttribute("user", adoptante);
 
         return "/temp_Usuario/usuario";
@@ -64,7 +70,7 @@ public class UsuarioController {
         Usuario usuario = servUsuarios.findByUsername(principal.getName());
 
         model.addAttribute("user", usuario);
-        model.addAttribute("description", usuario.toString());
+        model.addAttribute("description", usuario.getDescription());
         model.addAttribute("identificacion", usuario.getId());
 
         return "/temp_Usuario/account";
@@ -76,9 +82,9 @@ public class UsuarioController {
     }
 
     @PostMapping("/registroUsuario")
-    public String registraUsuarioProcess(Model model, @ModelAttribute("animal") Usuario aux2){
-        servUsuarios.save(aux2);
-        return "redirect:/Usuarios/" + aux2.getId();
+    public String registraUsuarioProcess(Model model, @ModelAttribute("usuario") Usuario usuario){
+        servUsuarios.save(usuario);
+        return "redirect:/Usuarios/" + usuario.getId();
     }
 
     @GetMapping("/borrarUsuario/{id}")
@@ -87,7 +93,7 @@ public class UsuarioController {
         if(user.isPresent()){
             servUsuarios.delete(id);
             model.addAttribute("usuario", user.get());
-            model.addAttribute("name", user.get().getName());
+            //model.addAttribute("name", user.get().getName());
         }
         return "/temp_Usuario/usuarioBorrado";
     }
@@ -98,7 +104,7 @@ public class UsuarioController {
         Optional<Usuario> usuario = servUsuarios.findById(id);
         if (usuario.isPresent()) {
             model.addAttribute("usuario", usuario.get());
-
+            model.addAttribute("animalesAdoptados", usuario.get().getAnimalesAdoptados());
         }
 
         return "/temp_Usuario/editUsuarioPage";
@@ -106,10 +112,7 @@ public class UsuarioController {
     }
 
     @PostMapping("/editUsuario")
-    public String editUsuario(Model model, Usuario usuario, boolean removeImage, MultipartFile imageField)
-            throws IOException, SQLException {
-
-        //updateImage(book, removeImage, imageField);
+    public String editUsuario(Model model, Usuario usuario){
 
         servUsuarios.save(usuario);
 

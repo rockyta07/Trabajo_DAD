@@ -51,6 +51,7 @@ public class Animal {
         this.size = newSize;
         this.adopter = null;
         this.description = this.toString();
+        this.prtOrigen = null;
     }
 
     //Getters
@@ -122,8 +123,8 @@ public class Animal {
         this.weight = newWeight;
     }
 
-    public void setSize(String newHeight){
-        this.size = newHeight;
+    public void setSize(String newSize){
+        this.size = newSize;
     }
 
     public void setId(Long id){this.id = id;}

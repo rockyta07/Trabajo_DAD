@@ -34,8 +34,8 @@ public class DatabaseInitializer {
     private UsuarioRepository usuarioRepo;
     @Autowired
     private MensajeRepository mensajeRepo;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    //@Autowired
+    //private PasswordEncoder passwordEncoder;
 
     @PostConstruct
     public void init() throws IOException, URISyntaxException {
@@ -43,7 +43,7 @@ public class DatabaseInitializer {
         Protectora p1, p2, p3;
         p1 = new Protectora("Protectora 1","12312312","Madrid","67584637","Protectora1@gmail.com");//ponemos los datos tal cual el constructor
         p2 = new Protectora("Protectora 2","45645645","Valencia","680475243","Protectora2@gmail.com");
-        p3 = new Protectora("Protectora 3","6767676","Madrid","692734123","Protectora2@gmail.com");
+        p3 = new Protectora("Protectora 3","6767676","Madrid","692734123","Protectora3@gmail.com");
 
         //p1.setAnimalesProtectora(la_aux);
 
@@ -79,10 +79,10 @@ public class DatabaseInitializer {
     
 
         //Usuario(String name, String lastname, String dni, String username, String encodedPassword, String... roles)
-        usuarioRepo.save(new Usuario("Juan", "Rodríguez",  "45484545Y", "Juan","juanito@gmail.com", passwordEncoder.encode("juan123"), "USER"));
-        usuarioRepo.save(new Usuario("Pablo", "Leon", "5464554A", "Pablo", "elLeon@hotmail.com",passwordEncoder.encode("pablo123"), "USER"));
-        usuarioRepo.save(new Usuario("user", "", "", "user","user@user", passwordEncoder.encode("pass"), "USER"));
-        usuarioRepo.save(new Usuario("admin","","", "admin", "admin@admin", passwordEncoder.encode("adminpass"), "USER", "ADMIN"));
+        usuarioRepo.save(new Usuario("Juan", "Rodríguez",  "45484545Y", "30", "Juan","juanito@gmail.com", "juan123", "USER"));
+        usuarioRepo.save(new Usuario("Pablo", "Leon", "5464554A", "19", "Pablo", "elLeon@hotmail.com","pablo123", "USER"));
+        usuarioRepo.save(new Usuario("user", "", "", "0","user","user@user","pass", "USER"));
+        usuarioRepo.save(new Usuario("admin","","", "0","admin", "admin@admin","adminpass", "USER", "ADMIN"));
 
 
 

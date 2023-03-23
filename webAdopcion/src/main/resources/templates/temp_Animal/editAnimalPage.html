@@ -17,10 +17,12 @@
   <input type='text' name='birthdate' value="{{animal.birthdate}}"/>
   <p><br>Peso:</p>
   <input type='text' name='weight' value="{{animal.weight}}"/>
-  <p><br>Altura:</p>
-  <input type='text' name='height' value="{{animal.height}}"/>
+  <p><br>Tamaño:</p>
+  <input type='text' name='size' value="{{animal.size}}"/>
 
-
+  <input type="hidden" name='protectora' value="{{animal.prtOrigen}}" />
+  <input type="hidden" name='imagen' value="{{animal.imagen}}" />
+  <input type="hidden" name='imagenAnimal' value="{{animal.imagenAnimal}}" />
   <input type="hidden" name="_csrf" value="{{token}}" />
   <p>
     <button onclick="location.href='/Animal/{{animal.id}}'; return false;">Cancel</button>

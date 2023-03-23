@@ -20,7 +20,7 @@ public class ProtectoraService {
 
     }
 
-    public List<Protectora> findAll(){//buscar todos los usuarios
+    public List<Protectora> findAll(){//buscar todas las protectoras
 
         return protectoraRepository.findAll();
     }

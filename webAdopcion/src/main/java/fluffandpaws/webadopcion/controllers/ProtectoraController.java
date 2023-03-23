@@ -73,6 +73,7 @@ public class ProtectoraController {
 
     @PostMapping("/crearProtectora")
     public String crearProtectoraProcess(Model model, @ModelAttribute("protectora") Protectora protectora){
+        protectora.setDescription(protectora.toString());
         servProtectoras.save(protectora);
         return "redirect:/Protectoras/"+protectora.getId();
     }
@@ -117,7 +118,9 @@ public class ProtectoraController {
 
     @PostMapping("/editProtectora")
     public String editProtectoraProcess(Model model, Protectora protectora) throws IOException, SQLException {
-
+        //Optional<Protectora> prtBefore = servProtectoras.findById(protectora.getId());
+        //protectora.setId(prtBefore.orElseThrow().getId());
+        protectora.setDescription(protectora.toString());
         servProtectoras.save(protectora);
 
         model.addAttribute("protectoraId", protectora.getId());

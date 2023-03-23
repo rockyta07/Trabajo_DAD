@@ -3,9 +3,11 @@ package fluffandpaws.webadopcion.controllers;
 import fluffandpaws.webadopcion.models.Animal;
 import fluffandpaws.webadopcion.models.Mensaje;
 import fluffandpaws.webadopcion.models.Protectora;
+import fluffandpaws.webadopcion.models.Usuario;
 import fluffandpaws.webadopcion.service.AnimalService;
 import fluffandpaws.webadopcion.service.MensajeService;
 import fluffandpaws.webadopcion.service.ProtectoraService;
+import fluffandpaws.webadopcion.service.UsuarioService;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -43,6 +45,9 @@ public class AnimalController {
     @Autowired
     private ProtectoraService servProtectoras;
 
+    @Autowired
+    private UsuarioService servUsuarios;
+
     @ModelAttribute //esto sirve para que si yo soy admin pueda ver el boton de borrado y si no lo soy pues no
     public void addAttributes(Model model, HttpServletRequest request) {
 
@@ -75,13 +80,13 @@ public class AnimalController {
         Animal aux = servAnimales.findById(id).orElseThrow();
         byte[] imagenBytes = aux.getImagenAnimal().getBytes(1, (int) aux.getImagenAnimal().length()); // convertimos Blob a byte[]
         String imagenBase64 = Base64.getEncoder().encodeToString(imagenBytes); // codificamos a base64
-        model.addAttribute("animal", aux.getName());
-        model.addAttribute("description", aux.toString());
+        model.addAttribute("animal", aux);
         model.addAttribute("imagenBase64", imagenBase64); // agregamos el atributo a la vista
-        model.addAttribute("image", aux.getImagenAnimal());
+        model.addAttribute("description", aux.toString());
         return "/temp_Animal/animal";
     }
 
+    /*
     @GetMapping("/animal/image/{id}")
     public ResponseEntity<byte[]> getImage(@PathVariable Long id) {
         Animal animal = servAnimales.getAnimalById(id);
@@ -100,6 +105,7 @@ public class AnimalController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+    */
 
 
     @GetMapping("/crearAnimal")
@@ -137,11 +143,9 @@ public class AnimalController {
 
     @GetMapping("/editAnimal/{id}")
     public String editAnimal(Model model, @PathVariable Long id) {
-
         Optional<Animal> animal = servAnimales.findById(id);
         if (animal.isPresent()) {
             model.addAttribute("animal", animal.get());
-
         }
 
         return "/temp_Animal/editAnimalPage";
@@ -149,40 +153,51 @@ public class AnimalController {
     }
 
     @PostMapping("/editAnimal")
-    public String editAnimalProcess(Model model, Animal animal, boolean removeImage, MultipartFile imageField)
-            throws IOException, SQLException {
-
-        //updateImage(book, removeImage, imageField);
-
+    public String editAnimalProcess(Model model, Animal animal) {
+        Optional<Animal> animalBefore = servAnimales.findById(animal.getId());
+        animal.setPrtOrigen(animalBefore.orElseThrow().getPrtOrigen());
+        animal.setImagenanimal(animalBefore.orElseThrow().getImagenAnimal());
+        animal.setDescription(animal.toString());
         servAnimales.save(animal);
-
         model.addAttribute("animalId", animal.getId());
+        model.addAttribute("animal", animal);
 
         return "redirect:/Animales/"+animal.getId();
     }
 
     @GetMapping("/adoptarAnimal/{id}")
-    public String adoptAnimal(Model model, @PathVariable Long id) {
+    public String adoptAnimal(Model model, @PathVariable Long id, Principal principal) {
 
         Optional<Animal> animal = servAnimales.findById(id);
         if (animal.isPresent()) {
+            Usuario adoptante = servUsuarios.findByUsername(principal.getName());
+            adoptante.adoptar(animal.get()); //Se lo añadimos al usuario adoptante
+            servAnimales.delete(animal.get().getId()); //Lo quitamos de las protectoras y de la página
             model.addAttribute("animal", animal.get());
-
+            model.addAttribute("usuario", adoptante);
         }
-
         return "/temp_Animal/adoptarAnimal";
-
     }
 
+    //TODO EL POST DEBE SER UN FORMULARIO QUE SE MANDA AL SERVICIO INTERNO
     @PostMapping("/adoptarAnimal")
     public String adoptAnimalProcess(@RequestParam Protectora prtId, @ModelAttribute("mensaje") Mensaje msg){ //
         msg.setPrtInstance(prtId);
         servMensajes.save(msg);
-
-        //return "redirect:/Mensajes/" + msg.getId();
-        //return "redirect:/Animales/";
-        //return "redirect:/temp_Animal/todos_animales"
         return "redirect:/Animales/";
+    }
+
+    @GetMapping("/abandonarAnimal/{id}")
+    public String abandonarAnimal(Model model, @PathVariable Long id, Principal principal) {
+        Usuario adoptante = servUsuarios.findByUsername(principal.getName());
+        Animal animal = adoptante.getAdoptado(id);
+        if (animal!=null) { //Si el adoptante tiene a dicho animal
+            model.addAttribute("animal", animal);
+            adoptante.abandonar(animal); //Se lo quitamos al usuario
+            if(servProtectoras.findById(1L).isPresent()) animal.setPrtOrigen(servProtectoras.findById(1L).get());
+            servAnimales.save(animal); //Lo añadimos al servAnimales de las protectoras y de la página
+        }
+        return "/temp_Animal/adoptarAnimal";
     }
 
     public void setAnimalImage(Animal aux, String classpathResource) throws IOException {

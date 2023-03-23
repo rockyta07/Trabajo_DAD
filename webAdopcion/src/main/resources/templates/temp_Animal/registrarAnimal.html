@@ -20,14 +20,14 @@
     <input type='text' name='birthdate'/>
     <p><br>Peso:</p>
     <input type='text' name='weight'/>
-    <p><br>Altura:</p>
-    <input type='text' name='height'/>
+    <p><br>Tamaño:</p>
+    <input type='text' name='size'/>
     <p><br>Imagen: </p>
     <input type='file' name='imagenAnimal' accept=".jpg, .png" />
 
     {{#listaProtectoras}}
       <label>
-        <input type="radio" name="pselected" value="{{id}}">
+        <input type="radio" name="protectora" value="{{id}}">
         {{name}}
       </label>
     {{/listaProtectoras}}

@@ -31,7 +31,7 @@ public class WebUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return usuario.getPass();
+        return usuario.getEncodedPassword();
     }
 
     @Override

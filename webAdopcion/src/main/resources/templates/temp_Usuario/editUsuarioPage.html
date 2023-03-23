@@ -1,24 +1,49 @@
 {{>header}}
 
 <form action="/Usuarios/editUsuario" method="post" enctype="multipart/form-data">
-    <h2>Usuario "{{usuario.name}}"</h2>
-    <h2>Usuario "{{usuario.id}}"</h2>
+    <h2>Usuario con ID: {{usuario.id}} y nombre de usuario "{{usuario.username}}"</h2>
 
     <input type="hidden" name="id" value="{{usuario.id}}" />
     <p>Nombre: </p>
     <input type='text' name='name' value="{{usuario.name}}"/>
+    <p>Apellidos: </p>
+    <input type='text' name='lastname' value="{{usuario.lastname}}"/>
+    <p>Nombre de usuario: </p>
+    <input type='text' name='username' value="{{usuario.username}}"/>
+    <p>DNI/NIE:</p>
+    <input type='text' name='dni' value="{{usuario.dni}}"/>
+    <p><label>Edad:</label></p>
+    <input type="text" name="edad" value="{{usuario.edad}}">
     <p>Correo:</p>
-    <input type='text' name='email' placeholder="Email"/>
-    <p>Nombre de usuario(username)</p>
-    <input type='text' name='username'  placeholder="Username"/>
-    <p>Contraseña</p>
-    <input type='text' name='pass' placeholder="pass"/>
+    <input type='text' name='email' value="{{usuario.email}}"/>
+    <p>Contraseña: </p>
+    <input type='text' name='encodedPassword' placeholder="Contraseña"/>
 
-    <input type="hidden" name="_csrf" value="{{token}}" />
+    {{#logged}}
+    {{#admin}}
+    <p>Roles: </p>
+    <input type='text' name='roles' value="{{usuario.roles}}"/>
+
+    <p>Animales adoptados: </p>
+    {{#animalesAdoptados}}
+        <li><a href="/Usuarios/{{id}}"> {{username}}</a></li>
+    {{/animalesAdoptados}}
     <p>
+        <p><a href="/Usuario/{{id}}">Cancelar</a></p>
         <button onclick="location.href='/Usuario/{{usuario.id}}'">Cancel</button>
+        <input type="hidden" name="_csrf" value="{{token}}" />
         <input type="submit" value="Save" />
     </p>
+    {{/admin}}
+
+    {{^admin}}
+    <p>
+        <p><a href="/Usuarios/account"> Cancelar </a></p>
+        <input type="hidden" name="_csrf" value="{{token}}" />
+        <input type="submit" value="Save" />
+    </p>
+    {{/admin}}
+    {{/logged}}
 </form>
 
 {{>footer}}}
