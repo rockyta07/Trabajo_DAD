@@ -87,28 +87,6 @@ public class AnimalController {
         return "/temp_Animal/animal";
     }
 
-    /*
-    @GetMapping("/animal/image/{id}")
-    public ResponseEntity<byte[]> getImage(@PathVariable Long id) {
-        Animal animal = servAnimales.getAnimalById(id);
-        if (animal == null || animal.getImagenAnimal() == null) {
-            return ResponseEntity.notFound().build();
-        }
-        try {
-            Blob blob = animal.getImagenAnimal();
-            int blobLength = (int) blob.length();
-            byte[] imageBytes = blob.getBytes(1, blobLength);
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.IMAGE_JPEG);
-            headers.setContentLength(imageBytes.length);
-            return new ResponseEntity<>(imageBytes, headers, HttpStatus.OK);
-        } catch (SQLException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
-    */
-
-
     @GetMapping("/crearAnimal")
     public String crearAnimal(Model model){
 
