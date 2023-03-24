@@ -22,7 +22,7 @@ public class CorreoService {
  //  @Value("${service.email}")
     private String service;
 
-
+//Este método se encarga de encapsular los detalles del correo
     public record EmailRequest(String to, String subject, String body) {
     }
 //Tomamos tres argumentos en este metodo,se utiliza la url base y la ruta que se especifica
