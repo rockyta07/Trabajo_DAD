@@ -56,7 +56,7 @@ public class MensajeController {
             List<Mensaje> listMensajesUser = servMensajes.findBySender(usuario.getEmail()); //Esto va a buscar todos los mensajes del usuario loggeado
             model.addAttribute("mails", listMensajesUser);
         }
-        return "/temp_Mensaje/todos_mensajes";
+        return "temp_Mensaje/todos_mensajes";
     }
 
 
@@ -66,13 +66,13 @@ public class MensajeController {
 
         model.addAttribute("msg", aux_mensaje);
 
-        return "/temp_Mensaje/mensaje";
+        return "temp_Mensaje/mensaje";
     }
 
     @GetMapping("/crearMensaje")
     public String crearMensaje(Model model){
         model.addAttribute("listaProtectoras", servProtectoras.findAll());
-        return "/temp_Mensaje/guardarMensaje";
+        return "temp_Mensaje/guardarMensaje";
     }
 
     @PostMapping("/crearMensaje")
@@ -91,7 +91,7 @@ public class MensajeController {
             model.addAttribute("mensaje", mensaje.get());
             model.addAttribute("description", mensaje.toString());
         }
-        return "/temp_Mensaje/mensajeBorrado";
+        return "temp_Mensaje/mensajeBorrado";
     }
 /*
     @PutMapping("/{id}")//para modificar mensaje

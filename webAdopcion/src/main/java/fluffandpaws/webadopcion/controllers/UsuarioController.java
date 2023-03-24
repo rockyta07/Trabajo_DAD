@@ -45,7 +45,7 @@ public class UsuarioController {
 
         model.addAttribute("listUsuarios", listUsr);
 
-        return "/temp_Usuario/todos_usuarios";
+        return "temp_Usuario/todos_usuarios";
     }
 
     @GetMapping("/{id}")//Esto nos retorna el usuario
@@ -53,7 +53,7 @@ public class UsuarioController {
         Usuario adoptante = servUsuarios.findById(id).orElseThrow();
         model.addAttribute("user", adoptante);
 
-        return "/temp_Usuario/usuario";
+        return "temp_Usuario/usuario";
     }
 
     @GetMapping("/{id}/animalesAdoptados")//Esto nos retorna el usuario
@@ -61,7 +61,7 @@ public class UsuarioController {
         Usuario adoptante = servUsuarios.findById(id).orElseThrow();
         model.addAttribute("user", adoptante);
 
-        return "/temp_Usuario/usuario";
+        return "temp_Usuario/usuario";
     }
 
     @GetMapping("/account")//Esto nos retorna el usuario que esta logueado ahora mismo
@@ -73,12 +73,12 @@ public class UsuarioController {
         model.addAttribute("description", usuario.getDescription());
         model.addAttribute("identificacion", usuario.getId());
 
-        return "/temp_Usuario/account";
+        return "temp_Usuario/account";
     }
 
     @GetMapping("/registroUsuario")
     public String registraUsuario(){
-        return "/temp_Usuario/registrarUsuario";
+        return "temp_Usuario/registrarUsuario";
     }
 
     @PostMapping("/registroUsuario")
@@ -100,7 +100,7 @@ public class UsuarioController {
                 return "/forcedLogout";
             }
         }
-        return "/temp_Usuario/usuarioBorrado";
+        return "temp_Usuario/usuarioBorrado";
     }
 
     @GetMapping("/editUsuario/{id}")
@@ -112,7 +112,7 @@ public class UsuarioController {
             model.addAttribute("animalesAdoptados", usuario.get().getAnimalesAdoptados());
         }
 
-        return "/temp_Usuario/editUsuarioPage";
+        return "temp_Usuario/editUsuarioPage";
 
     }
 

@@ -48,7 +48,7 @@ public class ProtectoraController {
 
         model.addAttribute("listaProtectoras", servProtectoras.findAll());
 
-        return "/temp_Protectora/todas_protectoras";
+        return "temp_Protectora/todas_protectoras";
 
     }
 
@@ -62,13 +62,13 @@ public class ProtectoraController {
         model.addAttribute("protectora", prot);
         model.addAttribute("nombre", prot.getName());
         model.addAttribute("description", prot.toString());
-        return "/temp_Protectora/protectora";
+        return "temp_Protectora/protectora";
 
     }
 
     @GetMapping("/crearProtectora")
     public String crearProtectora(){
-        return "/temp_Protectora/registroProtectora";
+        return "temp_Protectora/registroProtectora";
     }
 
     @PostMapping("/crearProtectora")
@@ -82,7 +82,7 @@ public class ProtectoraController {
     public String crearAnimalxProtectora(@PathVariable Long id, Model model){
 
         model.addAttribute("id", id);
-        return "/temp_Protectora/registroAnimalProt";
+        return "temp_Protectora/registroAnimalProt";
     }
 
     @PostMapping("/{idShel}/crear_Animal")
@@ -112,7 +112,7 @@ public class ProtectoraController {
             model.addAttribute("protectora", protectora.get());
         }
 
-        return "/temp_Protectora/editProtectoraPage";
+        return "temp_Protectora/editProtectoraPage";
 
     }
 
@@ -135,6 +135,6 @@ public class ProtectoraController {
             servProtectoras.delete(id);
             model.addAttribute("protectora", protectora.get());
         }
-        return "/temp_Protectora/protectoraBorrada";
+        return "temp_Protectora/protectoraBorrada";
     }
 }
