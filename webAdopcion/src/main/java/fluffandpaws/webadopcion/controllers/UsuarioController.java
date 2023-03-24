@@ -88,12 +88,17 @@ public class UsuarioController {
     }
 
     @GetMapping("/borrarUsuario/{id}")
-    public String removeUsuario(Model model,@PathVariable Long id){
+    public String removeUsuario(Model model,@PathVariable Long id, Principal principal){
         Optional<Usuario> user = servUsuarios.findById(id);
         if(user.isPresent()){
-            servUsuarios.delete(id);
             model.addAttribute("usuario", user.get());
             //model.addAttribute("name", user.get().getName());
+            //user.get().getRoles().size(); //Nos aseguramos que los roles se carguen antes para evitar el error de no session
+            Usuario aux = servUsuarios.findByUsername(principal.getName());
+            servUsuarios.delete(id);
+            if(aux.equals(user.get())){ //Si el usuario que se intenta borrar es él mismo
+                return "/forcedLogout";
+            }
         }
         return "/temp_Usuario/usuarioBorrado";
     }

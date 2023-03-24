@@ -65,7 +65,6 @@ public class MensajeController {
         Mensaje aux_mensaje = servMensajes.findById(id).orElseThrow();
 
         model.addAttribute("msg", aux_mensaje);
-        model.addAttribute("description", aux_mensaje.toString());
 
         return "/temp_Mensaje/mensaje";
     }
@@ -79,6 +78,7 @@ public class MensajeController {
     @PostMapping("/crearMensaje")
     public String crearMensajeProcess(@ModelAttribute("mensaje") Mensaje aux2, @RequestParam Protectora pselected){
         aux2.setPrtInstance(pselected);
+        aux2.setDescription(aux2.toString());
         servMensajes.save(aux2);
         return "redirect:/Mensajes/" + aux2.getId();
     }

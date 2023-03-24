@@ -1,0 +1,8 @@
+{{>header}}
+<!-- Para cuando se borre el usuario que tenía iniciada la sesión-->
+<li><form action="/logout" method="post">
+  <p>Se ha eliminado el usuario que tenía iniciada la sesión</p>
+  <button class="btn btn-default navbar-btn" type="submit" style="background-color: #ffffff">Continuar</button>
+  <input type="hidden" name="_csrf" value="{{token}}" />
+</form></li>
+{{>footer}}

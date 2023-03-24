@@ -96,7 +96,7 @@ public class ProtectoraController {
             aux2.setImagen(true);
         }
 
-
+        aux2.setDescription(aux2.toString());
         aux2.setPrtOrigen(paux);
         servAnimales.save(aux2);
 

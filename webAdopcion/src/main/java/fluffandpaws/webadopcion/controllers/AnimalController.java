@@ -116,7 +116,7 @@ public class AnimalController {
     }
 
     @PostMapping("/crearAnimal")
-    public String crearAnimalProcess(Model model, Animal aux2, MultipartFile imagenAnimal, @RequestParam Protectora pselected) throws IOException{
+    public String crearAnimalProcess(Model model, Animal aux2, MultipartFile imagenAnimal, @RequestParam("protectora") Protectora protectora) throws IOException{
 
 
         if (!imagenAnimal.isEmpty()) {
@@ -124,8 +124,8 @@ public class AnimalController {
             aux2.setImagen(true);
         }
 
-        aux2.setPrtOrigen(pselected);
-
+        aux2.setPrtOrigen(protectora);
+        aux2.setDescription(aux2.toString());
         servAnimales.save(aux2);
         return "redirect:/Animales/" + aux2.getId();
     }

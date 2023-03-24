@@ -33,7 +33,7 @@ public class Usuario {
 
     private String encodedPassword;//Salt de Hash
 
-    @OneToMany(mappedBy="adopter")
+    @OneToMany(mappedBy="adopter", cascade = CascadeType.ALL)
     private List<Animal> animalesAdoptados;
 
     @ElementCollection(fetch = FetchType.EAGER)
@@ -142,6 +142,10 @@ public class Usuario {
 
     public String getDescription() {
         return this.toString();
+    }
+
+    public String getAtrDescription() {
+        return this.description;
     }
 
     public void setDescription(String description) {
