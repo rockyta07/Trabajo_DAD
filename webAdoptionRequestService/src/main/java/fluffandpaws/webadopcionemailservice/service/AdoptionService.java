@@ -27,6 +27,7 @@ public class AdoptionService {
     private Transport transport;
 
     public AdoptionService() throws MessagingException {
+        //TODO Cambiar esto a properties
         Properties properties = new Properties();
         properties.put("mail.smtp.host", "smtp.gmail.com"); //Para usar gmail como servidor smtp
         properties.put("mail.smtp.starttls.enable", "true"); //Para usar TLS
@@ -40,15 +41,12 @@ public class AdoptionService {
         if(transport == null){//importante aqui quitar el distinto de null ya que saltaban errores porque no estaba inicializado
             try{
                 transport = session.getTransport("smtp"); //Usaremos smtp para enviar emails
-                //System.out.println(user);
-                //System.out.println(password);
                 transport.connect("smtp.gmail.com", user, password); ///Nos conectamos al servidor smtp con nuestro usuario y contraseña
             } catch (Exception exception){
                 System.out.println("No se ha podido conectar al servidor smtp");
                 exception.printStackTrace();
                 exception.getCause();
-
-                //Si no se ha podido establecer esta conexion salimos del método, ya que al capturar el error el proceso puede continuar
+                //Si no se ha podido establecer esta conexión salimos del método, ya que al capturar el error el proceso puede continuar
                 return;
             }
         }

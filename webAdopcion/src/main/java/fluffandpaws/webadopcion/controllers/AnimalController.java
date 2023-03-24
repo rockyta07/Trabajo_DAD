@@ -4,10 +4,7 @@ import fluffandpaws.webadopcion.models.Animal;
 import fluffandpaws.webadopcion.models.Mensaje;
 import fluffandpaws.webadopcion.models.Protectora;
 import fluffandpaws.webadopcion.models.Usuario;
-import fluffandpaws.webadopcion.service.AnimalService;
-import fluffandpaws.webadopcion.service.MensajeService;
-import fluffandpaws.webadopcion.service.ProtectoraService;
-import fluffandpaws.webadopcion.service.UsuarioService;
+import fluffandpaws.webadopcion.service.*;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -23,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.security.Principal;
 import java.sql.Blob;
 import java.sql.SQLException;
@@ -47,6 +45,9 @@ public class AnimalController {
 
     @Autowired
     private UsuarioService servUsuarios;
+
+    @Autowired
+    private CorreoService correo;
 
     @ModelAttribute //esto sirve para que si yo soy admin pueda ver el boton de borrado y si no lo soy pues no
     public void addAttributes(Model model, HttpServletRequest request) {
@@ -181,9 +182,10 @@ public class AnimalController {
 
     //TODO EL POST DEBE SER UN FORMULARIO QUE SE MANDA AL SERVICIO INTERNO
     @PostMapping("/adoptarAnimal")
-    public String adoptAnimalProcess(@RequestParam Protectora prtId, @ModelAttribute("mensaje") Mensaje msg){ //
-        msg.setPrtInstance(prtId);
-        servMensajes.save(msg);
+    public String adoptAnimalProcess(Principal principal, Animal animal) throws URISyntaxException {
+        //String adoptante, Animal animal, String destinatario
+        Usuario adoptante = servUsuarios.findByUsername(principal.getName());
+        correo.sendAdoptionRequestMail(animal, adoptante.getEmail());
         return "redirect:/Animales/";
     }
 

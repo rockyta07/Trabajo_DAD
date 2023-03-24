@@ -30,6 +30,9 @@ public class Animal {
     private String size;   //cm
     private String description;
 
+    //Para el servicio interno
+    private String cuerpoCertificado;
+
 
 
     @ManyToOne
@@ -53,6 +56,7 @@ public class Animal {
         this.description = this.toString();
         this.prtOrigen = null;
     }
+
 
     //Getters
 
@@ -174,5 +178,31 @@ public class Animal {
 
     public void setAdopter(Usuario adopter) {
         this.adopter = adopter;
+    }
+
+    public String getCuerpoCertificado() {
+        this.cuerpoCertificado = "¡Hola, " + this.adopter.getName() + "! \n ¡Tenemos buenas noticias! Has concluido el proceso de adopción para " + this.name_anm +
+                ".\n Tu nuevo amigo peludito se encuentra en la protectora \"" +  prtOrigen.getName() + "\" situada en: " + prtOrigen.getLocation() +
+                "Puedes pasar a recogerle de la protectora, los voluntarios te ayudarán con lo que necesites. \n\n" +
+                "------------------------------------------------------------------------------------------ \n" +
+                "| El certificado de adopción es el siguiente: \n" +
+                "------------------------------------------------------------------------------------------ \n" +
+                "| Nombre: " + this.name_anm +
+                "\n| Especie: " + this.species +
+                "\n| Raza: " + this.breed +
+                "\n| Sexo: " + this.gender +
+                "\n| Fecha de nacimiento (estimada): " + this.birthdate +
+                "\n| Protectora: " + this.prtOrigen.getName() +
+                "\n| Vacunado: Si (de todas las vacunas)" +
+                "\n| Castrado: No (la castración corre a cuenta del adoptante y es obligatoria para todos los perros mayores de 9 meses)" +
+                "\n| Tamaño: " + this.size +
+                "\n| Peso actual: " + this.weight +
+                "------------------------------------------------------------------------------------------ \n" +
+                "\n\n ¡Os deseamos una muy feliz aventura!";
+        return cuerpoCertificado;
+    }
+
+    public void setCuerpoCertificado(String cuerpoCertificado) {
+        this.cuerpoCertificado = cuerpoCertificado;
     }
 }

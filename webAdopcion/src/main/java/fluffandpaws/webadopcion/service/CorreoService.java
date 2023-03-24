@@ -1,5 +1,6 @@
 package fluffandpaws.webadopcion.service;
 
+import fluffandpaws.webadopcion.models.Animal;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -24,18 +25,28 @@ public class CorreoService {
 
     public record EmailRequest(String to, String subject, String body) {
     }
+//Tomamos tres argumentos en este metodo,se utiliza la url base y la ruta que se especifica
+    public void sendAdoptionRequestMail(Animal animal, String destinatario)
+            throws URISyntaxException {
+        var url = new URI(service + "/adoptionRequest");
+        String subject=("Adopción aprobada para: " + animal.getName());
+        var adoptionCertificateRequest = new EmailRequest(
+                destinatario,
+                subject,
+                animal.getCuerpoCertificado()
+        );
+        sendAdoptionRequest(adoptionCertificateRequest, url);//llamamos a metodo con el objetico emailrequest y la url que se ha creado
+    }
 
     //Envio una solicitud de correo electronico a la url de la api de correo electronico utilizando
     //un objeto restTemplate, el async sirve para ejecutarse en un hilo separado y bloq el principal
     @Async
-    void sendMail(EmailRequest request, URI url) {
+    void sendAdoptionRequest(EmailRequest request, URI url) {
         var restTemplate = new RestTemplate();
         var head = new HttpHeaders();
         head.setContentType(MediaType.APPLICATION_JSON);
-
-        var reqEntity = new HttpEntity<>(request, head);
-
-        restTemplate.postForEntity(url, reqEntity, EmailRequest.class);
+        var httpEntity = new HttpEntity<>(request, head);
+        restTemplate.postForEntity(url, httpEntity, EmailRequest.class);
     }
 
 
