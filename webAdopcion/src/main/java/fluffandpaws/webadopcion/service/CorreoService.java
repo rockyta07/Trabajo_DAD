@@ -18,9 +18,8 @@ import java.net.URISyntaxException;
 @Service
 @EnableAsync
 public class CorreoService {
-
- //  @Value("${service.email}")
-    private String service;
+    //@Value("${service.email}")
+    private String service="http://localhost:8080";
 
 
     public record EmailRequest(String to, String subject, String body) {
@@ -28,10 +27,10 @@ public class CorreoService {
 //Tomamos tres argumentos en este metodo,se utiliza la url base y la ruta que se especifica
     public void sendAdoptionRequestMail(Animal animal, String destinatario)
             throws URISyntaxException {
-        var url = new URI(service + "/adoptionRequest");
+        var url = new URI(service + "/peticionAdopcion");
         String subject=("Adopción aprobada para: " + animal.getName());
         var adoptionCertificateRequest = new EmailRequest(
-                destinatario,
+                "r.arranz.2020@alumnos.urjc.es",
                 subject,
                 animal.getCuerpoCertificado()
         );
@@ -40,7 +39,7 @@ public class CorreoService {
 
     //Envio una solicitud de correo electronico a la url de la api de correo electronico utilizando
     //un objeto restTemplate, el async sirve para ejecutarse en un hilo separado y bloq el principal
-    @Async
+   // @Async
     void sendAdoptionRequest(EmailRequest request, URI url) {
         var restTemplate = new RestTemplate();
         var head = new HttpHeaders();

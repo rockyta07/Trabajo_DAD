@@ -199,7 +199,7 @@ public class Animal {
                 "\n| Peso actual: " + this.weight +
                 "------------------------------------------------------------------------------------------ \n" +
                 "\n\n ¡Os deseamos una muy feliz aventura!";
-        return cuerpoCertificado;
+        return "hola";
     }
 
     public void setCuerpoCertificado(String cuerpoCertificado) {

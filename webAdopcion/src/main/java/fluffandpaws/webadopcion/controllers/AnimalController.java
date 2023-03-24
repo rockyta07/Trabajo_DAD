@@ -169,22 +169,20 @@ public class AnimalController {
     @GetMapping("/adoptarAnimal/{id}")
     public String adoptAnimal(Model model, @PathVariable Long id, Principal principal) {
 
-        Optional<Animal> animal = servAnimales.findById(id);
-        if (animal.isPresent()) {
-            Usuario adoptante = servUsuarios.findByUsername(principal.getName());
-            adoptante.adoptar(animal.get()); //Se lo añadimos al usuario adoptante
-            servAnimales.delete(animal.get().getId()); //Lo quitamos de las protectoras y de la página
-            model.addAttribute("animal", animal.get());
-            model.addAttribute("usuario", adoptante);
-        }
+        Animal animal = servAnimales.findById(id).orElseThrow();
+        model.addAttribute("animal", animal);
+        //model.addAttribute("usuario", adoptante);
+
         return "/temp_Animal/adoptarAnimal";
     }
 
     //TODO EL POST DEBE SER UN FORMULARIO QUE SE MANDA AL SERVICIO INTERNO
-    @PostMapping("/adoptarAnimal")
-    public String adoptAnimalProcess(Principal principal, Animal animal) throws URISyntaxException {
-        //String adoptante, Animal animal, String destinatario
+    @PostMapping("/adoptar/{id}")
+    public String adoptAnimalProcess(Principal principal, @PathVariable Long id) throws URISyntaxException {
         Usuario adoptante = servUsuarios.findByUsername(principal.getName());
+        Animal animal = servAnimales.findById(id).orElseThrow();
+        animal.setAdopter(adoptante);
+        servAnimales.save(animal);
         correo.sendAdoptionRequestMail(animal, adoptante.getEmail());
         return "redirect:/Animales/";
     }

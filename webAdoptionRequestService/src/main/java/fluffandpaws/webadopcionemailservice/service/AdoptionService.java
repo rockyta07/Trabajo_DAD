@@ -40,8 +40,11 @@ public class AdoptionService {
     public void sendTestMessage(AdoptionCertificate adoptionCertificate){
         if(transport == null){//importante aqui quitar el distinto de null ya que saltaban errores porque no estaba inicializado
             try{
+
                 transport = session.getTransport("smtp"); //Usaremos smtp para enviar emails
                 transport.connect("smtp.gmail.com", user, password); ///Nos conectamos al servidor smtp con nuestro usuario y contraseña
+                System.out.printf(user);
+                System.out.printf(password);
             } catch (Exception exception){
                 System.out.println("No se ha podido conectar al servidor smtp");
                 exception.printStackTrace();
