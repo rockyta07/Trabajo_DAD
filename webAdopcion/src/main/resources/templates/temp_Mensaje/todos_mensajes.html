@@ -8,12 +8,9 @@
     <li><a href="/Mensajes/{{id}}"> {{sender}} </a></li>
     {{/listMsg}}
 </ul>
-<pr></pr>
-<a href="/Mensajes/crearMensaje" ><button>Crear mensaje</button></a>
 {{/admin}}
-
 {{^admin}} <!--Si no es admin-->
-<h1>Mensajes recibidos</h1>
+<h1>Mensajes mandados</h1>
 <ul>
     {{#mails}}
     <li>
@@ -22,7 +19,10 @@
     {{/mails}}
 </ul>
 {{/admin}}
-
+{{^admin}}
+<pr></pr>
+<a href="/Mensajes/crearMensaje" ><button>Crear mensaje</button></a>
+{{/admin}}
 {{/logged}}
 
 {{>footer}}

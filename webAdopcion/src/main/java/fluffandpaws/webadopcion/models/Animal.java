@@ -197,9 +197,10 @@ public class Animal {
                 "\n| Castrado: No (la castración corre a cuenta del adoptante y es obligatoria para todos los perros mayores de 9 meses)" +
                 "\n| Tamaño: " + this.size +
                 "\n| Peso actual: " + this.weight +
+
                 "------------------------------------------------------------------------------------------ \n" +
                 "\n\n ¡Os deseamos una muy feliz aventura!";
-        return "hola";
+        return this.cuerpoCertificado;
     }
 
     public void setCuerpoCertificado(String cuerpoCertificado) {

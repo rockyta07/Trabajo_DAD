@@ -58,7 +58,7 @@ public class AdoptionService {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(user));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(adoptionCertificate.getAddress())); //Esto lo recibes del otro servidor -> hay que implementar ese método: adoptionCertificate.getEmailAdress()
-            message.setSubject("Adopción aprobada");
+            message.setSubject("¡Enhorabuena,adopción aprobada!");
             message.setText(adoptionCertificate.getBody());
             transport.sendMessage(message, message.getAllRecipients()); //Una vez inicializados los valores del mensaje lo enviamos a todos los recipientes
         } catch (MessagingException exception){

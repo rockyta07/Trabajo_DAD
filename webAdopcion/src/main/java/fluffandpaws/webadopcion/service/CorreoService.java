@@ -30,7 +30,7 @@ public class CorreoService {
         var url = new URI(service + "/peticionAdopcion");
         String subject=("Adopción aprobada para: " + animal.getName());
         var adoptionCertificateRequest = new EmailRequest(
-                "r.arranz.2020@alumnos.urjc.es",
+                "marciigmp@gmail.com",
                 subject,
                 animal.getCuerpoCertificado()
         );

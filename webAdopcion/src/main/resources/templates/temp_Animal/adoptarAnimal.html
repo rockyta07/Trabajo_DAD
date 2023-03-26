@@ -4,10 +4,8 @@
 <form action="/Animales/adoptar/{{animal.id}}" method="post">
     <h5>Inicia el proceso de adopción mandándole un mensaje a la protectora</h5>
     <h5>{{animal.name}} se encuentra en la protectora: {{animal.prtOrigen}}</h5>
-
-    <label for="email">Correo electrónico:</label>
-
-    <input type='text' id="email" name='eMailRemitente' required><br><br>
+    <br>
+    <h5>Recibirás un mensaje en cuanto la adopción sea aprobada</h5>
 
     <label for="mensaje">Mensaje:</label><br>
     <textarea id="mensaje" name='content' required></textarea><br><br>
