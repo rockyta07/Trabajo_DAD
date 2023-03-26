@@ -348,9 +348,13 @@ Una vez realizados estos pasos ya podriamos ver nuestra página web a través de
                               Pasos para iniciar la página web una vez creada la máquina virtual
 --------------------------------------------------------------------------------------------------------
 1.Si estas en casa abrir myApps, si estás en clase no es necesario.
+
 2.Ve a la carpeta ssh y abre una terminal desde esa carpeta(Asi nos ahorramos trabajo).
+
 3.Escribe en la terminal: ssh -i Claves.pem ubuntu@10.100.139.69 y pulsa enter(Esto te llevará a la máquina virtual creada en openStack.
+
 4.Ahora directamente ejecutamos ambos jar(el de la web y el del servidor interno) importante hacerlo desde dos terminales distintas porque sino dará error de acceso, para ejecutarlo ponemos en la terminal: java -jar webAdopcion(el nombre se puede completar con la tabulación) y pulsamos enter.
+
 5.Ahora ya podemos ir a google y poner 10.100.139.69:8443 y se abriría nuesta página web.
 
 
