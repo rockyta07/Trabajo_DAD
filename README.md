@@ -346,20 +346,33 @@ ssh -i Clave.pem ubuntu@(ip flotante todo junto con el ubuntu)
 --------------------------------------------------------------------------------------------------------
                                   Despliegue de nuestra web
 --------------------------------------------------------------------------------------------------------
+
+REQUISITOS INICIALES:
+* Java (JRE o JDK)  
+
+    ![image](https://user-images.githubusercontent.com/102741945/226338290-c64cac20-496a-483c-a7af-22cb0534a7d4.png)
+    
+* Añadir puertos 8080 y 8443 a los grupos de seguridad 
+
+    (vamos a security groups de nuevo, creamos un security group especifico para la Fase3, le damos a add rule ponemos "custom tc rule" y en port ponemos 8080 y le damos a add. Añadimos otra "custom tc rule" para el puerto 8443. Vamos a la instancia le damos a la flecha, a esitar security groups, eliminamos el pueto 80 y añado el que acabamos de crear).
+    
+* MySQL
+
+
+Con los requisitos previos ya resueltos podemos empezar a subir el jar:
+
 1.	Generamos el jar correspondiente de la webAdopcion, abrimos una terminal la carpeta en la que se encuentre dicho jar para mayor simplicidad dándole click derecho, ponemos 
 
 ```
-scp -i ~/.ssh/openstack-etsii/(el nombre de la clave privada.pem) webAdopcion.jar ubuntu@(ip):/home/ubuntu
+scp -i ~/.ssh/pathToClavePem/(el nombre de la clave privada.pem) webAdopcion.jar ubuntu@(ipFlotante):/home/ubuntu
 ```
-
-![image](https://user-images.githubusercontent.com/102741945/226338199-ccb2168d-e872-4d3d-9fe6-953d3b6f1135.png)
 
 2.	Hacemos  
 ![image](https://user-images.githubusercontent.com/102741945/226338250-68c0d1e5-ed50-43e9-bae6-d96e241917c9.png)
 
 4.	Si hago ls -la debe de aparecer el jar.
 5.	Nos dira algo del java, así que hay que instalarlo, hay que instalar al menos el 17
- ![image](https://user-images.githubusercontent.com/102741945/226338290-c64cac20-496a-483c-a7af-22cb0534a7d4.png)
+
 
 Así se instala.
 
@@ -380,9 +393,9 @@ Una vez realizados estos pasos ya podriamos ver nuestra página web a través de
 
 2.Ve a la carpeta ssh y abre una terminal desde esa carpeta(Asi nos ahorramos trabajo).
 
-3.Escribe en la terminal: ssh -i Claves.pem ubuntu@10.100.139.69 y pulsa enter(Esto te llevará a la máquina virtual creada en openStack.
+3.Escribe en la terminal: ssh -i Claves.pem ubuntu@10.100.139.69 y pulsa enter (Esto te llevará a la máquina virtual creada en openStack).
 
-4.Ahora directamente ejecutamos ambos jar(el de la web y el del servidor interno) importante hacerlo desde dos terminales distintas porque sino dará error de acceso, para ejecutarlo ponemos en la terminal: java -jar webAdopcion(el nombre se puede completar con la tabulación) y pulsamos enter.
+4.Ahora directamente ejecutamos ambos jar(el de la web y el del servidor interno) importante hacerlo desde dos terminales distintas porque sino dará error de acceso, para ejecutarlo ponemos en la terminal: java -jar webAdopcion (el nombre se puede autocompletar con la tabulación) y pulsamos enter.
 
 5.Ahora ya podemos ir a google y poner 10.100.139.69:8443 y se abriría nuesta página web.
 
