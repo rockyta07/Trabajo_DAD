@@ -73,7 +73,7 @@ public class AnimalController {
         model.addAttribute("listaTodos", listAnimals);
         //model.addAttribute("image", listAnimals.getImage());
 
-        return "/temp_Animal/todos_animales";
+        return "temp_Animal/todos_animales";
     }
 
     @GetMapping("/{id}")//Esto nos retorna el animal
@@ -84,14 +84,14 @@ public class AnimalController {
         model.addAttribute("animal", aux);
         model.addAttribute("imagenBase64", imagenBase64); // agregamos el atributo a la vista
         model.addAttribute("description", aux.toString());
-        return "/temp_Animal/animal";
+        return "temp_Animal/animal";
     }
 
     @GetMapping("/crearAnimal")
     public String crearAnimal(Model model){
 
         model.addAttribute("listaProtectoras", servProtectoras.findAll());
-        return "/temp_Animal/registrarAnimal";
+        return "temp_Animal/registrarAnimal";
     }
 
     @PostMapping("/crearAnimal")
@@ -117,7 +117,7 @@ public class AnimalController {
             servAnimales.delete(id);
             model.addAttribute("animal", animal.get());
         }
-        return "/temp_Animal/animalBorrado";
+        return "temp_Animal/animalBorrado";
     }
 
     @GetMapping("/editAnimal/{id}")
@@ -127,7 +127,7 @@ public class AnimalController {
             model.addAttribute("animal", animal.get());
         }
 
-        return "/temp_Animal/editAnimalPage";
+        return "temp_Animal/editAnimalPage";
 
     }
 
@@ -151,7 +151,7 @@ public class AnimalController {
         model.addAttribute("animal", animal);
         //model.addAttribute("usuario", adoptante);
 
-        return "/temp_Animal/adoptarAnimal";
+        return "temp_Animal/adoptarAnimal";
     }
 
     //TODO EL POST DEBE SER UN FORMULARIO QUE SE MANDA AL SERVICIO INTERNO
@@ -175,7 +175,7 @@ public class AnimalController {
             if(servProtectoras.findById(1L).isPresent()) animal.setPrtOrigen(servProtectoras.findById(1L).get());
             servAnimales.save(animal); //Lo añadimos al servAnimales de las protectoras y de la página
         }
-        return "/temp_Animal/adoptarAnimal";
+        return "temp_Animal/adoptarAnimal";
     }
 
     public void setAnimalImage(Animal aux, String classpathResource) throws IOException {

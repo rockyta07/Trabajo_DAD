@@ -18,27 +18,6 @@ public class GreetingsController {
         return "redirect:/Protectoras/";
     }
 
-    @GetMapping("/about.html")
-    public ModelAndView about(Model model) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("about");
-        return modelAndView;
-    }
-
-    @GetMapping("/contact.html")
-    public ModelAndView contact(Model model) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("contact");
-        return modelAndView;
-    }
-
-    @GetMapping("/gallery.html")
-    public ModelAndView gallery(Model model) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("gallery");
-        return modelAndView;
-    }
-
     @ModelAttribute
     public void addAttributes(Model model, HttpServletRequest request) {
 
