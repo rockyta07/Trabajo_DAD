@@ -15,7 +15,7 @@ public class GreetingsController {
     //Esto es para movernos en las diferentes pantallas
     @GetMapping("/")
     public String index(Model model) {
-        return "redirect:/Protectoras/";
+        return "redirect:/Animales/";
     }
 
     @ModelAttribute
