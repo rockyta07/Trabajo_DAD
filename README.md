@@ -50,31 +50,14 @@ IMPLEMENTACIONES:
 
 https://github.com/rockyta07/Trabajo_DAD/commit/fe3044662324d72fdb1b92f5c464ea95bbb6b181
 
-# MiDocumento
-
-=================
-
 ## Tabla de contenido
 
-- [Introducción](#introducción)
-  - [Propósito](#propósito)
-  - [Audiencia](#audiencia)
-- [Características](#características)
-  - [Funcionalidad](#funcionalidad)
-  - [Limitaciones](#limitaciones)
-  -[Commits de interés](#commits de interés)
-## Introducción
+- [Login y Logout](#login y logout)
 
-...
 
-## Propósito
+## Login y Logout
+Para la implementación de la seguridad nos hemos puesto los siguientes objetivos a cumplir:
 
-...
-
-## Audiencia
-
-...
-##Commits de interés
 
 ## Características
 
