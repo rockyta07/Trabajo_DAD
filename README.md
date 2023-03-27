@@ -6,6 +6,13 @@ Marcia García de la Mata, Rocío Arranz Esteban y Daniel Corredor Padrino
 Para organizarnos usaremos "Trello" al cuál se puede acceder desde el siguiente link:
 https://trello.com/invite/b/fjavwWrE/ATTI966c72349a3704d1d675c1228d98b2338C41BE0D/organizacion-fluffpaws
 
+## FASES DE LA PRÁCTICA
+
+- [Fase 1: Declaración de Objetivos](#fase-1:-declaracion-de-objetivos)
+- [Fase 2: Implementación Funcional](#fase-2:-implementacion-funcional)
+- [Fase 3: Implementación de Seguridad](#fase-3:-implementacion-de-seguridad)
+
+
 # Fase 1: Declaración de Objetivos
 
 Página Web para la adopción de animales las funcionalidades de esta estarán separadas según si son publicas o privadas:
@@ -266,7 +273,7 @@ Cuando abrimos la página web verificamos que se ha creado correctamente el cert
 
 ## Diagrama de clases y templates
 
-![main](https://user-images.githubusercontent.com/102540777/225600693-e444cebb-ff30-47f6-b6f8-5b8edbfe3d0b.png)
+![main](https://user-images.githubusercontent.com/102540777/228085692-49cfce4f-b902-4f0a-b74e-a5ba2aa05c52.png)
 
 
 ## CSRF
