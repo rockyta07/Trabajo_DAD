@@ -276,7 +276,8 @@ un sistema interno que tras la adopción envíe al usuario un correo electrónic
 Para esta implementación usaremos API REST que, mientras no se habla de ella en el apartado de temario correspondiente a la comunicación de aplicaciones distribuidas, es muy útil para nuestra finalidad.
 La implementación del sistema interno la diviremos en dos conexiones, la interacción de parte del usuario con nuestra aplicación principal y la interacción entre las máquinas.
 El cliente interactuará mediante un botón con el cual se tomará su correo electrónico, posteriormente la página web procesará la petición de adopción creando un json que contenga los datos del correo
-electrónico (remitente, asunto y cuerpo) así como los datos del animal a adoptar, el cuál será enviado al servidor API REST quien procesará esa petición y enviará el correo generando el pdf con el certificado.
+electrónico (remitente, asunto y cuerpo) así como los datos del animal a adoptar, el cuál será enviado al servidor API REST quien procesará esa petición y enviará el correo generando el certificado.
+*Importante, cuando el servicio interno accede al gmail, para que pueda acceder sin dar ningún problema se debe de crear una contraseña de aplicación, para ello es necesario hacer la verificación de dos pasos.
 
 - Desplegar el proyecto en una máquina virtual mediante el empaquetado jar
 
