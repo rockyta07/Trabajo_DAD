@@ -50,30 +50,41 @@ IMPLEMENTACIONES:
 
 https://github.com/rockyta07/Trabajo_DAD/commit/fe3044662324d72fdb1b92f5c464ea95bbb6b181
 
-## Tabla de contenido
+Breve descripción del proyecto
 
-- [LoginyLogout](#loginylogout)
+## Tabla de contenidos
 
-
-
-
-
-## Características
-
-...
-
-## Funcionalidad
-
-...
-
-## Limitaciones
-
-...
-
-
-
-
-
+- [Login y Logout](#login-y-logout)
+- [Pantallas privadas y públicas](#pantallas-privadas-y-públicas)
+- [Https](#https)
+- [Diagrama de clases y templates](#diagrama-de-clases-y-templates)
+- [Implementar un servicio interno funcional](#implementar-un-servicio-interno-funcional)
+- [CSRF](#csrf)
+- [Elegir e implementar mecanismos de comunicación](#elegir-e-implementar-mecanismos-de-comunicación)
 
 ## Login y Logout
+
+Breve descripción del proceso de inicio de sesión y cierre de sesión.
+
+## Pantallas privadas y públicas
+
+Explicación de las pantallas o secciones del proyecto que están disponibles públicamente y las que requieren inicio de sesión.
+
+## Https
+
+Explicación de cómo se implementa HTTPS en el proyecto y por qué es importante.
+
+## Diagrama de clases y templates
+
+Descripción de la arquitectura del proyecto y ejemplos de templates utilizados.
+
+## Implementar un servicio interno funcional
+
+Breve descripción de cómo se implementa un servicio interno y su funcionalidad.
+
+## CSRF
+
+Explicación de cómo se protege el proyecto contra ataques CSRF.
+
+## Elegir e implementar mecanismos de comunicación
 Para la implementación de la seguridad nos hemos puesto los siguientes objetivos a cumplir:
