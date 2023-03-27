@@ -47,4 +47,6 @@ IMPLEMENTACIONES:
 * Implementación de la BBDD diseñada.
 * Implementación de Mustache y las plantillas de la web.
 * Pruebas y debugging de la implementación inicial para evaluar los errores y corregirlos en las siguientes versiones.
-44a153fd5d889803f33e1b798f1cf40a36139366
+
+
+commit 44a153fd5d889803f33e1b798f1cf40a36139366
