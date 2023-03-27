@@ -458,3 +458,95 @@ https://github.com/rockyta07/Trabajo_DAD/commit/efb483f9a8d909ab81d76280025e719a
 *Más commits de solución de cosas pequeñas, como privacidad de algún botón,funcionamiento, añadidos,etc.
 
 
+--------------------------------------------------------------------------------------------------------
+                                  Navegación
+--------------------------------------------------------------------------------------------------------
+
+En la página inicial nos encontramos las protectoras con su información principal.
+
+![image](https://user-images.githubusercontent.com/102741945/228020594-6c2a325b-97f5-495a-ae3c-4b8dd8e34aa7.png)
+
+Como no ha iniciado sesión nadie lo unico visible van a ser las protectoras, los animales de cada protectora, el inicio de sesión y el registro.
+
+![image](https://user-images.githubusercontent.com/102741945/228020660-0b602ce3-5bec-4c93-84b5-c1cf2580f406.png)
+
+![image](https://user-images.githubusercontent.com/102741945/228020736-2b1bab91-c6d8-4803-b4eb-cddc1e3d3084.png)
+
+![image](https://user-images.githubusercontent.com/102741945/228020768-fc10e158-e212-4838-a822-6e4b7ee30bbd.png)
+
+Nos vamos a la pantalla de inicio de sesión, tenemos guardados en la base de datos el user(Juan con pass "juan123") ,el user (User con pass "pass") y el admin (admin con pass "adminpass") primeramente ingresaremos con un user.
+
+Al iniciar sesión podemos observar el nombre del usuario en el menú, cerrar sesión y podemos ver botones que sin iniciar sesión no veíamos, por ejemplo cuando pinchamos en un animal nos da la opción de adoptarlo:
+
+![image](https://user-images.githubusercontent.com/102741945/228021560-f5d7b427-9f49-4693-911a-9e1a6b1db865.png)
+
+Ahora nos aparece el apartado de mensajes mandados que si pinchamos en el vemos los mansajes que ha mandado el usuario y tiene la opción de crear nuevos mensajes:
+
+![image](https://user-images.githubusercontent.com/102741945/228022091-326f499d-d148-495d-a048-d7df1e115289.png)
+
+Si escribimos un mensaje nuevo:
+
+![image](https://user-images.githubusercontent.com/102741945/228022486-c0f490b0-e769-4094-aa0f-d61558369f9f.png)
+
+Aparecerá en la lista de mensajes mandados:
+
+![image](https://user-images.githubusercontent.com/102741945/228022618-7a263a64-5994-4cc3-bfc2-d7db17bd36bd.png)
+
+Cuando un usuario pincha en el botón de adoptar, nos redirige a una pantalla con los datos generales de la protectora a la cual pertenece ese animal, tiene un recuadro de mensaje:
+
+![image](https://user-images.githubusercontent.com/102741945/228023049-cc5e5469-3f73-4686-833e-7ada58f1ad79.png)
+
+Cuando pinchamos en enviar, esta solicitud la recibe el servicio interno el cual procesa la solicitud y manda un mensaje( desde el correo fluffandpaws) al correo indicado, con el certificado del animal que queremos adoptar:
+
+![image](https://user-images.githubusercontent.com/102741945/228023921-0a4fadd2-b395-4bc7-a8a8-ff36fa3505a2.png)
+
+Ahora entramos con un administrador:
+
+![image](https://user-images.githubusercontent.com/102741945/228024085-230fe841-18db-4336-b4f6-a983e920e2b0.png)
+
+Como podemos observar ya hay más botones disponibles, los cuales el usuario no podía ver, por ejemplo el de crear protectora.
+Dentro de la protectora también tenemos más opciones como admin:
+
+![image](https://user-images.githubusercontent.com/102741945/228024298-172a75a1-588b-4d3c-9bae-6585af3ff635.png)
+
+En el apartado de animales pasa lo mismo:
+
+![image](https://user-images.githubusercontent.com/102741945/228024400-e1780c62-4cb9-4df1-b061-d1a327e65c69.png)
+
+![image](https://user-images.githubusercontent.com/102741945/228024438-d83be82c-efd0-43e5-8d94-cb1e39d09bcd.png)
+
+El admin es el único que puede ver el apartado de usuarios con todos los usuarios que están registrados:
+
+![image](https://user-images.githubusercontent.com/102741945/228024567-32d7d0f6-4cc1-4859-a00f-d79cc268c771.png)
+
+Si pincha en un usuario puede visualizar toda la información
+
+![image](https://user-images.githubusercontent.com/102741945/228024727-b964ba37-4b67-4549-bb80-ab752de178cc.png)
+
+Por último vamos a la sección de registro, registrando por ejemplo a un usuario llamado Manolo:
+
+![image](https://user-images.githubusercontent.com/102741945/228025292-a889c046-dcb9-4888-a08a-c6bba0c989d2.png)
+
+Una vez registrado:
+
+![image](https://user-images.githubusercontent.com/102741945/228025376-40f04965-4f1b-4381-afb3-109ca9a3f001.png)
+
+Ahora en usuario visualizamos a Manolo:
+
+![image](https://user-images.githubusercontent.com/102741945/228025488-1336cf99-fad4-4286-b589-ad720d435e56.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
