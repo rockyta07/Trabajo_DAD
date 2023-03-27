@@ -62,7 +62,7 @@ https://github.com/rockyta07/Trabajo_DAD/commit/fe3044662324d72fdb1b92f5c464ea95
 - [Características](#características)
   - [Funcionalidad](#funcionalidad)
   - [Limitaciones](#limitaciones)
-
+  -[Commits de interés](#commits de interés)
 ## Introducción
 
 ...
@@ -74,6 +74,7 @@ https://github.com/rockyta07/Trabajo_DAD/commit/fe3044662324d72fdb1b92f5c464ea95
 ## Audiencia
 
 ...
+##Commits de interés
 
 ## Características
 
