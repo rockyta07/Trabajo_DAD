@@ -304,7 +304,7 @@ Esquema de la comunicación
 Resumen de lo que hay que hacer con openstack:
 
 --------------------------------------------------------------------------------------------------------
-                                        Preparación de claves
+                                            Preparación de claves
 --------------------------------------------------------------------------------------------------------
 Hay que crear una clave pública y privada (clave asimétrica) -> la clave privada es para conectarse a la máquina.
 
@@ -314,7 +314,7 @@ Hay que crear una clave pública y privada (clave asimétrica) -> la clave priva
 4.	Me sale un cuadro de dialogo para descargarlo (no perderlo porque sino no podemos acceder) el cual guardaremos en una carpeta .ssh.
 
 --------------------------------------------------------------------------------------------------------
-                                   Instancias y grupos de seguridad
+                                         Instancias y grupos de seguridad
 --------------------------------------------------------------------------------------------------------
 El objetivo es crear una instancia y asignarla a las claves para esto seguiremos los siguientes pasos en OpenStack (habiendo ya iniciado sesión con las credenciales dadas):
 
@@ -350,7 +350,7 @@ Vamos al navegador copiamos la IP flotante y se queda pensando (si esto pasa, si
 9.	Volvemos a buscar la IP flotante en el buscador y ya me devuelve el welcome de test.
 
 --------------------------------------------------------------------------------------------------------
-                                       Acceso desde myapps
+                                              Acceso desde myapps
 --------------------------------------------------------------------------------------------------------
 Para acceder con el navegador al servidor haciendo uso de las ips flotantes debemos tener en cuenta que por una restricción del servidor, solo podremos acceder a él mediante el myapps. Los pasos a seguir en este caso son muy parecidos a los de arriba, con la pequeña puntualización de que la ruta de la clave pem tendrá más o menos este aspecto (dependiendo de nuevo de donde hayamos guardado inicialmente la carpeta .ssh):
 
@@ -365,7 +365,7 @@ ssh -i Clave.pem ubuntu@(ip flotante todo junto con el ubuntu)
 ```
 
 --------------------------------------------------------------------------------------------------------
-                                  Despliegue de nuestra web
+                                             Despliegue de nuestra web
 --------------------------------------------------------------------------------------------------------
 
 REQUISITOS INICIALES:
