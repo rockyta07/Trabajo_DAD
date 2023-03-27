@@ -279,6 +279,11 @@ El cliente interactuará mediante un botón con el cual se tomará su correo ele
 electrónico (remitente, asunto y cuerpo) así como los datos del animal a adoptar, el cuál será enviado al servidor API REST quien procesará esa petición y enviará el correo generando el certificado.
 *Importante, cuando el servicio interno accede al gmail, para que pueda acceder sin dar ningún problema se debe de crear una contraseña de aplicación, para ello es necesario hacer la verificación de dos pasos.
 
+Esquema de la comunicación
+
+![image](https://user-images.githubusercontent.com/102741945/227959559-a73ee24d-1141-4c65-9e30-2e291a4b6215.png)
+
+
 - Desplegar el proyecto en una máquina virtual mediante el empaquetado jar
 
 Resumen de lo que hay que hacer con openstack:
@@ -400,6 +405,56 @@ Una vez realizados estos pasos ya podriamos ver nuestra página web a través de
 
 5.Ahora ya podemos ir a google y poner 10.100.139.69:8443 y se abriría nuesta página web.
 
+--------------------------------------------------------------------------------------------------------
+                                  Commits de interés de cada uno 
+--------------------------------------------------------------------------------------------------------
 
+Marcia García De La Mata Pinto
+
+-Login controller+ security : Aqui se muestra el loginwebController->
+
+https://github.com/rockyta07/Trabajo_DAD/commit/30447fc84d8e2afe91702f96f86db8e8d0b9814b
+
+-addsecurity files : usuario con su contraseña cifrada, CSRFHandlerConfiguration, RepositoryUserDetailsService, webSecurityConfig. ->
+
+https://github.com/rockyta07/Trabajo_DAD/commit/f0829d246711dabceedbc80b94bf206100f6239e
+
+-addPasswordencoded: en datainit ->
+
+https://github.com/rockyta07/Trabajo_DAD/commit/1c6fd491cde91ee64e00290e3ba142d86b992161
+
+-creacion de certificado con keytool: Creación del certificado(keystore.jks), añadidos aplication properties. ->
+
+https://github.com/rockyta07/Trabajo_DAD/commit/d4ab55daad76c314d45e4a401d60e40fc19582ed
+
+-Añadida privacidad + modificacionesparalogin: completar la privacidad de las paginas en websecurityconfig. ->
+
+https://github.com/rockyta07/Trabajo_DAD/commit/087d70d094c6f5ae332a17275981fcb470254f18
+
+-login funcionando: modificaciones que hicieron que el login funcionase. ->
+
+https://github.com/rockyta07/Trabajo_DAD/commit/44a153fd5d889803f33e1b798f1cf40a36139366
+
+-Solucionado registro(encriptado) + add correoService(para el servicio interno). ->
+
+https://github.com/rockyta07/Trabajo_DAD/commit/1f8567558a38f544bd7c881f67dcc1f495eda81a
+
+-API Rest funcionando: Modificaciones para que funcione bien API REST ->
+
+https://github.com/rockyta07/Trabajo_DAD/commit/3e50293453a3992191a5adb054605306666a926e
+
+-Servicio interno funcionando: modificaciones para que funcione bien toda la comunicación con servicio interno. ->
+
+https://github.com/rockyta07/Trabajo_DAD/commit/fe3044662324d72fdb1b92f5c464ea95bbb6b181
+
+-boton de borrado solo admin(solucinado): lo relevante de este commit es añadir las variables logged, name y admin en cada controllador para poder usarlo en los html y así poder privatizar las páginas. ->
+
+https://github.com/rockyta07/Trabajo_DAD/commit/7123212cb36d9c071dcc28dea1b1722c0bd19efc
+
+-Modificacion mensajes + se muestra certificado entero: modificacion para que solo pueda crear mensaje el user y que al comunicarse con el servicio interno este le muestre el certificado entero de adopcion. ->
+
+https://github.com/rockyta07/Trabajo_DAD/commit/efb483f9a8d909ab81d76280025e719ad84e34be
+
+*Más commits de solución de cosas pequeñas, como privacidad de algún botón,funcionamiento, añadidos,etc.
 
 
