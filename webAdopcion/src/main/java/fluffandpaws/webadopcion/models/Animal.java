@@ -198,7 +198,7 @@ public class Animal {
                 "\n| Tamaño: " + this.size +
                 "\n| Peso actual: " + this.weight +
 
-                "------------------------------------------------------------------------------------------ \n" +
+                "\n------------------------------------------------------------------------------------------ \n" +
                 "\n\n ¡Os deseamos una muy feliz aventura!";
         return this.cuerpoCertificado;
     }

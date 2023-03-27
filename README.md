@@ -6,7 +6,14 @@ Marcia García de la Mata, Rocío Arranz Esteban y Daniel Corredor Padrino
 Para organizarnos usaremos "Trello" al cuál se puede acceder desde el siguiente link:
 https://trello.com/invite/b/fjavwWrE/ATTI966c72349a3704d1d675c1228d98b2338C41BE0D/organizacion-fluffpaws
 
-# Fase 1: Declaración de Objetivos
+## FASES DE LA PRÁCTICA
+
+- [Fase 1: Declaración de Objetivos](#fase-1-declaracion-de-objetivos)
+- [Fase 2: Implementación Funcional](#fase-2-implementacion-funcional)
+- [Fase 3: Implementación de Seguridad](#fase-3-implementacion-de-seguridad)
+
+
+## Fase 1: Declaración de Objetivos
 
 Página Web para la adopción de animales las funcionalidades de esta estarán separadas según si son publicas o privadas:
 - Privadas:
@@ -33,7 +40,7 @@ Los visitantes no necesitan perfiles para hacer uso de la web ni nombres de usua
 
 Las protectoras son una entidad diferente a las otras dos mencionadas anteriormente. Deberán tener un perfil público completo, este se dara de alta mediante un proceso que asegure que la protectora es efectivamente una registrada y no es un grupo de crianza ilegal, por ejemplo. Tendrá un usuario elegido por la propia protectora y será capaz de crear entradas con tarjetas de información de cada uno de los animales en adopción teniendo que rellenar obligatoriamente los campos básicos.
 
-# Fase 2: Implementación Funcional
+## Fase 2: Implementación Funcional
 
 Durante el desarrollo de la base de datos nos hemos puesto los siguientes objetivos a cumplir:
 
@@ -221,7 +228,21 @@ Los setId nos generaban problemas con mustache, aparecía como si algún objeto 
 Mustache no coge bien los nombres de los atributos de cada entidad y a la hora de ponerlos en los html mustache de editar nos daba el error de que no encontraba el atributo, hemos conseguido que la mayoria de atributos los encuentre (probando con minusculas, mayúsculas,etc).
 
 
-# Fase 3: Implementación de Seguridad
+## Fase 3: Implementación de Seguridad
+
+## Tabla de contenidos
+
+- [Login y Logout](#login-y-logout)
+- [Pantallas privadas y públicas](#pantallas-privadas-y-públicas)
+- [Https](#https)
+- [Diagrama de clases y templates](#diagrama-de-clases-y-templates)
+- [CSRF](#csrf)
+- [Elegir e implementar mecanismos de comunicación](#elegir-e-implementar-mecanismos-de-comunicación)
+- [Desplegar el proyecto en una máquina virtual](#desplegar-el-proyecto-en-una-máquina-virtual)
+- [Commits de interés de cada uno](#commits-de-interés-de-cada-uno)
+- [Navegación](#navegación)
+
+## Login y Logout
 
 Para la implementación de la seguridad nos hemos puesto los siguientes objetivos a cumplir:
 
@@ -230,7 +251,7 @@ Para la implementación de la seguridad nos hemos puesto los siguientes objetivo
 ![readme](https://user-images.githubusercontent.com/102540777/227144118-ebfc3553-4148-469b-8b7e-9a899e08afee.png)
 
 
-- Establecer que pantallas son públicas y cuáles privadas: 
+## Pantallas privadas y públicas
 
 Para comenzar la separación de las vistas en nuestra página web diseñamos sobre el papel un sketch 
 de cuales queríamos que fuesen accesibles para los usuarios no registrados y cuales no, separando a su vez las privadas entre las pantallas que serán 
@@ -239,7 +260,9 @@ exclusivamente para los usuarios "USER" y las que serán para los usuarios de ti
 ![Captura de pantalla 2023-03-23 013647](https://user-images.githubusercontent.com/102540777/227144443-72856284-ba4f-4988-b3e0-632c9f362c53.png)
 
 Hemos incluido una carpeta llamada security para incluir todos los archivos de seguridad, uno de ellos es WebSecurityConfig en el cual indicamos que pantallas y que opciones son publicas y privadas con el permitAll() (publicas) y hasAnyRole( indica que son privadas y luego dentro de que sean privadas dependiendo de que rol se tenga permite realizar unas cosas u otras).
-- Convertir nuestra aplicación en https
+
+## Https
+
 En primer lugar se ha creado un certificado con keytool, para ello en el cmd se ha incluido lo siguiente:
 ![image](https://user-images.githubusercontent.com/102741945/225415225-0d6a1ab8-8e8f-459b-a05f-4633b5453560.png)
 Esto lo que hace es crearte la certificación y un fichero keystore.jks que contiene el certificado autofirmado generado con la herramienta del JDK keytool.
@@ -248,14 +271,14 @@ Cuando abrimos la página web verificamos que se ha creado correctamente el cert
 
 ![image](https://user-images.githubusercontent.com/102741945/225416252-457633ef-8860-4c27-8ae3-582f229f430d.png)
 
-- El diagrama de clases y templates resultantes es: 
+## Diagrama de clases y templates
 
-![main](https://user-images.githubusercontent.com/102540777/225600693-e444cebb-ff30-47f6-b6f8-5b8edbfe3d0b.png)
-
-- Implementar el servicio interno funcional en un proceso separado
+![main](https://user-images.githubusercontent.com/102540777/228085692-49cfce4f-b902-4f0a-b74e-a5ba2aa05c52.png)
 
 
-- En nuestra aplicación hacemos uso de tokens generados por un interceptor para protegernos minimamente de los ataques CSRF (Cross Site Request Forgery)
+## CSRF
+
+En nuestra aplicación hacemos uso de tokens generados por un interceptor para protegernos minimamente de los ataques CSRF (Cross Site Request Forgery)
 los cuales implementamos de la siguiente manera:
 
 ![readme2](https://user-images.githubusercontent.com/102540777/227144230-2ec8ef7d-6067-47c6-b44d-bb45a4c0c8b5.png)
@@ -265,7 +288,7 @@ La clase CSRFHandlerInterceptor es la implementación del interceptor que se eje
 El método postHandle en esta clase verifica si la solicitud incluye un objeto CsrfToken. 
 Si es así, el método agrega el token al objeto ModelAndView que se utiliza para renderizar la vista, la cual puede usar el token para protegerse contra ataques CSRF.
 
-- Elegir e implementar el mecanismo de comunicación
+## Elegir e implementar mecanismos de comunicación
 
 Para implementar el servicio interno de nuestra página, inicialmente pensamos en usar webSocket pero enseguida nos vimos limitadas por el tiempo y la escasez de ejemplos para nuestra idea.
 Nuestro servicio interno requeriría de una comunicación cliente-cliente si implementasemos la funcionalidad de chat en vivo (el cúal tampoco es en sí un sistema interno del tipo que se requería),
@@ -283,13 +306,12 @@ Esquema de la comunicación
 
 ![image](https://user-images.githubusercontent.com/102741945/227959559-a73ee24d-1141-4c65-9e30-2e291a4b6215.png)
 
-
-- Desplegar el proyecto en una máquina virtual mediante el empaquetado jar
+## Desplegar el proyecto en una máquina virtual
 
 Resumen de lo que hay que hacer con openstack:
 
 --------------------------------------------------------------------------------------------------------
-                                        Preparación de claves
+                                            Preparación de claves
 --------------------------------------------------------------------------------------------------------
 Hay que crear una clave pública y privada (clave asimétrica) -> la clave privada es para conectarse a la máquina.
 
@@ -299,7 +321,7 @@ Hay que crear una clave pública y privada (clave asimétrica) -> la clave priva
 4.	Me sale un cuadro de dialogo para descargarlo (no perderlo porque sino no podemos acceder) el cual guardaremos en una carpeta .ssh.
 
 --------------------------------------------------------------------------------------------------------
-                                   Instancias y grupos de seguridad
+                                         Instancias y grupos de seguridad
 --------------------------------------------------------------------------------------------------------
 El objetivo es crear una instancia y asignarla a las claves para esto seguiremos los siguientes pasos en OpenStack (habiendo ya iniciado sesión con las credenciales dadas):
 
@@ -335,7 +357,7 @@ Vamos al navegador copiamos la IP flotante y se queda pensando (si esto pasa, si
 9.	Volvemos a buscar la IP flotante en el buscador y ya me devuelve el welcome de test.
 
 --------------------------------------------------------------------------------------------------------
-                                       Acceso desde myapps
+                                              Acceso desde myapps
 --------------------------------------------------------------------------------------------------------
 Para acceder con el navegador al servidor haciendo uso de las ips flotantes debemos tener en cuenta que por una restricción del servidor, solo podremos acceder a él mediante el myapps. Los pasos a seguir en este caso son muy parecidos a los de arriba, con la pequeña puntualización de que la ruta de la clave pem tendrá más o menos este aspecto (dependiendo de nuevo de donde hayamos guardado inicialmente la carpeta .ssh):
 
@@ -350,7 +372,7 @@ ssh -i Clave.pem ubuntu@(ip flotante todo junto con el ubuntu)
 ```
 
 --------------------------------------------------------------------------------------------------------
-                                  Despliegue de nuestra web
+                                             Despliegue de nuestra web
 --------------------------------------------------------------------------------------------------------
 
 REQUISITOS INICIALES:
@@ -405,9 +427,8 @@ Una vez realizados estos pasos ya podriamos ver nuestra página web a través de
 
 5.Ahora ya podemos ir a google y poner 10.100.139.69:8443 y se abriría nuesta página web.
 
---------------------------------------------------------------------------------------------------------
-                                  Commits de interés de cada uno 
---------------------------------------------------------------------------------------------------------
+## Commits de interés de cada uno
+
 
 Marcia García De La Mata Pinto
 
@@ -458,9 +479,7 @@ https://github.com/rockyta07/Trabajo_DAD/commit/efb483f9a8d909ab81d76280025e719a
 *Más commits de solución de cosas pequeñas, como privacidad de algún botón,funcionamiento, añadidos,etc.
 
 
---------------------------------------------------------------------------------------------------------
-                                  Navegación
---------------------------------------------------------------------------------------------------------
+## Navegación
 
 En la página inicial nos encontramos las protectoras con su información principal.
 
