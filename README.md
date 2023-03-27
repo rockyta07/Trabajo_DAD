@@ -55,8 +55,7 @@ https://github.com/rockyta07/Trabajo_DAD/commit/fe3044662324d72fdb1b92f5c464ea95
 - [LoginyLogout](#loginylogout)
 
 
-## Login y Logout
-Para la implementación de la seguridad nos hemos puesto los siguientes objetivos a cumplir:
+
 
 
 ## Características
@@ -70,3 +69,11 @@ Para la implementación de la seguridad nos hemos puesto los siguientes objetivo
 ## Limitaciones
 
 ...
+
+
+
+
+
+
+## Login y Logout
+Para la implementación de la seguridad nos hemos puesto los siguientes objetivos a cumplir:
