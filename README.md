@@ -48,5 +48,4 @@ IMPLEMENTACIONES:
 * Implementación de Mustache y las plantillas de la web.
 * Pruebas y debugging de la implementación inicial para evaluar los errores y corregirlos en las siguientes versiones.
 
-
-commit 44a153fd5d889803f33e1b798f1cf40a36139366
+https://github.com/rockyta07/Trabajo_DAD/commit/fe3044662324d72fdb1b92f5c464ea95bbb6b181
