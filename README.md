@@ -40,7 +40,7 @@ Los visitantes no necesitan perfiles para hacer uso de la web ni nombres de usua
 
 Las protectoras son una entidad diferente a las otras dos mencionadas anteriormente. Deberán tener un perfil público completo, este se dara de alta mediante un proceso que asegure que la protectora es efectivamente una registrada y no es un grupo de crianza ilegal, por ejemplo. Tendrá un usuario elegido por la propia protectora y será capaz de crear entradas con tarjetas de información de cada uno de los animales en adopción teniendo que rellenar obligatoriamente los campos básicos.
 
-# Fase 2: Implementación Funcional
+## Fase 2: Implementación Funcional
 
 Durante el desarrollo de la base de datos nos hemos puesto los siguientes objetivos a cumplir:
 
@@ -228,7 +228,7 @@ Los setId nos generaban problemas con mustache, aparecía como si algún objeto 
 Mustache no coge bien los nombres de los atributos de cada entidad y a la hora de ponerlos en los html mustache de editar nos daba el error de que no encontraba el atributo, hemos conseguido que la mayoria de atributos los encuentre (probando con minusculas, mayúsculas,etc).
 
 
-# Fase 3: Implementación de Seguridad
+## Fase 3: Implementación de Seguridad
 
 ## Tabla de contenidos
 
