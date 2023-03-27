@@ -8,12 +8,12 @@ https://trello.com/invite/b/fjavwWrE/ATTI966c72349a3704d1d675c1228d98b2338C41BE0
 
 ## FASES DE LA PRÁCTICA
 
-- [Fase 1: Declaración de Objetivos](#fase-1-declaracion-de-objetivos)
+- [Fase 1: Declaración de Objetivos](#fase-1:-declaracion-de-objetivos)
 - [Fase 2: Implementación Funcional](#fase-2-implementacion-funcional)
 - [Fase 3: Implementación de Seguridad](#fase-3-implementacion-de-seguridad)
 
 
-# Fase 1: Declaración de Objetivos
+# Fase 1\: Declaración de Objetivos
 
 Página Web para la adopción de animales las funcionalidades de esta estarán separadas según si son publicas o privadas:
 - Privadas:
