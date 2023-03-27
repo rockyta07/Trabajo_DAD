@@ -229,7 +229,6 @@ Mustache no coge bien los nombres de los atributos de cada entidad y a la hora d
 - [Pantallas privadas y públicas](#pantallas-privadas-y-públicas)
 - [Https](#https)
 - [Diagrama de clases y templates](#diagrama-de-clases-y-templates)
-- [Implementar un servicio interno funcional](#implementar-un-servicio-interno-funcional)
 - [CSRF](#csrf)
 - [Elegir e implementar mecanismos de comunicación](#elegir-e-implementar-mecanismos-de-comunicación)
 - [Desplegar el proyecto en una máquina virtual](#desplegar-el-proyecto-en-una-máquina-virtual)
@@ -269,10 +268,9 @@ Cuando abrimos la página web verificamos que se ha creado correctamente el cert
 
 ![main](https://user-images.githubusercontent.com/102540777/225600693-e444cebb-ff30-47f6-b6f8-5b8edbfe3d0b.png)
 
-## Implementar un servicio interno funcional
-
 
 ## CSRF
+
 En nuestra aplicación hacemos uso de tokens generados por un interceptor para protegernos minimamente de los ataques CSRF (Cross Site Request Forgery)
 los cuales implementamos de la siguiente manera:
 
