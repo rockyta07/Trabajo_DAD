@@ -223,6 +223,21 @@ Mustache no coge bien los nombres de los atributos de cada entidad y a la hora d
 
 # Fase 3: Implementación de Seguridad
 
+## Tabla de contenidos
+
+- [Login y Logout](#login-y-logout)
+- [Pantallas privadas y públicas](#pantallas-privadas-y-públicas)
+- [Https](#https)
+- [Diagrama de clases y templates](#diagrama-de-clases-y-templates)
+- [Implementar un servicio interno funcional](#implementar-un-servicio-interno-funcional)
+- [CSRF](#csrf)
+- [Elegir e implementar mecanismos de comunicación](#elegir-e-implementar-mecanismos-de-comunicación)
+- [Desplegar el proyecto en una máquina virtual](#desplegar-el-proyecto-en-una-máquina-virtual)
+- [Commits de interés de cada uno](#commits-de-interés-de-cada-uno)
+- [Navegación](#navegación)
+
+## Login y Logout
+
 Para la implementación de la seguridad nos hemos puesto los siguientes objetivos a cumplir:
 
 - Añadir las funciones de login (con su respectivo html de error) y logout para usuarios ya existentes y para los que aún no existen, registrarse.
@@ -230,7 +245,7 @@ Para la implementación de la seguridad nos hemos puesto los siguientes objetivo
 ![readme](https://user-images.githubusercontent.com/102540777/227144118-ebfc3553-4148-469b-8b7e-9a899e08afee.png)
 
 
-- Establecer que pantallas son públicas y cuáles privadas: 
+## Pantallas privadas y públicas
 
 Para comenzar la separación de las vistas en nuestra página web diseñamos sobre el papel un sketch 
 de cuales queríamos que fuesen accesibles para los usuarios no registrados y cuales no, separando a su vez las privadas entre las pantallas que serán 
@@ -239,7 +254,9 @@ exclusivamente para los usuarios "USER" y las que serán para los usuarios de ti
 ![Captura de pantalla 2023-03-23 013647](https://user-images.githubusercontent.com/102540777/227144443-72856284-ba4f-4988-b3e0-632c9f362c53.png)
 
 Hemos incluido una carpeta llamada security para incluir todos los archivos de seguridad, uno de ellos es WebSecurityConfig en el cual indicamos que pantallas y que opciones son publicas y privadas con el permitAll() (publicas) y hasAnyRole( indica que son privadas y luego dentro de que sean privadas dependiendo de que rol se tenga permite realizar unas cosas u otras).
-- Convertir nuestra aplicación en https
+
+## Https
+
 En primer lugar se ha creado un certificado con keytool, para ello en el cmd se ha incluido lo siguiente:
 ![image](https://user-images.githubusercontent.com/102741945/225415225-0d6a1ab8-8e8f-459b-a05f-4633b5453560.png)
 Esto lo que hace es crearte la certificación y un fichero keystore.jks que contiene el certificado autofirmado generado con la herramienta del JDK keytool.
@@ -248,14 +265,15 @@ Cuando abrimos la página web verificamos que se ha creado correctamente el cert
 
 ![image](https://user-images.githubusercontent.com/102741945/225416252-457633ef-8860-4c27-8ae3-582f229f430d.png)
 
-- El diagrama de clases y templates resultantes es: 
+## Diagrama de clases y templates
 
 ![main](https://user-images.githubusercontent.com/102540777/225600693-e444cebb-ff30-47f6-b6f8-5b8edbfe3d0b.png)
 
-- Implementar el servicio interno funcional en un proceso separado
+## Implementar un servicio interno funcional
 
 
-- En nuestra aplicación hacemos uso de tokens generados por un interceptor para protegernos minimamente de los ataques CSRF (Cross Site Request Forgery)
+## CSRF
+En nuestra aplicación hacemos uso de tokens generados por un interceptor para protegernos minimamente de los ataques CSRF (Cross Site Request Forgery)
 los cuales implementamos de la siguiente manera:
 
 ![readme2](https://user-images.githubusercontent.com/102540777/227144230-2ec8ef7d-6067-47c6-b44d-bb45a4c0c8b5.png)
@@ -265,7 +283,7 @@ La clase CSRFHandlerInterceptor es la implementación del interceptor que se eje
 El método postHandle en esta clase verifica si la solicitud incluye un objeto CsrfToken. 
 Si es así, el método agrega el token al objeto ModelAndView que se utiliza para renderizar la vista, la cual puede usar el token para protegerse contra ataques CSRF.
 
-- Elegir e implementar el mecanismo de comunicación
+## Elegir e implementar mecanismos de comunicación
 
 Para implementar el servicio interno de nuestra página, inicialmente pensamos en usar webSocket pero enseguida nos vimos limitadas por el tiempo y la escasez de ejemplos para nuestra idea.
 Nuestro servicio interno requeriría de una comunicación cliente-cliente si implementasemos la funcionalidad de chat en vivo (el cúal tampoco es en sí un sistema interno del tipo que se requería),
@@ -283,8 +301,7 @@ Esquema de la comunicación
 
 ![image](https://user-images.githubusercontent.com/102741945/227959559-a73ee24d-1141-4c65-9e30-2e291a4b6215.png)
 
-
-- Desplegar el proyecto en una máquina virtual mediante el empaquetado jar
+## Desplegar el proyecto en una máquina virtual
 
 Resumen de lo que hay que hacer con openstack:
 
@@ -405,9 +422,8 @@ Una vez realizados estos pasos ya podriamos ver nuestra página web a través de
 
 5.Ahora ya podemos ir a google y poner 10.100.139.69:8443 y se abriría nuesta página web.
 
---------------------------------------------------------------------------------------------------------
-                                  Commits de interés de cada uno 
---------------------------------------------------------------------------------------------------------
+## Commits de interés de cada uno
+
 
 Marcia García De La Mata Pinto
 
@@ -458,9 +474,7 @@ https://github.com/rockyta07/Trabajo_DAD/commit/efb483f9a8d909ab81d76280025e719a
 *Más commits de solución de cosas pequeñas, como privacidad de algún botón,funcionamiento, añadidos,etc.
 
 
---------------------------------------------------------------------------------------------------------
-                                  Navegación
---------------------------------------------------------------------------------------------------------
+## Navegación
 
 En la página inicial nos encontramos las protectoras con su información principal.
 
