@@ -386,8 +386,53 @@ REQUISITOS INICIALES:
 
     (vamos a security groups de nuevo, creamos un security group especifico para la Fase3, le damos a add rule ponemos "custom tc rule" y en port ponemos 8080 y le damos a add. Añadimos otra "custom tc rule" para el puerto 8443. Vamos a la instancia le damos a la flecha, a esitar security groups, eliminamos el pueto 80 y añado el que acabamos de crear).
     
-* MySQL
+* MySQL 
 
+    Esta es la parte más tediosa del despliegue ya que instalaremos mysql y crearemos tanto los usuarios como la base de datos a la que se conectará la página web.
+    
+    - Para esto instalaremos MySQL con el siguiente comando:
+    ```
+    sudo apt install mysql-server
+    ```
+    
+    - Luego nos aseguramos de que se ha instalado correctamente con:
+    ```
+    mysql --version   
+    ```
+
+    - Una vez instalado, podremos acceder como root a MySQL lo cual nos abrirá un prompt "mysql>":
+    ```
+    sudo mysql -u root
+    ```
+    
+    - Para ver cuales son los usuarios creados en la base de datos de usuarios podremos hacer:
+    ```
+    SELECT User, Host FROM mysql.user;
+    ```
+    
+    - Ahora crearemos el usuario que usará nuestra aplicación, adjudicandole la misma contraseña que conoce nuestra web y los permisos necesarios:
+    ```
+    CREATE USER 'fluffandpaws'@'localhost';
+    ALTER USER 'fluffandpaws'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'password';
+    GRANT ALL PRIVILEGES ON *.* TO 'fluffandpaws'@'localhost' WITH GRANT OPTION;
+    FLUSH PRIVILEGES;
+    ```
+    
+    - Una vez creado este usuario saldremos y podremos acceder a la base de datos con el:
+    ```
+    exit
+    mysql -u fluffandpaws -p
+    ```
+    
+    - Ahora crearemos la base de datos para que la web pueda hacer el create-drop en ella (nunca crearemos tablas manualmente, de eso se encarga nuestra web):
+    ```
+    CREATEDATABASE fluffandpaws;
+    ```
+    
+    - Podemos indicar que la base de datos que acabamos de crear es la que queremos usar con:
+    ```
+    USE fluffandpaws;
+    ```
 
 Con los requisitos previos ya resueltos podemos empezar a subir el jar:
 
@@ -397,24 +442,26 @@ Con los requisitos previos ya resueltos podemos empezar a subir el jar:
 scp -i ~/.ssh/pathToClavePem/(el nombre de la clave privada.pem) webAdopcion.jar ubuntu@(ipFlotante):/home/ubuntu
 ```
 
-2.	Hacemos  
-![image](https://user-images.githubusercontent.com/102741945/226338250-68c0d1e5-ed50-43e9-bae6-d96e241917c9.png)
+2.	Hacemos lo siguiente para acceder al servidor:
 
-4.	Si hago ls -la debe de aparecer el jar.
-5.	Nos dira algo del java, así que hay que instalarlo, hay que instalar al menos el 17
+```
+ssh -i ~/.ssh/pathToClavePem/(el nombre de la clave privada.pem) ubuntu@(ipFlotante)
+```
 
+3.	Una vez dentro podremos ejecutar el jar que hemos subido (no es necesario meterse en ninguna carpeta puesto que se encontrará en home al haber hecho :/home/ubuntu en el paso 1:
+```
+java -jar webAdopcion.jar
+```
 
-Así se instala.
+4. Se repetirían los pasos 1, 2 y 3 para subir el jar del Servidor (el cual se ejecutará en el puerto 8080 mientras que la web lo hará en el 8443).
 
-5.	Hacemos  
+## Errores comunes en ejecución del jar
 
-![image](https://user-images.githubusercontent.com/102741945/226338321-3a2fb857-e0c5-402d-9924-5a8b44200bdf.png)
-
-Y ya arrancaría.
-6.	Ponemos la Ip flotante y nos pasa lo mismo que antes no se puede conectar, vamos a security groups de nuevo, creamos un security group especifico para el sprint, lo llamamos web sprint le damos a add rule ponemos custum tc rule y en port ponemos 8080 y le damos a add. Vamos a la instancia le damos a la flecha, a esitar security groups, eliminamos el pueto 80 y añado el sprint.
-
-7.	Cargamos de nuevo en el buscador el puerto, y ya nos abre.
-Una vez realizados estos pasos ya podriamos ver nuestra página web a través de la máquina virtual.
+* Si por algún casual la página web tardase en cargar mucho tiempo (o no lo hiciese), así como no se mandasen correos desde el servidor, sería necesario comprobar que se han habilitado los puertos 8080 y 8443 correctamente en los grupos de seguridad.
+* Puede ocurrir que si se ha cancelado un proceso jar, el puerto siga estando ocupado para dicho proceso cancelado y por lo tanto no se permita correr el nuevo jar que pide escuchar a ese mismo puerto con un error como "Web Server failed to start. Port xxxx was already in use". Para resolver esto la solución sería ejecutar lo siguiente:
+      - lsof -i :xxxx donde xxxx es el puerto, con esto verificamos que proceso es el que esta ocupando ese puerto
+      - sudo apt install npx
+      - npx kill-port xxxx (puede que pida instalar kill-port, decimos que si con "y" y a continuación matará al proceso que estaba escuchando en ese puerto) 
 
 --------------------------------------------------------------------------------------------------------
                               Pasos para iniciar la página web una vez creada la máquina virtual
@@ -428,6 +475,8 @@ Una vez realizados estos pasos ya podriamos ver nuestra página web a través de
 4.Ahora directamente ejecutamos ambos jar(el de la web y el del servidor interno) importante hacerlo desde dos terminales distintas porque sino dará error de acceso, para ejecutarlo ponemos en la terminal: java -jar webAdopcion (el nombre se puede autocompletar con la tabulación) y pulsamos enter.
 
 5.Ahora ya podemos ir a google y poner 10.100.139.69:8443 y se abriría nuesta página web.
+
+
 
 ## Commits de interés de cada uno
 
