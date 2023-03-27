@@ -481,6 +481,20 @@ https://github.com/rockyta07/Trabajo_DAD/commit/efb483f9a8d909ab81d76280025e719a
 *Más commits de solución de cosas pequeñas, como privacidad de algún botón,funcionamiento, añadidos,etc.
 
 
+
+Rocío Arranz Esteban
+
+- API Rest: Servidor -> https://github.com/rockyta07/Trabajo_DAD/commit/6f328b6933e2103ad879550ce3382fc412825aff
+- API Rest: Conexión con el cliente -> https://github.com/rockyta07/Trabajo_DAD/commit/9bc0626beba22af13a0833c4f11e552c43de5f9d
+- Separacion de plantillas -> https://github.com/rockyta07/Trabajo_DAD/commit/9e0a2cc904fa6502252b30ac5cab98d69e799bd1
+- Logout -> https://github.com/rockyta07/Trabajo_DAD/commit/545dde4fcebb46b18aaff0ab264af0a0ca43a063
+- Implementación de nuevas funcionalidades (adoptar) -> https://github.com/rockyta07/Trabajo_DAD/commit/b3d9e6e5eecc3a72e05da6c8c8c6e495dcf0f6d7
+- El despliegue completo (claves, grupos de seguridad, jar, instalación de mysql y creación de usuarios y bases de datos)
+
+*Así como muchos otros comits de depuración, limpieza, claridad, accesibilidad y solución de problemas.
+
+
+
 ## Navegación
 
 En la página inicial nos encontramos las protectoras con su información principal.
