@@ -241,6 +241,7 @@ Mustache no coge bien los nombres de los atributos de cada entidad y a la hora d
 - [CSRF](#csrf)
 - [Elegir e implementar mecanismos de comunicación](#elegir-e-implementar-mecanismos-de-comunicación)
 - [Desplegar el proyecto en una máquina virtual](#desplegar-el-proyecto-en-una-máquina-virtual)
+- [Errores comunes en la ejecución del jar](#errores-comunes-en-la-ejecucion-del-jar)
 - [Commits de interés de cada uno](#commits-de-interés-de-cada-uno)
 - [Navegación](#navegación)
 
@@ -475,21 +476,24 @@ java -jar webAdopcion.jar
 
 ## Errores comunes en ejecución del jar
 
-    * Si por algún casual la página web tardase en cargar mucho tiempo (o no lo hiciese), así como no se mandasen correos desde el servidor, sería necesario comprobar       que se han habilitado los puertos 8080 y 8443 correctamente en los grupos de seguridad.
+* Si por algún casual la página web tardase en cargar mucho tiempo (o no lo hiciese), así como no se mandasen correos desde el servidor, sería necesario comprobar       que se han habilitado los puertos 8080 y 8443 correctamente en los grupos de seguridad.
     
-    * Puede ocurrir que si se ha cancelado un proceso jar, el puerto siga estando ocupado para dicho proceso cancelado y por lo tanto no se permita correr el nuevo jar       que pide escuchar a ese mismo puerto con un error como "Web Server failed to start. Port xxxx was already in use". 
+* Puede ocurrir que si se ha cancelado un proceso jar, el puerto siga estando ocupado para dicho proceso cancelado y por lo tanto no se permita correr el nuevo jar       que pide escuchar a ese mismo puerto con un error como "Web Server failed to start. Port xxxx was already in use". 
       
-      - Para resolver esto la solución sería ejecutar lo siguiente para ver que proceso esta ocupando dicho puerto (donde xxxx es el puerto, con esto verificamos que           proceso es el que esta ocupando ese puerto):
+     - Para resolver esto la solución sería ejecutar lo siguiente para ver que proceso esta ocupando dicho puerto (donde xxxx es el puerto, con esto verificamos que          proceso es el que esta ocupando ese puerto):
+      
       ```
       lsof -i :xxxx
       ```
-
-      - Para matar al proceso que ocupa ese puerto:
+      
+     - Para matar al proceso que ocupa ese puerto:
+     
       ```
       sudo apt install npx
       npx kill-port xxxx 
       ```
-      (puede que pida instalar kill-port, decimos que si con "y" y a continuación matará al proceso que estaba escuchando en ese puerto) 
+      
+    (puede que pida instalar kill-port, decimos que si con "y" y a continuación matará al proceso que estaba escuchando en ese puerto) 
 
 
 ## Commits de interés de cada uno
