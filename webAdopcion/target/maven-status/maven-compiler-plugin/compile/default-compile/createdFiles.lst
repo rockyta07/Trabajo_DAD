@@ -10,7 +10,6 @@ fluffandpaws\webadopcion\service\MensajeService.class
 fluffandpaws\webadopcion\controllers\GreetingsController.class
 fluffandpaws\webadopcion\service\UsuarioService.class
 fluffandpaws\webadopcion\controllers\UsuarioController.class
-fluffandpaws\webadopcion\controllers\AccountController.class
 fluffandpaws\webadopcion\repositories\MensajeRepository.class
 fluffandpaws\webadopcion\security\WebUserDetails.class
 fluffandpaws\webadopcion\security\CSRFHandlerConfiguration.class
@@ -23,9 +22,7 @@ fluffandpaws\webadopcion\security\RepositoryUserDetailsService.class
 fluffandpaws\webadopcion\service\DatabaseInitializer.class
 fluffandpaws\webadopcion\service\CorreoService.class
 fluffandpaws\webadopcion\repositories\UsuarioRepository.class
-fluffandpaws\webadopcion\controllers\UserRestController.class
 fluffandpaws\webadopcion\security\CSRFHandlerInterceptor.class
 fluffandpaws\webadopcion\controllers\LoginWebController.class
 fluffandpaws\webadopcion\controllers\MensajeController.class
-fluffandpaws\webadopcion\controllers\HeaderController.class
 fluffandpaws\webadopcion\controllers\AnimalController.class
