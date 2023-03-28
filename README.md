@@ -241,9 +241,11 @@ Mustache no coge bien los nombres de los atributos de cada entidad y a la hora d
 - [CSRF](#csrf)
 - [Elegir e implementar mecanismos de comunicación](#elegir-e-implementar-mecanismos-de-comunicación)
 - [Desplegar el proyecto en una máquina virtual](#desplegar-el-proyecto-en-una-máquina-virtual)
-- [Errores comunes en la ejecución del jar](#errores-comunes-en-la-ejecucion-del-jar)
+- [Errores comunes en la ejecución del jar](#errores-comunes-en-la-ejecución-del-jar)
 - [Commits de interés de cada uno](#commits-de-interés-de-cada-uno)
 - [Navegación](#navegación)
+
+
 
 ## Login y Logout
 
@@ -252,6 +254,8 @@ Para la implementación de la seguridad nos hemos puesto los siguientes objetivo
 - Añadir las funciones de login (con su respectivo html de error) y logout para usuarios ya existentes y para los que aún no existen, registrarse.
 
 ![readme](https://user-images.githubusercontent.com/102540777/227144118-ebfc3553-4148-469b-8b7e-9a899e08afee.png)
+
+
 
 
 ## Pantallas privadas y públicas
@@ -264,6 +268,8 @@ exclusivamente para los usuarios "USER" y las que serán para los usuarios de ti
 
 Hemos incluido una carpeta llamada security para incluir todos los archivos de seguridad, uno de ellos es WebSecurityConfig en el cual indicamos que pantallas y que opciones son publicas y privadas con el permitAll() (publicas) y hasAnyRole( indica que son privadas y luego dentro de que sean privadas dependiendo de que rol se tenga permite realizar unas cosas u otras).
 
+
+
 ## Https
 
 En primer lugar se ha creado un certificado con keytool, para ello en el cmd se ha incluido lo siguiente:
@@ -274,11 +280,14 @@ Cuando abrimos la página web verificamos que se ha creado correctamente el cert
 
 ![image](https://user-images.githubusercontent.com/102741945/225416252-457633ef-8860-4c27-8ae3-582f229f430d.png)
 
+
+
 ## Diagrama de clases y templates
 
 ![main](https://user-images.githubusercontent.com/102540777/228085692-49cfce4f-b902-4f0a-b74e-a5ba2aa05c52.png)
 
 ![image](https://user-images.githubusercontent.com/102741945/228093880-a7899053-eefc-4375-844a-ae46342ea126.png)
+
 
 
 
@@ -293,6 +302,8 @@ los cuales implementamos de la siguiente manera:
 La clase CSRFHandlerInterceptor es la implementación del interceptor que se ejecuta antes o después de una solicitud. 
 El método postHandle en esta clase verifica si la solicitud incluye un objeto CsrfToken. 
 Si es así, el método agrega el token al objeto ModelAndView que se utiliza para renderizar la vista, la cual puede usar el token para protegerse contra ataques CSRF.
+
+
 
 ## Elegir e implementar mecanismos de comunicación
 
@@ -311,6 +322,8 @@ electrónico (remitente, asunto y cuerpo) así como los datos del animal a adopt
 Esquema de la comunicación
 
 ![image](https://user-images.githubusercontent.com/102741945/227959559-a73ee24d-1141-4c65-9e30-2e291a4b6215.png)
+
+
 
 ## Desplegar el proyecto en una máquina virtual
 
@@ -356,11 +369,11 @@ sudo apt install nginx //Le decimos que si
 curl localhost //Para verificar que esta instalado, hacemos curl localhost -> Me devuelve un html y me dice welcome. 
 ```
 
-Vamos al navegador copiamos la IP flotante y se queda pensando (si esto pasa, significa que no tenemos abierto el puerto 80 que es el cual recibe las peticiones http), así que volvemos a openstack y vamos a "Network". Allí pinchamos en security groups y le damos a create security group, lo llamamos puerto80, lo creamos, le damos a "add rule", en el despleglable en rule seleccionamos (http), le damos al botón azul.
+5. Si vamos al navegador copiamos la IP flotante y se queda pensando (si esto pasa, significa que no tenemos abierto el puerto por el cual recibe las peticiones http), así que volvemos a openstack y vamos a "Network". Allí pinchamos en security groups y le damos a create security group, lo llamamos puertoXXXX (XXXX siendo el número de puerto), lo creamos, le damos a "add rule", en el despleglable en rule seleccionamos (http), dejamos la opción de entrante y por último le damos al botón azul.
 
-8.	 Vamos a compute a instances, vamos a nuestra instancia le damos a la flechita para abajo y le damos a edit security groups, donde pone puerto 80 le doy al más y se me emte el puerto 80 como otro security group, añadido esto el servidor debería ser capaz de recibir peticiones http.
+6.	 Vamos a compute a instances, vamos a nuestra instancia le damos a la flechita para abajo y le damos a edit security groups, donde pone puerto 80 le doy al más y se me emte el puerto 80 como otro security group, añadido esto el servidor debería ser capaz de recibir peticiones http.
 
-9.	Volvemos a buscar la IP flotante en el buscador y ya me devuelve el welcome de test.
+7.	Volvemos a buscar la IP flotante en el buscador y ya me devuelve el welcome de test.
 
 --------------------------------------------------------------------------------------------------------
                                               Acceso desde myapps
