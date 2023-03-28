@@ -277,6 +277,9 @@ Cuando abrimos la página web verificamos que se ha creado correctamente el cert
 
 ![main](https://user-images.githubusercontent.com/102540777/228085692-49cfce4f-b902-4f0a-b74e-a5ba2aa05c52.png)
 
+![image](https://user-images.githubusercontent.com/102741945/228093880-a7899053-eefc-4375-844a-ae46342ea126.png)
+
+
 
 ## CSRF
 
