@@ -474,7 +474,8 @@ java -jar webAdopcion.jar
 
 
 
-## Errores comunes en ejecución del jar
+
+## Errores comunes en la ejecución del jar
 
 * Si por algún casual la página web tardase en cargar mucho tiempo (o no lo hiciese), así como no se mandasen correos desde el servidor, sería necesario comprobar       que se han habilitado los puertos 8080 y 8443 correctamente en los grupos de seguridad.
     
@@ -482,18 +483,20 @@ java -jar webAdopcion.jar
       
      - Para resolver esto la solución sería ejecutar lo siguiente para ver que proceso esta ocupando dicho puerto (donde xxxx es el puerto, con esto verificamos que          proceso es el que esta ocupando ese puerto):
       
-      ```
-      lsof -i :xxxx
-      ```
+       ```
+       lsof -i :xxxx
+       ```
       
-     - Para matar al proceso que ocupa ese puerto:
-     
-      ```
+      
+     - Para matar al proceso que ocupa ese puerto: 
+      
       sudo apt install npx
       npx kill-port xxxx 
-      ```
       
+
     (puede que pida instalar kill-port, decimos que si con "y" y a continuación matará al proceso que estaba escuchando en ese puerto) 
+
+
 
 
 ## Commits de interés de cada uno
