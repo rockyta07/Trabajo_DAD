@@ -458,14 +458,6 @@ java -jar webAdopcion.jar
 
 4. Se repetirían los pasos 1, 2 y 3 para subir el jar del Servidor (el cual se ejecutará en el puerto 8080 mientras que la web lo hará en el 8443).
 
-## Errores comunes en ejecución del jar
-
-* Si por algún casual la página web tardase en cargar mucho tiempo (o no lo hiciese), así como no se mandasen correos desde el servidor, sería necesario comprobar que se han habilitado los puertos 8080 y 8443 correctamente en los grupos de seguridad.
-* Puede ocurrir que si se ha cancelado un proceso jar, el puerto siga estando ocupado para dicho proceso cancelado y por lo tanto no se permita correr el nuevo jar que pide escuchar a ese mismo puerto con un error como "Web Server failed to start. Port xxxx was already in use". Para resolver esto la solución sería ejecutar lo siguiente:
-      - lsof -i :xxxx donde xxxx es el puerto, con esto verificamos que proceso es el que esta ocupando ese puerto
-      - sudo apt install npx
-      - npx kill-port xxxx (puede que pida instalar kill-port, decimos que si con "y" y a continuación matará al proceso que estaba escuchando en ese puerto) 
-
 --------------------------------------------------------------------------------------------------------
                               Pasos para iniciar la página web una vez creada la máquina virtual
 --------------------------------------------------------------------------------------------------------
@@ -479,6 +471,25 @@ java -jar webAdopcion.jar
 
 5.Ahora ya podemos ir a google y poner 10.100.139.69:8443 y se abriría nuesta página web.
 
+
+
+## Errores comunes en ejecución del jar
+
+    * Si por algún casual la página web tardase en cargar mucho tiempo (o no lo hiciese), así como no se mandasen correos desde el servidor, sería necesario comprobar       que se han habilitado los puertos 8080 y 8443 correctamente en los grupos de seguridad.
+    
+    * Puede ocurrir que si se ha cancelado un proceso jar, el puerto siga estando ocupado para dicho proceso cancelado y por lo tanto no se permita correr el nuevo jar       que pide escuchar a ese mismo puerto con un error como "Web Server failed to start. Port xxxx was already in use". 
+      
+      - Para resolver esto la solución sería ejecutar lo siguiente para ver que proceso esta ocupando dicho puerto (donde xxxx es el puerto, con esto verificamos que           proceso es el que esta ocupando ese puerto):
+      ```
+      lsof -i :xxxx
+      ```
+
+      - Para matar al proceso que ocupa ese puerto:
+      ```
+      sudo apt install npx
+      npx kill-port xxxx 
+      ```
+      (puede que pida instalar kill-port, decimos que si con "y" y a continuación matará al proceso que estaba escuchando en ese puerto) 
 
 
 ## Commits de interés de cada uno
