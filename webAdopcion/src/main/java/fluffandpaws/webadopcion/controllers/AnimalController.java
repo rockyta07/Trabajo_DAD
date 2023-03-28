@@ -156,12 +156,12 @@ public class AnimalController {
 
     //TODO EL POST DEBE SER UN FORMULARIO QUE SE MANDA AL SERVICIO INTERNO
     @PostMapping("/adoptar/{id}")
-    public String adoptAnimalProcess(Principal principal, @PathVariable Long id) throws URISyntaxException {
+    public String adoptAnimalProcess(Principal principal, @PathVariable Long id, @RequestParam String eMailRemitente) throws URISyntaxException {
         Usuario adoptante = servUsuarios.findByUsername(principal.getName());
         Animal animal = servAnimales.findById(id).orElseThrow();
         animal.setAdopter(adoptante);
         servAnimales.save(animal);
-        correo.sendAdoptionRequestMail(animal, adoptante.getEmail());
+        correo.sendAdoptionRequestMail(animal, eMailRemitente);
         return "redirect:/Animales/";
     }
 
