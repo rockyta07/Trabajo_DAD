@@ -241,6 +241,7 @@ Mustache no coge bien los nombres de los atributos de cada entidad y a la hora d
 - [CSRF](#csrf)
 - [Elegir e implementar mecanismos de comunicación](#elegir-e-implementar-mecanismos-de-comunicación)
 - [Desplegar el proyecto en una máquina virtual](#desplegar-el-proyecto-en-una-máquina-virtual)
+- [Usuarios disponibles en la web](#usuarios-disponibles-en-la-web)
 - [Errores comunes en la ejecución del jar](#errores-comunes-en-la-ejecución-del-jar)
 - [Commits de interés de cada uno](#commits-de-interés-de-cada-uno)
 - [Navegación](#navegación)
@@ -475,16 +476,32 @@ java -jar webAdopcion.jar
 --------------------------------------------------------------------------------------------------------
                               Pasos para iniciar la página web una vez creada la máquina virtual
 --------------------------------------------------------------------------------------------------------
-1.Si estas en casa abrir myApps, si estás en la red de la univesidad no es necesario.
+1. Si estas en casa abrir myApps, si estás en la red de la univesidad no es necesario.
 
-2.Ve a la carpeta ssh y abre una terminal desde esa carpeta(Asi nos ahorramos trabajo).
+2. Ve a la carpeta ssh y abre una terminal desde esa carpeta(Asi nos ahorramos trabajo).
 
-3.Escribe en la terminal: ssh -i Claves.pem ubuntu@10.100.139.69 y pulsa enter (Esto te llevará a la máquina virtual creada en openStack).
+3. Escribe en la terminal: ssh -i Claves.pem ubuntu@10.100.139.69 y pulsa enter (Esto te llevará a la máquina virtual creada en openStack).
 
-4.Ahora directamente ejecutamos ambos jar(el de la web y el del servidor interno) importante hacerlo desde dos terminales distintas porque sino dará error de acceso, para ejecutarlo ponemos en la terminal: java -jar webAdopcion (el nombre se puede autocompletar con la tabulación) y pulsamos enter.
+4. Ahora directamente ejecutamos ambos jar(el de la web y el del servidor interno) importante hacerlo desde dos terminales distintas porque sino dará error de acceso, para ejecutarlo ponemos en la terminal: java -jar webAdopcion (el nombre se puede autocompletar con la tabulación) y pulsamos enter.
 
-5.Ahora ya podemos ir a google y poner 10.100.139.69:8443 y se abriría nuesta página web.
+5. Ahora ya podemos ir a google y poner 10.100.139.69:8443 y se abriría nuesta página web.
 
+
+## Usuarios disponibles en la web
+
+Para hacer pruebas hemos incluido usuarios de distintos roles de forma pre-determinada, aunque sin problemas se pueden crear otros mediante el perfil de administrador:
+
+* Usuarios: El perfil de usuario es necesario para usar ciertas funciones como adoptar o mandar y ver mensajes
+
+  * user - pass
+  * Juan - juan123
+  * Pablo - pablo123
+ 
+* Administradores: Este perfil es necesario para toda la labor administrativa en la web (creación/modificación/borrado de usuarios, animales, protectoras, mensajes), para crear un usuario con este rol es necesario que otro usuario con el rol Admin lo cree así.
+  
+  * admin - adminpass
+
+* Todo usuario no registrado (que no tenga cuenta en la base de datos) obtendrá una versión muy limitada de la página web, no podrá adoptar animales ni mandar mensajes, sin embargo se le presenta la oportunidad de registrarse.
 
 
 
