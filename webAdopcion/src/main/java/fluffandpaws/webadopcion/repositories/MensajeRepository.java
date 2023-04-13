@@ -1,15 +1,26 @@
 package fluffandpaws.webadopcion.repositories;
 
 import fluffandpaws.webadopcion.models.Mensaje;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@CacheConfig(cacheNames="mensajes")
 @Repository
 public interface MensajeRepository extends JpaRepository<Mensaje, Long> {
-    List<Mensaje> findAll();
-    Optional<Mensaje> findById(Long id);
+
+    @CacheEvict(allEntries=true)
+    Mensaje save(Mensaje mensajes);
     void deleteById(Long id);
+
+    @Cacheable
+    Optional<Mensaje> findById(Long id);
+
+    @Cacheable
+    List<Mensaje> findAll();
 }
