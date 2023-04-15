@@ -37,7 +37,7 @@ public class CacheController {
     }
     @GetMapping("/cache/protectoras")//en la cache de animalespero
     public Map<Object, Object> getProtectorasFromCache() {
-        Cache protectorasCache = animalesCacheManager.getCache("protectoras");
+        Cache protectorasCache = protectorasCacheManager.getCache("protectoras");
         ConcurrentMapCache cache = (ConcurrentMapCache) protectorasCache.getNativeCache();
         return cache.getNativeCache();
 
