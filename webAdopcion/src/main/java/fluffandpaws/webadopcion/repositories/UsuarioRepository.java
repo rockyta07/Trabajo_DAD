@@ -18,7 +18,9 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
     @CacheEvict(allEntries=true)
     Usuario save(Usuario usuarios);
+    @CacheEvict(allEntries = true)
     void deleteById(Long id);
+
 
     @Cacheable
     Optional<Usuario> findById(Long l);

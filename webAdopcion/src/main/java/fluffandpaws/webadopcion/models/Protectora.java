@@ -1,5 +1,7 @@
 package fluffandpaws.webadopcion.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 import javax.persistence.*;
@@ -25,9 +27,11 @@ public class Protectora {
     //private String webPrt;
 
     @OneToMany(mappedBy="prtInstance", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Mensaje> mensajesProtectora;
 
     @OneToMany(mappedBy="prtOrigen", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Animal> animalesProtectora;
 
     //private List<Animals> total;

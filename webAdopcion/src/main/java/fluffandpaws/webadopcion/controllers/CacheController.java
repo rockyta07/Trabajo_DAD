@@ -29,33 +29,29 @@ public class CacheController {
 
     @GetMapping("/cache/animales")//en la cache de animalespero
     public Map<Object, Object> getAnimalesFromCache() {
-        Cache animalesCache = animalesCacheManager.getCache("animales");
-        ConcurrentMapCache cache = (ConcurrentMapCache) animalesCache.getNativeCache();
-        return cache.getNativeCache();
+        ConcurrentMapCache animalesCache = (ConcurrentMapCache) animalesCacheManager.getCache("animales");
+        return animalesCache.getNativeCache();
 
 
     }
     @GetMapping("/cache/protectoras")//en la cache de animalespero
     public Map<Object, Object> getProtectorasFromCache() {
-        Cache protectorasCache = protectorasCacheManager.getCache("protectoras");
-        ConcurrentMapCache cache = (ConcurrentMapCache) protectorasCache.getNativeCache();
-        return cache.getNativeCache();
+        ConcurrentMapCache protectorasCache = (ConcurrentMapCache) protectorasCacheManager.getCache("protectoras");
+        return protectorasCache.getNativeCache();
 
 
     }
     @GetMapping("/cache/mensajes")//en la cache de mensajes
     public Map<Object, Object> getMensajesFromCache() {
-        Cache mensajesCache = mensajesCacheManager.getCache("mensajes");
-        ConcurrentMapCache cache = (ConcurrentMapCache) mensajesCache.getNativeCache();
-        return cache.getNativeCache();
+        ConcurrentMapCache mensajesCache = (ConcurrentMapCache) mensajesCacheManager.getCache("mensajes");
+        return mensajesCache.getNativeCache();
 
 
     }
     @GetMapping("/cache/usuarios")//en la cache de usuarios
     public Map<Object, Object> getUsuariosFromCache() {
-        Cache usuariosCache = usuariosCacheManager.getCache("usuarios");
-        ConcurrentMapCache cache = (ConcurrentMapCache) usuariosCache.getNativeCache();
-        return cache.getNativeCache();
+        ConcurrentMapCache usuariosCache = (ConcurrentMapCache) usuariosCacheManager.getCache("usuarios");
+        return usuariosCache.getNativeCache();
 
 
     }
