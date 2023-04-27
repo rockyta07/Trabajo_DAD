@@ -672,14 +672,30 @@ Ahora en usuario visualizamos a Manolo:
 ![image](https://user-images.githubusercontent.com/102741945/228025488-1336cf99-fad4-4286-b589-ad720d435e56.png)
 
 
-## Fase 4: Implementacion tolerancia a fallos
+## Fase 4: Implementación tolerancia a fallos
+
+
+## Tabla de contenidos
+
+- [Dockerizar la aplicación](#dockerizar-la-aplicación)
+- [Balanceo de carga](#balanceo-de-carga)
+- [Dockerizar MYSQL](#dockerizar-msql)
+- [Implementación de caché en las entidades](#implementación-de-cache-en-las-entidades)
+
+## Dockerizar la aplicación
 
 
 
 
+## Balanceo de carga
 
 
 
+
+## Dockerizar MYSQL
+
+
+## Implementación de caché en las entidades
 
 
 
