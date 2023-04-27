@@ -13,6 +13,7 @@ https://trello.com/invite/b/fjavwWrE/ATTI966c72349a3704d1d675c1228d98b2338C41BE0
 - [Fase 1: Declaración de Objetivos](#fase-1-declaración-de-objetivos)
 - [Fase 2: Implementación Funcional](#fase-2-implementación-funcional)
 - [Fase 3: Implementación de Seguridad](#fase-3-implementación-de-seguridad)
+- [Fase 4: Incluir Tolerancia a fallos en la aplicación](#fase-4-implementación-tolerancia-a-fallos)
 
 
 ## Fase 1: Declaración de Objetivos
@@ -671,7 +672,7 @@ Ahora en usuario visualizamos a Manolo:
 ![image](https://user-images.githubusercontent.com/102741945/228025488-1336cf99-fad4-4286-b589-ad720d435e56.png)
 
 
-
+## Fase 4: Implementacion tolerancia a fallos
 
 
 
