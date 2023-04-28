@@ -26,3 +26,4 @@ fluffandpaws\webadopcion\security\CSRFHandlerInterceptor.class
 fluffandpaws\webadopcion\controllers\LoginWebController.class
 fluffandpaws\webadopcion\controllers\MensajeController.class
 fluffandpaws\webadopcion\controllers\AnimalController.class
+fluffandpaws\webadopcion\controllers\CacheController.class
