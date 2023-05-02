@@ -15,7 +15,9 @@ import java.util.Optional;
 public interface ProtectoraRepository extends JpaRepository<Protectora, Long> {
     @CacheEvict(allEntries=true)
     Protectora save(Protectora protectoras);
+    @CacheEvict(allEntries = true)
     void deleteById(Long id);
+
 
     @Cacheable
     Optional<Protectora> findById(Long l);

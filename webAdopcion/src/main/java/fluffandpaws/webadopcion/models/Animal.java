@@ -31,14 +31,19 @@ public class Animal {
     private String description;
 
     //Para el servicio interno
+    //Los Json ignore nos evita entrar a un objeto que sea null y que de error al entrar a la cache
+    @JsonIgnore
     private String cuerpoCertificado;
 
 
 
     @ManyToOne
+    @JsonIgnore
     private Usuario adopter;
 
+
     @ManyToOne
+    @JsonIgnore
     private Protectora prtOrigen;
     protected Animal(){}
 

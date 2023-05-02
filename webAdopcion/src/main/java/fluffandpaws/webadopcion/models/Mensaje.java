@@ -1,11 +1,14 @@
 package fluffandpaws.webadopcion.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
 public class Mensaje {
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
+        @JsonIgnore
         private Long id;
 
         private String sender;
@@ -19,6 +22,7 @@ public class Mensaje {
         private Usuarios adp;*/
 
         @ManyToOne
+        @JsonIgnore
         private Protectora prtInstance;
 
         protected Mensaje(){}

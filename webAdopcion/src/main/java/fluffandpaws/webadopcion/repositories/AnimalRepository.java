@@ -18,9 +18,13 @@ import java.util.Optional;
 @CacheConfig(cacheNames="animales")//la cache se llama animales
 @Repository
 public interface AnimalRepository extends JpaRepository<Animal, Long> {
+
+
     @CacheEvict(allEntries=true)//cuando hagamos save o delete se borrara la cache anterior
     Animal save(Animal animales);
-    void deleteById(Long id);//para cuando se borre, se borren tambien los datos de cache
+    @CacheEvict(allEntries = true)
+    void deleteById(Long id);
+
 
     @Cacheable//cachea el resultado, si se llama al metodo varias veces se ejecuta solo la primera llamada y las llamadas posteriores se leeran desde cache
     Optional<Animal> findById(Long id);
@@ -29,5 +33,7 @@ public interface AnimalRepository extends JpaRepository<Animal, Long> {
     List<Animal> findAll();
     //List<Animal> findAllById(List<Long> ids);
 }
+
+
 
 

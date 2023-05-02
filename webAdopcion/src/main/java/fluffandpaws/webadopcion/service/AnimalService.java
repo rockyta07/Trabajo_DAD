@@ -45,7 +45,7 @@ public class AnimalService {
     }
 
     public void delete(Long id){
-
+        System.out.println("Eliminando animal con id: " + id);
         this.animalRepo.deleteById(id);
 
     }

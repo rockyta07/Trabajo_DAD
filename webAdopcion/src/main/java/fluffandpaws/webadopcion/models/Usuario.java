@@ -1,5 +1,6 @@
 package fluffandpaws.webadopcion.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -26,6 +27,7 @@ public class Usuario {
     private String email; //Correo
     //La contraseña deberá ser guardada en otra base de datos por seguridad
     //private String pass; //Contraseña
+    @JsonIgnore
     private String dni;
 
     //private Integer id; //DNI
@@ -34,6 +36,7 @@ public class Usuario {
     private String encodedPassword;//Salt de Hash
 
     @OneToMany(mappedBy="adopter", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Animal> animalesAdoptados;
 
     @ElementCollection(fetch = FetchType.EAGER)

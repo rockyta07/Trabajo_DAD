@@ -160,8 +160,8 @@ public class AnimalController {
         Usuario adoptante = servUsuarios.findByUsername(principal.getName());
         Animal animal = servAnimales.findById(id).orElseThrow();
         animal.setAdopter(adoptante);
-        servAnimales.save(animal);
         correo.sendAdoptionRequestMail(animal, eMailRemitente);
+        servAnimales.delete(id);
         return "redirect:/Animales/";
     }
 

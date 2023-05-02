@@ -55,7 +55,7 @@ public class WebAdopcionApplication {
 
 	}
 
-	/////////////////Parte para Hazelcast/////////////////////////////7
+	/////////////////Parte para Hazelcast asi se puede monitorizar lo de la caché/////////////////////////////7
 
 	@Bean
 	public Config config() {//el método que ña contiene es un bean por lo que debe de ser administrado por el contenedor de spring
