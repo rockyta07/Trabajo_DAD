@@ -681,6 +681,7 @@ Ahora en usuario visualizamos a Manolo:
 - [Balanceo de carga](#balanceo-de-carga)
 - [Dockerizar MYSQL](#dockerizar-msql)
 - [Implementación de caché en las entidades](#implementación-de-cache-en-las-entidades)
+- [Errores que nos hemos encontrado](#errores-que-nos-hemos-encontrado)
 
 ## Dockerizar la aplicación
 
@@ -697,8 +698,30 @@ Ahora en usuario visualizamos a Manolo:
 
 ## Implementación de caché en las entidades
 
+Para implemetar la caché primeramente se ha creado un controllador de caché, este controllador tendrá 4 objetos pertenecientes a cacheManager y cuatro @GetMapping con la url a la cual deberemos acceder para ver el funcionamiento de la caché. En los métodos obtenemos la caché de cada entidad y se convierte en una instancia, finalmente se retorna el mapa subyacente de la caché:
+
+![image](https://user-images.githubusercontent.com/102741945/235739817-7a40d0f7-432e-4c1b-9fd5-cc1ceeb6438b.png)
+
+![image](https://user-images.githubusercontent.com/102741945/235739902-fb299074-b859-4dcc-a0bd-cd7b2d109a7b.png)
+
+También hay que incluir una serie de cosas importantes en los repositories, con cacheConfig especificamos el nombre de la caché que además es el que va en la url que tenemos en el controlador de la caché.
+Con @CacheEvict lo que conseguimos es que una vez se borre o se añada algo, se borrará la caché anterior y se actualizará.
+Con @Cacheable lo que conseguimos es que cuando hagamos por primera vez una petición se guarden los datos de esa petición en la caché y así cuando se vuelva a hacer la petición futuramente se cargue directamente de la caché:
+
+![image](https://user-images.githubusercontent.com/102741945/235740990-149165f7-b2fd-4bb2-9b25-b143386e7681.png)
+
+![image](https://user-images.githubusercontent.com/102741945/235741052-5a937af9-2d98-4664-b729-8e5ddc76378c.png)
+
+¡Importante los JsonIgnore!
+Los Json ignore nos evita entrar a un objeto que sea null y que de error al entrar a la caché.
+
+![image](https://user-images.githubusercontent.com/102741945/235741496-bea5edf7-77bd-4540-b5f5-6183cf787e42.png)
 
 
+## Errores que nos hemos encontrado
+
+-A la hora de borrar algo de la página web no se borraba y no se actualizaba la caché, al final nos dimos cuenta de que era porque el método de borrar no estaba dentro del CacheEvit.
+-Fallo en los métodos de cache controller debido a una línea innecesaria y que no realizaba bien el guardado en caché.
 
 
 
