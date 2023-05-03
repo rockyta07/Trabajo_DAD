@@ -33,12 +33,6 @@ public class ProtectoraService {
 
     }
 
-    /*public void replace (Protectora updatedProtectora){//para modificar el usuario
-
-        shelter.findById(updatedProtectora.getId()).orElseThrow();
-        shelter.save(updatedProtectora);
-    }*/
-
     public void delete(Long id){//borramos usuario
 
         this.protectoraRepository.deleteById(id);

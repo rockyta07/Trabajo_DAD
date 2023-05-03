@@ -50,10 +50,8 @@ public class DatabaseInitializer {
 
         //p1.setAnimalesProtectora(la_aux);
 
-        for(Protectora protectora : protectorasACrear){
-            if(!protectoraRepo.findAll().contains(protectora)){
-                protectoraRepo.save(protectora);
-            }
+        if(protectoraRepo.findAll().isEmpty()){
+            protectoraRepo.saveAll(protectorasACrear);
         }
 /*
         protectoraRepo.save(p1);
@@ -67,11 +65,10 @@ public class DatabaseInitializer {
         usuariosACrear.add(new Usuario("user", "", "", "0","user","user@user","pass", "USER"));
         usuariosACrear.add(new Usuario("admin","","", "0","admin", "admin@admin","adminpass", "USER", "ADMIN"));
 
-        for(Usuario usuario : usuariosACrear){
-            if (usuarioRepo.findByUsername(usuario.getUsername()) == null){
-                usuarioRepo.save(usuario);
-            }
+        if(usuarioRepo.findAll().isEmpty()){
+            usuarioRepo.saveAll(usuariosACrear);
         }
+
         /*
         usuarioRepo.save(new Usuario("Juan", "Rodríguez",  "45484545Y", "30", "Juan","juanito@gmail.com", "juan123", "USER"));
         usuarioRepo.save(new Usuario("Pablo", "Leon", "5464554A", "19", "Pablo", "elLeon@hotmail.com","pablo123", "USER"));
@@ -87,10 +84,8 @@ public class DatabaseInitializer {
         mensajesAGuardar.add(new Mensaje("alo_oficial@gmail.com","Contacto para adoptar uno de vuestros animales", p2));
 
 
-        for(Mensaje mensaje : mensajesAGuardar){
-            if (mensajeRepo.findBySender(mensaje.getSender()) == null){
-                mensajeRepo.save(mensaje);
-            }
+        if(mensajeRepo.findAll().isEmpty()){
+            mensajeRepo.saveAll(mensajesAGuardar);
         }
         /*mensajeRepo.save(m1);
         mensajeRepo.save(m2);
@@ -122,11 +117,10 @@ public class DatabaseInitializer {
         animalesAGuardar.add(a4);
         animalesAGuardar.add(a5);
 
-        for(Animal animal : animalesAGuardar){
-            if (!animalRepo.findAll().contains(animal)){
-                animalRepo.save(animal);
-            }
+        if(animalRepo.findAll().isEmpty()){
+            animalRepo.saveAll(animalesAGuardar);
         }
+
         /*animalRepo.save(a1);
         animalRepo.save(a2);
         animalRepo.save(a3);
