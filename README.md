@@ -680,8 +680,9 @@ Ahora en usuario visualizamos a Manolo:
 - [Dockerizar la aplicación](#dockerizar-la-aplicación)
 - [Balanceo de carga](#balanceo-de-carga)
 - [Dockerizar MYSQL](#dockerizar-msql)
-- [Implementación de caché en las entidades](#implementación-de-cache-en-las-entidades)
+- [Implementacion de cache en las entidades](#implementacion-de-cache-en-las-entidades)
 - [Diagrama uml](#diagrama-uml)
+- [Hazelcast cache distribuida](#hazelcast-cache-distribuida)
 - [Errores que nos hemos encontrado](#errores-que-nos-hemos-encontrado)
 
 ## Dockerizar la aplicación
@@ -691,13 +692,22 @@ Ahora en usuario visualizamos a Manolo:
 
 ## Balanceo de carga
 
+Para realizar el balanceo de carga se ha decidido realizarlo con HaProxy lo cual es ideal para la escalabilidad ya que si por algo un servidor se cae o falla Haproxy puede redirigir el tráfico a otro servidor disponible. El rendimiento es mayor ya que reparte el trabajo entre varios servidores reduciendo la carga de uno solo.
+
+Los pasos importantes que se deben de seguir son:
+-Crear una instancia del balanceo de carga, en nuestro caso en OpenStack, asociando el puerto 80.
+
+-Se instala Haproxy con sudo apt-get update y sudo apt-get -y install haproxy
+
+-Se edita el fichero de haproxy, incluyendo el frontend con el puerto donde se escucha el balanceador y en backend se especifican los servidores entre los que se balanceará la carga.
+
 
 
 
 ## Dockerizar MYSQL
 
 
-## Implementación de caché en las entidades
+## Implementacion de cache en las entidades
 
 Para implemetar la caché primeramente se ha creado un controllador de caché, este controllador tendrá 4 objetos pertenecientes a cacheManager y cuatro @GetMapping con la url a la cual deberemos acceder para ver el funcionamiento de la caché. En los métodos obtenemos la caché de cada entidad y se convierte en una instancia, finalmente se retorna el mapa subyacente de la caché:
 
@@ -711,10 +721,13 @@ Con @Cacheable lo que conseguimos es que cuando hagamos por primera vez una peti
 
 ![image](https://user-images.githubusercontent.com/102741945/235740990-149165f7-b2fd-4bb2-9b25-b143386e7681.png)
 
-![image](https://user-images.githubusercontent.com/102741945/235741052-5a937af9-2d98-4664-b729-8e5ddc76378c.png)
+![image](https://user-images.githubusercontent.com/102741945/236060449-7700bc50-2233-46aa-a16a-10f4d6f8ef18.png)
+
 
 ¡Importante los JsonIgnore!
 Los Json ignore nos evita entrar a un objeto que sea null y que de error al entrar a la caché.
+
+¡Importante quitar el @Cacheable en los findById porque duplicaba los nombres en la caché
 
 ![image](https://user-images.githubusercontent.com/102741945/235741496-bea5edf7-77bd-4540-b5f5-6183cf787e42.png)
 
@@ -722,17 +735,42 @@ Los Json ignore nos evita entrar a un objeto que sea null y que de error al entr
 
 ![image](https://user-images.githubusercontent.com/102741945/236055075-d450a8d7-10a1-44ba-ba17-0afd3861b908.png)
 
-En este diagrama la única clase que se ha añadido es la de cacheController, la no dispone de una relación directa con otras clases.
+En este diagrama la única clase que se ha añadido es la de cacheController, la clase no dispone de una relación directa con otras clases.
 
 ![image](https://user-images.githubusercontent.com/102741945/236057584-8b63912a-c8bc-4802-982c-e8d54c251427.png)
 
 Con el servicio interno pasa exactamente lo mismo.
+
+## Hazelcast cache distribuida
+Para la realización de hazelcast para poder monitorizar la caché de manera distribuida se han implementado una serie de cosas:
+
+![image](https://user-images.githubusercontent.com/102741945/236059120-4097bd35-aad0-4208-9fb9-9697a7451492.png)
+
+Se añade en el pom la dependencia de Hazelcast
+
+![image](https://user-images.githubusercontent.com/102741945/236059340-1fd52c5d-281e-47f7-b1ae-cb6587569b0e.png)
+
+Este código crea y configura una instancia de Hazelcast en una aplicación Spring. Se desactiva el multicast y se habilita la comunicación a través de TCP/IP con el nodo local. Esta configuración se realiza mediante la creación de un objeto Config de Hazelcast, obteniendo su objeto JoinConfig para configurar la conexión de red y estableciendo la lista de miembros del clúster en la dirección IP 127.0.0.1. El objeto Config se devuelve como un bean administrado por Spring, lo que permite que la instancia de Hazelcast se integre y se use en la aplicación.
+
+![image](https://user-images.githubusercontent.com/102741945/236059780-53dc39f1-3668-4411-9cf9-f3f0361af7dc.png)
+
+
+Se hace el inicio de sesión con Hazelcast en el webApplication
+
+Y por último se añade en el application properties:
+
+![image](https://user-images.githubusercontent.com/102741945/236060226-32c3ec77-4e18-4897-bb3a-b44766653dcb.png)
+
+
+
 
 ## Errores que nos hemos encontrado
 
 -A la hora de borrar algo de la página web no se borraba y no se actualizaba la caché, al final nos dimos cuenta de que era porque el método de borrar no estaba dentro del CacheEvit.
 
 -Fallo en los métodos de cache controller debido a una línea innecesaria y que no realizaba bien el guardado en caché.
+
+-Al poner la base de datos con update se duplicaba, para ello ha sido necesario incluir en el databaseinicializer una condición para que indica que si está vacio guarde todo y en el caso de no estarlo que no haga nada.
 
 
 
