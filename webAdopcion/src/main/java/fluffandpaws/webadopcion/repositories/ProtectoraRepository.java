@@ -14,12 +14,13 @@ import java.util.Optional;
 @Repository
 public interface ProtectoraRepository extends JpaRepository<Protectora, Long> {
     @CacheEvict(allEntries=true)
+    //@CacheEvict(value = "cache#{#cacheNames}", allEntries=true)
     Protectora save(Protectora protectoras);
     @CacheEvict(allEntries = true)
     void deleteById(Long id);
 
 
-    @Cacheable
+    //@Cacheable //En los find by Id como ya son referenciados en el find all, los duplicará cada vez que se haga click
     Optional<Protectora> findById(Long l);
 
     @Cacheable

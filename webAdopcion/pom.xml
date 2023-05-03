@@ -55,6 +55,7 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+
 		<!-- Hazelcast  -->
 		<dependency>
 			<groupId>org.springframework.session</groupId>
@@ -65,7 +66,7 @@
 			<artifactId>hazelcast</artifactId>
 		</dependency>
 
-    </dependencies>
+	</dependencies>
 
 	<build>
 		<plugins>

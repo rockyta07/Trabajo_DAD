@@ -19,7 +19,7 @@ import java.net.URISyntaxException;
 @EnableAsync
 public class CorreoService {
     //@Value("${service.email}")
-    private String service="http://localhost:8080";
+    private String service="http://192.168.25.208:8080";
 
 //Este método se encarga de encapsular los detalles del correo
     public record EmailRequest(String to, String subject, String body) {

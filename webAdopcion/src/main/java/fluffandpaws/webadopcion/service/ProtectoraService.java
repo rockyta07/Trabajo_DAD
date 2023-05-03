@@ -17,7 +17,6 @@ public class ProtectoraService {
 
     public Optional<Protectora> findById(Long id) {
         return protectoraRepository.findById(id);
-
     }
 
     public List<Protectora> findAll(){//buscar todas las protectoras

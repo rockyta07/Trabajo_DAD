@@ -14,7 +14,6 @@ import java.util.Optional;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     Usuario findByUsername(String username); //El username no se puede repetir
-    Usuario getByUsername(String username);
 
     @CacheEvict(allEntries=true)
     Usuario save(Usuario usuarios);
@@ -22,7 +21,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     void deleteById(Long id);
 
 
-    @Cacheable
+    // @Cacheable //En los find by Id como ya son referenciados en el find all, los duplicará cada vez que se haga click
     Optional<Usuario> findById(Long l);
 
     @Cacheable
