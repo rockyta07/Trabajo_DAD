@@ -2,11 +2,13 @@ C:\Users\arran\OneDrive\Desktop\Uni\DAD\Trabajo_DAD-F4\webAdopcion\src\main\java
 C:\Users\arran\OneDrive\Desktop\Uni\DAD\Trabajo_DAD-F4\webAdopcion\src\main\java\fluffandpaws\webadopcion\repositories\MensajeRepository.java
 C:\Users\arran\OneDrive\Desktop\Uni\DAD\Trabajo_DAD-F4\webAdopcion\src\main\java\fluffandpaws\webadopcion\controllers\LoginWebController.java
 C:\Users\arran\OneDrive\Desktop\Uni\DAD\Trabajo_DAD-F4\webAdopcion\src\main\java\fluffandpaws\webadopcion\service\ProtectoraService.java
+C:\Users\arran\OneDrive\Desktop\Uni\DAD\Trabajo_DAD-F4\webAdopcion\src\main\java\fluffandpaws\webadopcion\HazelcastConfiguration.java
 C:\Users\arran\OneDrive\Desktop\Uni\DAD\Trabajo_DAD-F4\webAdopcion\src\main\java\fluffandpaws\webadopcion\security\WebUserDetails.java
 C:\Users\arran\OneDrive\Desktop\Uni\DAD\Trabajo_DAD-F4\webAdopcion\src\main\java\fluffandpaws\webadopcion\controllers\DefaultModelAttributes.java
 C:\Users\arran\OneDrive\Desktop\Uni\DAD\Trabajo_DAD-F4\webAdopcion\src\main\java\fluffandpaws\webadopcion\security\CSRFHandlerConfiguration.java
 C:\Users\arran\OneDrive\Desktop\Uni\DAD\Trabajo_DAD-F4\webAdopcion\src\main\java\fluffandpaws\webadopcion\models\Usuario.java
 C:\Users\arran\OneDrive\Desktop\Uni\DAD\Trabajo_DAD-F4\webAdopcion\src\main\java\fluffandpaws\webadopcion\repositories\ProtectoraRepository.java
+C:\Users\arran\OneDrive\Desktop\Uni\DAD\Trabajo_DAD-F4\webAdopcion\src\main\java\fluffandpaws\webadopcion\security\WebConfig.java
 C:\Users\arran\OneDrive\Desktop\Uni\DAD\Trabajo_DAD-F4\webAdopcion\src\main\java\fluffandpaws\webadopcion\service\MensajeService.java
 C:\Users\arran\OneDrive\Desktop\Uni\DAD\Trabajo_DAD-F4\webAdopcion\src\main\java\fluffandpaws\webadopcion\controllers\ProtectoraController.java
 C:\Users\arran\OneDrive\Desktop\Uni\DAD\Trabajo_DAD-F4\webAdopcion\src\main\java\fluffandpaws\webadopcion\WebAdopcionApplication.java

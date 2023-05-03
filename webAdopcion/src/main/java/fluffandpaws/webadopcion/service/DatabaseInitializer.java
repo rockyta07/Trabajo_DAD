@@ -2,6 +2,7 @@ package fluffandpaws.webadopcion.service;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 import fluffandpaws.webadopcion.models.Protectora;
 import fluffandpaws.webadopcion.models.Animal;
@@ -34,8 +35,6 @@ public class DatabaseInitializer {
     private UsuarioRepository usuarioRepo;
     @Autowired
     private MensajeRepository mensajeRepo;
-    //@Autowired
-    //private PasswordEncoder passwordEncoder;
 
     @PostConstruct
     public void init() throws IOException, URISyntaxException {
@@ -50,6 +49,36 @@ public class DatabaseInitializer {
         protectoraRepo.save(p1);
         protectoraRepo.save(p2);
         protectoraRepo.save(p3);
+
+        ArrayList<Usuario> usuariosACrear = new ArrayList<>();
+        //Usuario(String name, String lastname, String dni, String username, String encodedPassword, String... roles)
+        usuariosACrear.add(new Usuario("Juan", "Rodríguez",  "45484545Y", "30", "Juan","juanito@gmail.com", "juan123", "USER"));
+        usuariosACrear.add(new Usuario("Pablo", "Leon", "5464554A", "19", "Pablo", "elLeon@hotmail.com","pablo123", "USER"));
+        usuariosACrear.add(new Usuario("user", "", "", "0","user","user@user","pass", "USER"));
+        usuariosACrear.add(new Usuario("admin","","", "0","admin", "admin@admin","adminpass", "USER", "ADMIN"));
+
+        for(Usuario usuario : usuariosACrear){
+            if (usuarioRepo.findByUsername(usuario.getUsername()) == null){
+                usuarioRepo.save(usuario);
+            }
+        }
+        /*
+        usuarioRepo.save(new Usuario("Juan", "Rodríguez",  "45484545Y", "30", "Juan","juanito@gmail.com", "juan123", "USER"));
+        usuarioRepo.save(new Usuario("Pablo", "Leon", "5464554A", "19", "Pablo", "elLeon@hotmail.com","pablo123", "USER"));
+        usuarioRepo.save(new Usuario("user", "", "", "0","user","user@user","pass", "USER"));
+        usuarioRepo.save(new Usuario("admin","","", "0","admin", "admin@admin","adminpass", "USER", "ADMIN"));
+        */
+
+        Mensaje m1, m2, m3, m4;
+        m1 = new Mensaje("juanito@gmail.com","hola buenas", p1);
+        m2 = new Mensaje("caravaggio@gmail.com","Quiero pedir información sobre un animal", p3);
+        m3 = new Mensaje("superman9@gmail.com","Me gustaría visitar la protectora", p3);
+        m4 = new Mensaje("alo_oficial@gmail.com","Contacto para adoptar uno de vuestros animales", p2);
+
+        mensajeRepo.save(m1);
+        mensajeRepo.save(m2);
+        mensajeRepo.save(m3);
+        mensajeRepo.save(m4);
 
         Animal a1, a2, a3, a4, a5;
         a1 = new Animal("Popi", "3 meses","Perro","Mestizo con boxer","Macho","6/12/2022",  "5",  "Mediano");
@@ -75,32 +104,6 @@ public class DatabaseInitializer {
         animalRepo.save(a3);
         animalRepo.save(a4);
         animalRepo.save(a5);
-
-    
-
-        //Usuario(String name, String lastname, String dni, String username, String encodedPassword, String... roles)
-        usuarioRepo.save(new Usuario("Juan", "Rodríguez",  "45484545Y", "30", "Juan","juanito@gmail.com", "juan123", "USER"));
-        usuarioRepo.save(new Usuario("Pablo", "Leon", "5464554A", "19", "Pablo", "elLeon@hotmail.com","pablo123", "USER"));
-        usuarioRepo.save(new Usuario("user", "", "", "0","user","user@user","pass", "USER"));
-        usuarioRepo.save(new Usuario("admin","","", "0","admin", "admin@admin","adminpass", "USER", "ADMIN"));
-
-
-
-
-        Mensaje m1, m2, m3, m4;
-        m1 = new Mensaje("juanito@gmail.com","hola buenas", p1);
-        m2 = new Mensaje("caravaggio@gmail.com","Quiero pedir información sobre un animal", p3);
-        m3 = new Mensaje("dani909@gmail.com","Me gustaría visitar la protectora", p3);
-        m4 = new Mensaje("alo_oficial@gmail.com","Contacto para adoptar uno de vuestros animales", p2);
-        /*m1.setPrtInstance(p1);
-        m2.setPrtInstance(p3);
-        m3.setPrtInstance(p3);
-        m4.setPrtInstance(p2);*/
-
-        mensajeRepo.save(m1);
-        mensajeRepo.save(m2);
-        mensajeRepo.save(m3);
-        mensajeRepo.save(m4);
 
     }
 

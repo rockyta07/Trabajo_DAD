@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import javax.persistence.*;
 
 import java.security.SecureRandom;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -23,7 +24,7 @@ public class Usuario {
     @Column(name = "username", unique = true)
     private String username; //Nombre identificativo (generado o establecido)
 
-    @Column(unique = true)
+    //@Column(unique = true)
     private String email; //Correo
     //La contraseña deberá ser guardada en otra base de datos por seguridad
     //private String pass; //Contraseña
@@ -56,9 +57,11 @@ public class Usuario {
         this.lastname = lastname;
         this.email = email;
         this.encodedPassword = passEncoder.encode(encodedPassword);
-        this.roles = List.of(roles);
+        if(List.of(roles).isEmpty()){
+            this.roles = Collections.singletonList("USER");
+        } else this.roles = List.of(roles);
         this.description = this.toString();
-        this.animalesAdoptados = null;
+        this.animalesAdoptados = null ;
     }
     //GETTERS Y SETTERS
     public String getName(){
