@@ -28,6 +28,7 @@ public interface AnimalRepository extends JpaRepository<Animal, Long> {
     //En los find by Id como ya son referenciados en el find all, los duplicará cada vez que se haga click
     //@Cacheable//cachea el resultado, si se llama al metodo varias veces se ejecuta solo la primera llamada y las llamadas posteriores se leeran desde cache
     Optional<Animal> findById(Long id);
+    //Animal findByName(String name_anm);
 
     @Cacheable
     List<Animal> findAll();

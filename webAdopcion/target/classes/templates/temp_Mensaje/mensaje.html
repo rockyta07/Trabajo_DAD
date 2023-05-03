@@ -1,14 +1,10 @@
 {{>header}}
 <html>
 <body>
+
 {{#msg}}
-  {{#admin}}
      <p>{{msg}}</p>
      <button onclick="location.href='/Mensajes/borrarMensaje/{{msg.id}}'">Borrar</button>
-  {{/admin}}
-  {{^admin}}
-    <p>Este mensaje solo puede ser visto por un administrador o protectora</p>
-  {{/admin}}
 {{/msg}}
 
 <p><a href="/Mensajes/"> Volver</a></p>

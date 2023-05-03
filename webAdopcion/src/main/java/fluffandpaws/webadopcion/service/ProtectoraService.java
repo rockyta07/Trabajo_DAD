@@ -19,6 +19,10 @@ public class ProtectoraService {
         return protectoraRepository.findById(id);
     }
 
+    /*public Protectora findByName(String name){
+        return protectoraRepository.findByName(name);
+    }*/
+
     public List<Protectora> findAll(){//buscar todas las protectoras
 
         return protectoraRepository.findAll();

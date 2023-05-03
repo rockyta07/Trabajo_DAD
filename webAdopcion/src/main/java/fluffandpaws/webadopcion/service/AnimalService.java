@@ -22,6 +22,11 @@ public class AnimalService {
 
     }
 
+    /*public Animal findByName(String name_anm) {
+        return animalRepo.findByName(name_anm);
+
+    }
+*/
     /*
     public List<Animal> findById(List<Long> ids){
         return animalRepo.findAllById(ids);

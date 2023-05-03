@@ -17,6 +17,8 @@ public interface MensajeRepository extends JpaRepository<Mensaje, Long> {
     @CacheEvict(allEntries=true)
     Mensaje save(Mensaje mensajes);
 
+    List<Mensaje> findBySender(String remitente);
+
     @CacheEvict(allEntries = true)
     void deleteById(Long id);
     @Cacheable

@@ -19,6 +19,7 @@ public interface ProtectoraRepository extends JpaRepository<Protectora, Long> {
     @CacheEvict(allEntries = true)
     void deleteById(Long id);
 
+//    Protectora findByName(String name);
 
     //@Cacheable //En los find by Id como ya son referenciados en el find all, los duplicará cada vez que se haga click
     Optional<Protectora> findById(Long l);
