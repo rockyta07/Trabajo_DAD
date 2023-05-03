@@ -1,3 +1,4 @@
+fluffandpaws\webadopcion\security\WebConfig$CookieHeaderInterceptor.class
 fluffandpaws\webadopcion\security\WebSecurityConfig.class
 fluffandpaws\webadopcion\models\Mensaje.class
 fluffandpaws\webadopcion\WebAdopcionApplication.class
@@ -12,6 +13,7 @@ fluffandpaws\webadopcion\service\UsuarioService.class
 fluffandpaws\webadopcion\controllers\UsuarioController.class
 fluffandpaws\webadopcion\repositories\MensajeRepository.class
 fluffandpaws\webadopcion\security\WebUserDetails.class
+fluffandpaws\webadopcion\security\WebConfig.class
 fluffandpaws\webadopcion\security\CSRFHandlerConfiguration.class
 fluffandpaws\webadopcion\service\ProtectoraService.class
 fluffandpaws\webadopcion\models\Usuario.class

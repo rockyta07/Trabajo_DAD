@@ -22,11 +22,11 @@ public interface AnimalRepository extends JpaRepository<Animal, Long> {
 
     @CacheEvict(allEntries=true)//cuando hagamos save o delete se borrara la cache anterior
     Animal save(Animal animales);
-    @CacheEvict(allEntries = true)
+    @CacheEvict(allEntries=true)
     void deleteById(Long id);
 
-
-    @Cacheable//cachea el resultado, si se llama al metodo varias veces se ejecuta solo la primera llamada y las llamadas posteriores se leeran desde cache
+    //En los find by Id como ya son referenciados en el find all, los duplicará cada vez que se haga click
+    //@Cacheable//cachea el resultado, si se llama al metodo varias veces se ejecuta solo la primera llamada y las llamadas posteriores se leeran desde cache
     Optional<Animal> findById(Long id);
 
     @Cacheable
