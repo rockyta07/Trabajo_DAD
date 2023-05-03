@@ -681,6 +681,7 @@ Ahora en usuario visualizamos a Manolo:
 - [Balanceo de carga](#balanceo-de-carga)
 - [Dockerizar MYSQL](#dockerizar-msql)
 - [Implementación de caché en las entidades](#implementación-de-cache-en-las-entidades)
+- [Diagrama uml](#diagrama-uml)
 - [Errores que nos hemos encontrado](#errores-que-nos-hemos-encontrado)
 
 ## Dockerizar la aplicación
@@ -717,10 +718,20 @@ Los Json ignore nos evita entrar a un objeto que sea null y que de error al entr
 
 ![image](https://user-images.githubusercontent.com/102741945/235741496-bea5edf7-77bd-4540-b5f5-6183cf787e42.png)
 
+## Diagrama uml
+
+![image](https://user-images.githubusercontent.com/102741945/236055075-d450a8d7-10a1-44ba-ba17-0afd3861b908.png)
+
+En este diagrama la única clase que se ha añadido es la de cacheController, la no dispone de una relación directa con otras clases.
+
+![image](https://user-images.githubusercontent.com/102741945/236057584-8b63912a-c8bc-4802-982c-e8d54c251427.png)
+
+Con el servicio interno pasa exactamente lo mismo.
 
 ## Errores que nos hemos encontrado
 
 -A la hora de borrar algo de la página web no se borraba y no se actualizaba la caché, al final nos dimos cuenta de que era porque el método de borrar no estaba dentro del CacheEvit.
+
 -Fallo en los métodos de cache controller debido a una línea innecesaria y que no realizaba bien el guardado en caché.
 
 
