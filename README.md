@@ -731,6 +731,22 @@ Los Json ignore nos evita entrar a un objeto que sea null y que de error al entr
 
 ![image](https://user-images.githubusercontent.com/102741945/235741496-bea5edf7-77bd-4540-b5f5-6183cf787e42.png)
 
+Para ver como funciona adjuntamos imágenes de la caché de animales:
+
+![image](https://user-images.githubusercontent.com/102741945/236067323-498bf623-e56f-4d61-8fd7-d3f91ba223ef.png)
+
+Primero observamos como se cargan todos los animales en adopción en la caché.
+
+Ahora vamos a borrar por ejemplo a Popi:
+
+![image](https://user-images.githubusercontent.com/102741945/236067569-a9a75088-e21b-4dcc-961f-6ff0d247d814.png)
+
+Popi desaparece de la caché, en el caso de crear otro animal, llamado Manolo:
+
+![image](https://user-images.githubusercontent.com/102741945/236067853-935bb590-22aa-4e0e-a351-67bb8f70d8bc.png)
+
+Nos muestra debajo a Manolo en la caché.
+
 ## Diagrama uml
 
 ![image](https://user-images.githubusercontent.com/102741945/236055075-d450a8d7-10a1-44ba-ba17-0afd3861b908.png)
