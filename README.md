@@ -689,7 +689,7 @@ Ahora en usuario visualizamos a Manolo:
 
 ## Video de youtube de la pagina web
 
-Enlace del video de youtube de nuestra página web: https://www.youtube.com/watch?v=Jvbqobes-Nw
+Enlace del video de youtube de nuestra página web: https://youtu.be/Jvbqobes-Nw
 
 ## Balanceo de carga
 
@@ -827,7 +827,7 @@ Este es el diagrama de nuestra infraestructura, que nos muestra de manera muy si
 
 ![image](https://user-images.githubusercontent.com/102540777/236084668-081f5b63-1189-4e34-b3e1-136add8b2beb.png)
 
-
+En nuestro caso, especificamos a fuego la IP privada del servidor encargado del servicio interno, en la clase CorreoService y al igual que la base de datoss, al solo haber una instancia de esta, si dichos nodos se cae, se inutilizarían las funcionalidades que ofrecen.
 
 ## Errores que nos hemos encontrado
 
