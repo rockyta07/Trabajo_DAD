@@ -677,34 +677,61 @@ Ahora en usuario visualizamos a Manolo:
 
 ## Tabla de contenidos
 
-- [Dockerizar la aplicación](#dockerizar-la-aplicación)
 - [Balanceo de carga](#balanceo-de-carga)
-- [Dockerizar MYSQL](#dockerizar-msql)
 - [Implementacion de cache en las entidades](#implementacion-de-cache-en-las-entidades)
-- [Diagrama uml](#diagrama-uml)
+- [Sesión distribuida](#sesión-distribuida)
 - [Hazelcast cache distribuida](#hazelcast-cache-distribuida)
+- [Diagrama uml](#diagrama-uml)
 - [Errores que nos hemos encontrado](#errores-que-nos-hemos-encontrado)
-
-## Dockerizar la aplicación
-
-
 
 
 ## Balanceo de carga
 
-Para realizar el balanceo de carga se ha decidido realizarlo con HaProxy lo cual es ideal para la escalabilidad ya que si por algo un servidor se cae o falla Haproxy puede redirigir el tráfico a otro servidor disponible. El rendimiento es mayor ya que reparte el trabajo entre varios servidores reduciendo la carga de uno solo.
+Para realizar el balanceo de carga se ha decidido realizarlo con HaProxy lo cual es ideal para la escalabilidad de la aplicación ya que permite añadir servidores en el backend según conveniencia.
+Además balancear la carga nos va a ser útil en la resistencia a fallos dado que si una de las instancias del servidor fallase por alguna razón, Haproxy puede redirigir el tráfico a otro servidor disponible. 
 
-Los pasos importantes que se deben de seguir son:
--Crear una instancia del balanceo de carga, en nuestro caso en OpenStack, asociando el puerto 80.
+El rendimiento por tanto es mayor ya que reparte el trabajo entre varios servidores usando la técnica de round robin y asegurándose que si hay multiples servidores les llegue una petición a cada uno antes de 
+mandar una segunda petición a cualquier instancia. Esta técnica, aunque se podría elegir entre otras (por ejemplo por velocidad del servidor) nos va a ayudar a reducir la carga de cada servidor.
 
--Se instala Haproxy con sudo apt-get update y sudo apt-get -y install haproxy
+Los pasos importantes que se deben de seguir para añadir el balanceo de carga son:
+- Crear una instancia del balanceo de carga, en nuestro caso en OpenStack. A la hora de abrir los puertos en los grupos de seguridad debemos tener en cuenta que nuestra aplicación debe usar https y por tanto debemos asignarle un puerto acorde a eso. En nuestro caso habilitaremos los siguientes puertos según la función:
+  - Para redirigir el tráfico a los servidores web usaremos el puerto 443 (que si añadimos https:// delante de la IP flotante en el navegador, no es necesario incluirlo especificamente en la url)
+  - El puerto 8181 para ver las stats de los servidores, por como lo configuraremos en el fichero de configuración, solo referenciando la IP y el puerto no lograremos ver las stats por lo que le deberemos añadir /admin?stats a la URI.
 
--Se edita el fichero de haproxy, incluyendo el frontend con el puerto donde se escucha el balanceador y en backend se especifican los servidores entre los que se balanceará la carga.
+- Una vez creada la instancia, accederemos a ella con nuestra clave ssh e instalaremos Haproxy con el siguiente comando:
+```
+sudo apt-get update y sudo apt-get -y install haproxy
+```
 
+- Tras la instalación de haproxy deberíamos ser capaces de acceder al directorio "/etc/haproxy/" en el cual se haya nuestro ficheo de configuración que deberemos editar:
+  - estableciendo un listening para las stats en el puerto 8181 con la URI /admin?stats
+  - incluyendo el frontend con el puerto donde escucha el balanceador(443)
+  - incluyendo y referenciando en el frontend el backend donde se especifican los servidores entre los que se balanceará la carga (identificados por nombre asociada a la ipPrivada:puerto.
+  - incluyendo los timeout para evitar que ocurran problemas extraños
+  - eligiendo el criterio de balanceo y el tipo de conexión (tcp o http)
+  
+- Veremos más características particulares de nuestro proyecto en la explicación de nuestra sesión distribuida ya que este archivo se vuelve a tocar para incluirla.
 
+- Una vez modificado el archivo se podrá ejecutar el servicio haproxy en la instancia mediante:
+```
+sudo systemctl start haproxy
+```
+- Y podremos comprobar su estado desde la terminal con:
+```
+systemctl status haproxy
+```
+## Sesión distribuida
 
+Para la implementación de la sessión distribuida optamos por usar Sticky Sessions basadas en cookies. Para dicah implementación tuvimos que crear una clase nueva en 
+nuestro proyecto Spring para que permitiese el funcionamiento correcto de las cookies. Así como modificamos el archivo haproxy.cfg para que 
+estuviese una cookie diferente por servidor, la cual recogía e identificacba la sesión activa en la web con un id único.
 
-## Dockerizar MYSQL
+Como anotación importante es que en el archivo de configuración de haproxy, es necesario que especifiquemos que todas las capas de transporte son http, ya que por tcp no se pueden transmitir las cookies.
+Si no lo especificamos así, haproxy ignorará la creación de cookies. Además para seguir haciendo nuestra aplicación segura (usando https), se debe incluir un certificado ssl que deberemos crear especificamente con este fin.
+
+Aquí podemos ver la clase en concreto que ha sido creada con el objetivo de implementar la sesión distribuida:
+
+Y las cookies almacenadas en el navegador con dos sesiones diferentes en el mismo servidor:
 
 
 ## Implementacion de cache en las entidades
@@ -747,15 +774,6 @@ Popi desaparece de la caché, en el caso de crear otro animal, llamado Manolo:
 
 Nos muestra debajo a Manolo en la caché.
 
-## Diagrama uml
-
-![image](https://user-images.githubusercontent.com/102741945/236055075-d450a8d7-10a1-44ba-ba17-0afd3861b908.png)
-
-En este diagrama la única clase que se ha añadido es la de cacheController, la clase no dispone de una relación directa con otras clases.
-
-![image](https://user-images.githubusercontent.com/102741945/236057584-8b63912a-c8bc-4802-982c-e8d54c251427.png)
-
-Con el servicio interno pasa exactamente lo mismo.
 
 ## Hazelcast cache distribuida
 Para la realización de hazelcast para poder monitorizar la caché de manera distribuida se han implementado una serie de cosas:
@@ -778,15 +796,32 @@ Y por último se añade en el application properties:
 ![image](https://user-images.githubusercontent.com/102741945/236060226-32c3ec77-4e18-4897-bb3a-b44766653dcb.png)
 
 
+## Diagrama uml
+
+![image](https://user-images.githubusercontent.com/102741945/236055075-d450a8d7-10a1-44ba-ba17-0afd3861b908.png)
+
+Este diagrama se ha modificado para incluir la clase cacheController, la clase no dispone de una relación directa con otras clases.
+
+![image](https://user-images.githubusercontent.com/102741945/236057584-8b63912a-c8bc-4802-982c-e8d54c251427.png)
+
+Y la clase WebConfig que engloba la configuración específica de SpringBoot para permitir el uso de las cookies como nuestro sistema de sesión distribuida:
+
+
 
 
 ## Errores que nos hemos encontrado
 
--A la hora de borrar algo de la página web no se borraba y no se actualizaba la caché, al final nos dimos cuenta de que era porque el método de borrar no estaba dentro del CacheEvit.
+- A la hora de borrar algo de la página web no se borraba y no se actualizaba la caché, al final nos dimos cuenta de que era porque el método de borrar no estaba dentro del CacheEvict.
 
--Fallo en los métodos de cache controller debido a una línea innecesaria y que no realizaba bien el guardado en caché.
+- Fallo en los métodos de cacheController debido a una línea innecesaria y que no realizaba bien el guardado en caché.
 
--Al poner la base de datos con update se duplicaba, para ello ha sido necesario incluir en el databaseinicializer una condición para que indica que si está vacio guarde todo y en el caso de no estarlo que no haga nada.
+- Al poner la base de datos con update se duplicaba, para ello ha sido necesario incluir en el databaseinicializer una condición para que indica que si está vacio guarde todo y en el caso de no estarlo que no haga nada.
+
+- A la hora de cachear animales/protectoras/usuarios/mensajes, nos dimos cuenta que los cacheaba bien hasta que cargabamos un animal/protectora/usuario/mensaje, en este caso volvía a cargar el mismo en la cache, creandonos duplicados. 
+Esto lo resolvimos quitando la anotación @Cacheable del método findById() ya que teniendo dicha anotación en findAll(), automáticamente cacheaba todos los elementos.
+
+- La sesión distribuida nos dió muchos problemas principalmente por un mal enfoque, tardamos en darnos cuenta que para poder implementar la sesión distribuida ya fuese haciendo uso de las herramientas que ofrece Hazelcast o por cookies, debíamos
+cambiar el método de transporte especificado en el haproxy.cfg de TCP a HTTP, ya que si no, no había manera de que se pudiesen comunicar entre los nodos para guardar la sesión distribuida.
 
 
 
