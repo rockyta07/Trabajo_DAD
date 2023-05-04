@@ -682,6 +682,7 @@ Ahora en usuario visualizamos a Manolo:
 - [Sesión distribuida](#sesión-distribuida)
 - [Hazelcast cache distribuida](#hazelcast-cache-distribuida)
 - [Diagrama uml](#diagrama-uml)
+- [Diagrama de la infraestructura](#diagrama-de-la-infraestructura)
 - [Errores que nos hemos encontrado](#errores-que-nos-hemos-encontrado)
 
 
@@ -731,7 +732,14 @@ Si no lo especificamos así, haproxy ignorará la creación de cookies. Además 
 
 Aquí podemos ver la clase en concreto que ha sido creada con el objetivo de implementar la sesión distribuida:
 
+![image](https://user-images.githubusercontent.com/102540777/236084148-5f92780c-3450-44ca-a7ca-138ac0251cc5.png)
+
+
 Y las cookies almacenadas en el navegador con dos sesiones diferentes en el mismo servidor:
+
+![image](https://user-images.githubusercontent.com/102540777/236084222-59017347-f898-4477-a5a7-06464d3e8b86.png)
+
+![image](https://user-images.githubusercontent.com/102540777/236084295-868ea08c-f039-4bfd-b885-8a28b003540d.png)
 
 
 ## Implementacion de cache en las entidades
@@ -806,6 +814,13 @@ Este diagrama se ha modificado para incluir la clase cacheController, la clase n
 
 Y la clase WebConfig que engloba la configuración específica de SpringBoot para permitir el uso de las cookies como nuestro sistema de sesión distribuida:
 
+![image](https://user-images.githubusercontent.com/102540777/236084411-e7762678-61ac-4778-9666-b17117bb80a3.png)
+
+## Diagrama de la infraestructura
+
+Este es el diagrama de nuestra infraestructura, que nos muestra de manera muy simplificada el funcionamiento del backend (frontend) de nuestra web, explicando entre las conexiones como se comunican:
+
+![image](https://user-images.githubusercontent.com/102540777/236084668-081f5b63-1189-4e34-b3e1-136add8b2beb.png)
 
 
 
