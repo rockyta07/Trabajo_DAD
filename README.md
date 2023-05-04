@@ -812,7 +812,7 @@ Este diagrama se ha modificado para incluir la clase cacheController, la clase n
 
 ![image](https://user-images.githubusercontent.com/102741945/236057584-8b63912a-c8bc-4802-982c-e8d54c251427.png)
 
-Y la clase WebConfig que engloba la configuración específica de SpringBoot para permitir el uso de las cookies como nuestro sistema de sesión distribuida:
+Y la clase WebConfig que es un controlador que engloba la configuración específica de SpringBoot para permitir el uso de las cookies como nuestro sistema de sesión distribuida:
 
 ![image](https://user-images.githubusercontent.com/102540777/236084411-e7762678-61ac-4778-9666-b17117bb80a3.png)
 
